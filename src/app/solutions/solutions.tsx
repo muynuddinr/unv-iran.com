@@ -465,6 +465,58 @@ const SolutionsPage: React.FC = () => {
             {CategoryList}
           </div>
 
+          {/* Mobile Category List - Simplified */}
+          <div className="md:hidden space-y-4">
+            {solutionCategories.map((category) => (
+              <motion.div 
+                key={category.id} 
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <button
+                  onClick={() => setSelectedCategory(category)}
+                  className="w-full text-left p-6 flex justify-between items-center hover:bg-blue-50 transition-colors"
+                  aria-expanded={selectedCategory.id === category.id}
+                >
+                  <span className="text-xl font-semibold text-gray-800">{category.name}</span>
+                  <FiArrowRight
+                    className={`h-6 w-6 transform transition-transform ${
+                      selectedCategory.id === category.id ? 'rotate-90 text-blue-600' : 'text-gray-500'
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+                {selectedCategory.id === category.id && (
+                  <motion.div 
+                    className="p-6 pt-0"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                  >
+                    <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
+                      <Image 
+                        src={category.image}
+                        alt={`${category.name} Security Solutions`}
+                        fill
+                        sizes="(max-width: 768px) 100vw"
+                        className="object-cover"
+                        loading="eager"
+                      />
+                    </div>
+                    <p className="text-gray-600 mb-4">{category.description}</p>
+                    <ul className="space-y-2">
+                      {category.features.map((feature) => (
+                        <li key={feature} className="flex items-center space-x-2">
+                          <FiCheckCircle className="text-blue-600 text-lg shrink-0" />
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
           {/* Category Details */}
           <div className="md:col-span-2">
             <AnimatePresence mode="wait">
