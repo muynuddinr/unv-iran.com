@@ -235,7 +235,7 @@ const Navbar = () => {
                 {/* Refined Solutions Mega Menu */}
                 <div 
                   id="solutions-mega-menu"
-                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-white/98 
+                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-gradient-to-r from-blue-100 to-purple-100 
                     shadow-md rounded-md border border-gray-200
                     transform transition-all duration-300 origin-top z-50
                     ${megaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
@@ -251,7 +251,7 @@ const Navbar = () => {
                   
                   <div className="max-h-[70vh] overflow-y-auto">
                     <div className="grid md:grid-cols-2 p-3 md:p-4 gap-3 md:gap-4">
-                      <div className="bg-gray-50 rounded-md p-3">
+                      <div className="bg-white/80 backdrop-blur-sm rounded-md p-3">
                         <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
                           Solutions by Industry
                         </h3>
@@ -260,7 +260,7 @@ const Navbar = () => {
                             <Link
                               key={link.href}
                               href={link.href}
-                              className="flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700 hover:text-blue-700 transition-colors"
+                              className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
                               onClick={() => setMegaMenuOpen(false)}
                             >
                               <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
@@ -270,7 +270,7 @@ const Navbar = () => {
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 rounded-md p-3">
+                      <div className="bg-white/80 backdrop-blur-sm rounded-md p-3">
                         <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
                           Solutions by Function
                         </h3>
@@ -279,7 +279,7 @@ const Navbar = () => {
                             <Link
                               key={link.href}
                               href={link.href}
-                              className="flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700 hover:text-blue-700 transition-colors"
+                              className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
                               onClick={() => setMegaMenuOpen(false)}
                             >
                               <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
@@ -379,14 +379,14 @@ const Navbar = () => {
           {/* Mobile Menu with Improved Design */}
           <div 
             id="mobile-menu"
-            className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out 
+            className={`md:hidden transition-all duration-500 ease-in-out 
               ${isOpen 
-                ? 'max-h-[32rem] opacity-100 visible' 
-                : 'max-h-0 opacity-0 invisible'
-              }`}
+                ? 'max-h-[80vh] opacity-100 visible overflow-y-auto' 
+                : 'max-h-0 opacity-0 invisible overflow-hidden'
+              } bg-white/95 rounded-xl shadow-lg`}
             aria-hidden={!isOpen}
           >
-            <div className="px-2 pt-2 pb-4 space-y-2 sm:px-3 bg-white/95 rounded-xl shadow-lg">
+            <div className="px-2 pt-2 pb-4 space-y-2 sm:px-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -422,8 +422,10 @@ const Navbar = () => {
                   <FiChevronDown className={`transition-transform duration-300 ${mobileSubMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
-                <div className={`pl-2 space-y-2 transition-all duration-300 overflow-hidden ${mobileSubMenuOpen ? 'mt-2 max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="bg-blue-50/50 rounded-lg p-3 mx-2">
+                <div className={`pl-2 space-y-2 transition-all duration-300 
+                  ${mobileSubMenuOpen ? 'mt-2 max-h-[2000px] opacity-100 visible' : 'max-h-0 opacity-0 invisible overflow-hidden'}`}
+                >
+                  <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg p-3 mx-2">
                     <h3 className="px-3 py-2 text-xs font-bold text-blue-800 uppercase tracking-wider">
                       By Industry
                     </h3>
@@ -432,7 +434,7 @@ const Navbar = () => {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-blue-600 hover:bg-white"
+                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-blue-600 hover:bg-white/80 backdrop-blur-sm"
                           onClick={() => setIsOpen(false)}
                         >
                           <span className="mr-2">{link.icon}</span>
@@ -442,7 +444,7 @@ const Navbar = () => {
                     </div>
                   </div>
                   
-                  <div className="bg-purple-50/50 rounded-lg p-3 mx-2">
+                  <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg p-3 mx-2">
                     <h3 className="px-3 py-2 text-xs font-bold text-purple-800 uppercase tracking-wider">
                       By Function
                     </h3>
@@ -451,7 +453,7 @@ const Navbar = () => {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-purple-600 hover:bg-white"
+                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-purple-600 hover:bg-white/80 backdrop-blur-sm"
                           onClick={() => setIsOpen(false)}
                         >
                           <span className="mr-2">{link.icon}</span>
@@ -462,7 +464,7 @@ const Navbar = () => {
                     
                     <Link
                       href="/solutions"
-                      className="flex items-center justify-between px-3 py-2 mt-2 text-sm text-purple-600 bg-white rounded-lg"
+                      className="flex items-center justify-between px-3 py-2 mt-2 text-sm text-purple-600 bg-white/80 backdrop-blur-sm rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="font-medium">View All Solutions</span>
