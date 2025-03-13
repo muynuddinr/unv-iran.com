@@ -200,6 +200,41 @@ const staggerContainer = {
   }
 };
 
+// Add this new component for mobile view
+const MobileSolutionCard = ({ category, onSelect }: {
+  category: SolutionCategory;
+  onSelect: () => void;
+}) => (
+  <motion.div 
+    className="bg-white rounded-2xl shadow-md overflow-hidden"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}
+  >
+    <div className="relative h-48">
+      <Image 
+        src={category.image}
+        alt={category.name}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw"
+      />
+      <div className={`absolute inset-0 bg-gradient-to-t ${category.color || 'from-blue-600 to-blue-800'} opacity-80`} />
+      <div className="absolute inset-0 p-4 flex flex-col justify-between">
+        <h3 className="text-2xl font-bold text-white">{category.name}</h3>
+        <button
+          onClick={onSelect}
+          className="self-end bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full 
+                   flex items-center space-x-2 hover:bg-white/30 transition-colors"
+        >
+          <span>View Details</span>
+          <FiArrowRight />
+        </button>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const SolutionsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<SolutionCategory>(solutionCategories[0]);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -396,7 +431,7 @@ const SolutionsPage: React.FC = () => {
       
       {/* Search Trigger Button */}
       <motion.button
-        className="fixed bottom-6 right-6 bg-white rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow z-40 flex items-center space-x-2"
+        className="fixed bottom-6 right-6 bg-white rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow z-40 flex items-center space-x-2 hidden md:flex"
         onClick={() => setIsSearchOpen(true)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -465,60 +500,99 @@ const SolutionsPage: React.FC = () => {
             {CategoryList}
           </div>
 
-          {/* Mobile Category List - Simplified */}
-          <div className="md:hidden space-y-4">
-            {solutionCategories.map((category) => (
-              <motion.div 
-                key={category.id} 
-                className="bg-white rounded-2xl shadow-lg overflow-hidden"
-              >
-                <button
-                  onClick={() => setSelectedCategory(category)}
-                  className="w-full text-left p-6 flex justify-between items-center hover:bg-blue-50 transition-colors"
-                  aria-expanded={selectedCategory.id === category.id}
+          {/* Mobile View */}
+          <div className="md:hidden" id="mobile-solutions">
+            <div className="grid grid-cols-1 gap-4">
+              {filteredCategories.map((category) => (
+                <MobileSolutionCard
+                  key={category.id}
+                  category={category}
+                  onSelect={() => {
+                    setSelectedCategory(category);
+                    document.getElementById('solution-details')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Mobile Solution Details */}
+            <motion.div
+              id="solution-details"
+              className="mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedCategory.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden"
                 >
-                  <span className="text-xl font-semibold text-gray-800">{category.name}</span>
-                  <FiArrowRight
-                    className={`h-6 w-6 transform transition-transform ${
-                      selectedCategory.id === category.id ? 'rotate-90 text-blue-600' : 'text-gray-500'
-                    }`}
-                    aria-hidden="true"
-                  />
-                </button>
-                {selectedCategory.id === category.id && (
-                  <motion.div 
-                    className="p-6 pt-0"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                  >
-                    <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
-                      <Image 
-                        src={category.image}
-                        alt={`${category.name} Security Solutions`}
-                        fill
-                        sizes="(max-width: 768px) 100vw"
-                        className="object-cover"
-                        loading="eager"
-                      />
+                  {/* Add image section */}
+                  <div className="relative h-48 w-full">
+                    <Image 
+                      src={selectedCategory.image}
+                      alt={`${selectedCategory.name} Security Solutions`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw"
+                      priority
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${selectedCategory.color || 'from-blue-600 to-blue-800'} opacity-60`} />
+                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {selectedCategory.name}
+                      </h3>
+                      <p className="text-white/90 text-sm">
+                        {selectedCategory.description}
+                      </p>
                     </div>
-                    <p className="text-gray-600 mb-4">{category.description}</p>
-                    <ul className="space-y-2">
-                      {category.features.map((feature) => (
-                        <li key={feature} className="flex items-center space-x-2">
-                          <FiCheckCircle className="text-blue-600 text-lg shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
+                  </div>
+
+                  {/* Features section */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      Key Features
+                    </h3>
+                    <div className="space-y-3">
+                      {selectedCategory.features.map((feature, index) => (
+                        <motion.div
+                          key={feature}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="p-4 rounded-lg bg-gray-50"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <FiCheckCircle className="text-blue-600" />
+                            <span className="text-gray-800 font-medium">{feature}</span>
+                          </div>
+                        </motion.div>
                       ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
+                    </div>
+                    
+                    <Link 
+                      href={`/solutions/${selectedCategory.id}`}
+                      className="mt-6 w-full inline-flex items-center justify-center space-x-2 
+                                bg-blue-600 text-white px-6 py-3 rounded-xl shadow-md"
+                    >
+                      <span>Learn more about {selectedCategory.name}</span>
+                      <FiArrowRight />
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           {/* Category Details */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 hidden md:block">
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedCategory.id}
