@@ -37,7 +37,7 @@ const WhatsAppIcon = () => {
   return (
     <>
       {isOpen && (
-        <div className="fixed bottom-24 left-6 z-50 w-80 bg-white rounded-lg shadow-xl overflow-hidden">
+        <div className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-lg shadow-xl overflow-hidden">
           <div className="bg-blue-500 p-4 flex justify-between items-center">
             <div className="text-white">
               <h3 className="font-medium">uniview Iran</h3>
@@ -83,7 +83,7 @@ const WhatsAppIcon = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 z-50 bg-green-500 hover:bg-green-600 
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 
           text-white p-4 rounded-full shadow-lg hover:shadow-xl 
           transform hover:scale-110 transition-all duration-300 
           animate-bounce hover:animate-none"

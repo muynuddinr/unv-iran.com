@@ -232,7 +232,7 @@ const Navbar = () => {
                 {/* Refined Solutions Mega Menu */}
                 <div 
                   id="solutions-mega-menu"
-                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-gradient-to-r from-blue-100 to-purple-100 
+                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-white 
                     shadow-md rounded-md border border-gray-200
                     transform transition-all duration-300 origin-top z-50
                     ${megaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
@@ -248,7 +248,7 @@ const Navbar = () => {
                   
                   <div className="max-h-[70vh] overflow-y-auto">
                     <div className="grid md:grid-cols-2 p-3 md:p-4 gap-3 md:gap-4">
-                      <div className="bg-white/80 backdrop-blur-sm rounded-md p-3">
+                      <div className="bg-gray-50 rounded-md p-3">
                         <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
                           Solutions by Industry
                         </h3>
@@ -267,7 +267,7 @@ const Navbar = () => {
                         </div>
                       </div>
                       
-                      <div className="bg-white/80 backdrop-blur-sm rounded-md p-3">
+                      <div className="bg-gray-50 rounded-md p-3">
                         <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
                           Solutions by Function
                         </h3>
