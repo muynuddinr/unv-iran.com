@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
@@ -10,8 +10,7 @@ import {
   FiVideo, 
   FiBarChart,
   FiCheckCircle,
-  FiArrowDown,
-  FiSearch
+  FiArrowDown
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -219,13 +218,12 @@ const MobileSolutionCard = ({ category, onSelect }: {
         className="object-cover"
         sizes="(max-width: 768px) 100vw"
       />
-      <div className={`absolute inset-0 bg-gradient-to-t ${category.color || 'from-blue-600 to-blue-800'} opacity-80`} />
       <div className="absolute inset-0 p-4 flex flex-col justify-between">
-        <h3 className="text-2xl font-bold text-white">{category.name}</h3>
+        <h3 className="text-2xl font-bold text-white drop-shadow-lg">{category.name}</h3>
         <button
           onClick={onSelect}
-          className="self-end bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full 
-                   flex items-center space-x-2 hover:bg-white/30 transition-colors"
+          className="self-end bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full 
+                   flex items-center space-x-2 hover:bg-black/90 transition-colors shadow-md"
         >
           <span>View Details</span>
           <FiArrowRight />
@@ -237,69 +235,10 @@ const MobileSolutionCard = ({ category, onSelect }: {
 
 const SolutionsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<SolutionCategory>(solutionCategories[0]);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [filteredCategories, setFilteredCategories] = useState(solutionCategories);
-  const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
-
-  // Filter categories based on search and filters
-  const filterCategories = useCallback(() => {
-    let filtered = solutionCategories;
-    
-    if (searchQuery) {
-      filtered = filtered.filter(category => 
-        category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        category.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        category.features.some(feature => 
-          feature.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      );
-    }
-
-    if (activeFilters.length > 0) {
-      filtered = filtered.filter(category =>
-        activeFilters.some(filter => 
-          category.features.some(feature =>
-            feature.toLowerCase().includes(filter.toLowerCase())
-          )
-        )
-      );
-    }
-
-    setFilteredCategories(filtered);
-  }, [searchQuery, activeFilters]);
-
-  useEffect(() => {
-    filterCategories();
-  }, [searchQuery, activeFilters, filterCategories]);
-
-  // Handle search keyboard shortcuts
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setIsSearchOpen(prev => !prev);
-      }
-      if (e.key === 'Escape') {
-        setIsSearchOpen(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
-
-  // Focus search input when opened
-  useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchOpen]);
 
   // Memoized category list component
   const CategoryList = useMemo(() => (
@@ -309,7 +248,7 @@ const SolutionsPage: React.FC = () => {
       initial="hidden"
       animate="visible"
     >
-      {filteredCategories.map((category) => (
+      {solutionCategories.map((category) => (
         <motion.button
           key={category.id}
           onClick={() => setSelectedCategory(category)}
@@ -342,106 +281,10 @@ const SolutionsPage: React.FC = () => {
         </motion.button>
       ))}
     </motion.div>
-  ), [filteredCategories, selectedCategory]);
-
-  // Search and filter overlay
-  const SearchOverlay = () => (
-    <AnimatePresence>
-      {isSearchOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsSearchOpen(false)}
-        >
-          <motion.div
-            className="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="p-4 border-b">
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="Search solutions... (⌘K)"
-                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {['Access Control', 'Video Surveillance', 'Analytics', 'Integration'].map(filter => (
-                  <button
-                    key={filter}
-                    onClick={() => setActiveFilters(prev => 
-                      prev.includes(filter) 
-                        ? prev.filter(f => f !== filter)
-                        : [...prev, filter]
-                    )}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
-                      activeFilters.includes(filter)
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="max-h-96 overflow-y-auto p-4">
-              {filteredCategories.length > 0 ? (
-                filteredCategories.map(category => (
-                  <button
-                    key={category.id}
-                    className="w-full text-left p-3 hover:bg-gray-50 rounded-lg group transition-colors"
-                    onClick={() => {
-                      setSelectedCategory(category);
-                      setIsSearchOpen(false);
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-medium text-gray-900 group-hover:text-blue-600">
-                        {category.name}
-                      </h3>
-                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {category.description.slice(0, 100)}...
-                    </p>
-                  </button>
-                ))
-              ) : (
-                <div className="text-center py-8 text-gray-500">
-                  No results found for &quot;{searchQuery}&quot;
-                </div>
-              )}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  ), [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-white">
-      <SearchOverlay />
-      
-      {/* Search Trigger Button */}
-      <motion.button
-        className="fixed bottom-6 right-6 bg-white rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow z-40 flex items-center space-x-2 hidden md:flex"
-        onClick={() => setIsSearchOpen(true)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <FiSearch className="text-gray-700" />
-        <span className="text-sm text-gray-600 hidden sm:inline">
-          Search solutions (⌘K)
-        </span>
-      </motion.button>
-
       <div className="container mx-auto px-4 py-16 lg:py-24">
         {/* Hero Section with Enhanced Typography and Animation */}
         <motion.section 
@@ -485,17 +328,10 @@ const SolutionsPage: React.FC = () => {
         >
           {/* Category List */}
           <div className="hidden md:block sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-            <div className="flex items-center justify-between mb-6">
+            <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
                 Industries
               </h2>
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label="Search solutions"
-              >
-                <FiSearch className="text-gray-600" />
-              </button>
             </div>
             {CategoryList}
           </div>
@@ -503,7 +339,7 @@ const SolutionsPage: React.FC = () => {
           {/* Mobile View */}
           <div className="md:hidden" id="mobile-solutions">
             <div className="grid grid-cols-1 gap-4">
-              {filteredCategories.map((category) => (
+              {solutionCategories.map((category) => (
                 <MobileSolutionCard
                   key={category.id}
                   category={category}
@@ -544,7 +380,6 @@ const SolutionsPage: React.FC = () => {
                       sizes="(max-width: 768px) 100vw"
                       priority
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${selectedCategory.color || 'from-blue-600 to-blue-800'} opacity-60`} />
                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
                       <h3 className="text-2xl font-bold text-white mb-2">
                         {selectedCategory.name}
@@ -611,9 +446,7 @@ const SolutionsPage: React.FC = () => {
                     className="object-cover transition duration-500 ease-in-out group-hover:scale-105"
                     priority
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 ${
-                    selectedCategory.color ? `via-gradient-to-r ${selectedCategory.color}/30` : ''
-                  }`}>
+                  <div className="absolute inset-0 flex items-end p-8">
                     <div>
                       <motion.h2 
                         className="text-3xl font-bold text-white mb-2 drop-shadow-lg"

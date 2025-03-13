@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from './Components/ScrollProgress';
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
+import WhatsAppIcon from './Components/WhatsAppIcon';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +34,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ScrollProgress />
-        <Navbar />
         {children}
-        <Footer />
+        <WhatsAppIcon />
       </body>
     </html>
   );
