@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   FiSearch, FiMenu, FiX, FiMail, FiPhone, 
-  FiHome, FiBox, FiTool, FiInfo, FiSend 
+  FiHome, FiBox, FiTool, FiInfo, FiSend,
+  FiChevronDown, FiChevronRight
 } from 'react-icons/fi';
 import logo from '../../../public/logo.svg'
 
@@ -14,7 +15,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Mobile menu state for expandable solutions section
+  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,9 +36,9 @@ const Navbar = () => {
   const navLinks = [
     { href: '/', label: 'Home', icon: FiHome },
     { href: '/products', label: 'Products', icon: FiBox },
-    { href: '/solutions', label: 'Solutions', icon: FiTool },
-    { href: '/about', label: 'About', icon: FiInfo },
-    { href: '/contact', label: 'Contact', icon: FiSend },
+    // { href: '/solutions', label: 'Solutions', icon: FiTool },
+    // { href: '/about', label: 'About', icon: FiInfo },
+    // { href: '/contact', label: 'Contact', icon: FiSend },
   ];
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -66,6 +71,59 @@ const Navbar = () => {
       console.log('Searching for:', searchQuery);
       // You could navigate to search results or perform search
     }
+  };
+
+  const industryLinks = [
+    { href: '/solutions/building', label: 'Building', icon: '🏢' },
+    { href: '/solutions/retail', label: 'Retail', icon: '🛒' },
+    { href: '/solutions/bank', label: 'Bank', icon: '🏦' },
+    { href: '/solutions/school', label: 'School', icon: '🎓' },
+    { href: '/solutions/shopping-mall', label: 'Shopping Mall', icon: '🛍️' },
+    { href: '/solutions/hospital', label: 'Hospital', icon: '🏥' },
+    { href: '/solutions/warehouse', label: 'Warehouse and Logistics', icon: '🏭' },
+    { href: '/solutions/stadium', label: 'Stadium', icon: '🏟️' },
+    { href: '/solutions/hotel', label: 'Hotel', icon: '🏨' },
+  ];
+
+  const functionLinks = [
+    { href: '/solutions/video-surveillance', label: 'Video Surveillance', icon: '📹' },
+    { href: '/solutions/access-control', label: 'Access Control', icon: '🔐' },
+    { href: '/solutions/analytics', label: 'Video Analytics', icon: '📊' },
+    { href: '/solutions/integration', label: 'Systems Integration', icon: '🔄' },
+  ];
+
+  const toggleMegaMenu = (e: React.MouseEvent) => {
+    if (window.innerWidth >= 768) { // Only for desktop
+      e.preventDefault();
+      setMegaMenuOpen(!megaMenuOpen);
+    }
+  };
+
+  // Close mega menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const megaMenu = document.getElementById('solutions-mega-menu');
+      const solutionsLink = document.getElementById('solutions-link');
+      
+      if (megaMenuOpen && megaMenu && !megaMenu.contains(event.target as Node) && 
+          solutionsLink && !solutionsLink.contains(event.target as Node)) {
+        setMegaMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [megaMenuOpen]);
+
+  // Clean up body classes when component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('overflow-hidden', 'md:overflow-auto');
+    };
+  }, []);
+
+  const toggleMobileSubMenu = () => {
+    setMobileSubMenuOpen(!mobileSubMenuOpen);
   };
 
   return (
@@ -152,6 +210,133 @@ const Navbar = () => {
                 </Link>
               ))}
               
+              {/* Solutions with Mega Menu */}
+              <div className="relative group" id="solutions-nav-item">
+                <button
+                  id="solutions-link"
+                  className={`relative group flex items-center text-gray-700 
+                    hover:text-blue-600 transition-all duration-300 
+                    font-medium text-sm uppercase tracking-wider
+                    ${pathname.startsWith('/solutions') ? 'text-blue-600 font-semibold' : ''}`}
+                  onClick={toggleMegaMenu}
+                  aria-expanded={megaMenuOpen}
+                  aria-haspopup="true"
+                >
+                  <FiTool className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  Solutions
+                  <FiChevronDown className={`ml-1 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                  <span 
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
+                      transform transition-transform duration-300 origin-left
+                      ${pathname.startsWith('/solutions') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                  />
+                </button>
+                
+                {/* Refined Solutions Mega Menu */}
+                <div 
+                  id="solutions-mega-menu"
+                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-white/98 
+                    shadow-md rounded-md border border-gray-200
+                    transform transition-all duration-300 origin-top z-50
+                    ${megaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
+                >
+                  {/* Light overlay for rest of the page when mega menu is open */}
+                  {megaMenuOpen && (
+                    <div 
+                      className="fixed inset-0 bg-black/5 z-[-1]" 
+                      onClick={() => setMegaMenuOpen(false)}
+                      aria-hidden="true"
+                    />
+                  )}
+                  
+                  <div className="max-h-[70vh] overflow-y-auto">
+                    <div className="grid md:grid-cols-2 p-3 md:p-4 gap-3 md:gap-4">
+                      <div className="bg-gray-50 rounded-md p-3">
+                        <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
+                          Solutions by Industry
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 md:gap-2">
+                          {industryLinks.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className="flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700 hover:text-blue-700 transition-colors"
+                              onClick={() => setMegaMenuOpen(false)}
+                            >
+                              <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
+                              <span className="font-medium text-sm">{link.label}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="bg-gray-50 rounded-md p-3">
+                        <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
+                          Solutions by Function
+                        </h3>
+                        <div className="grid grid-cols-1 gap-1 md:gap-2">
+                          {functionLinks.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className="flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700 hover:text-blue-700 transition-colors"
+                              onClick={() => setMegaMenuOpen(false)}
+                            >
+                              <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
+                              <span className="font-medium text-sm">{link.label}</span>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="mt-3 p-2 bg-white rounded-md border border-gray-100">
+                          <Link 
+                            href="/solutions"
+                            className="flex items-center justify-between text-blue-600 hover:text-blue-800 font-medium text-sm"
+                            onClick={() => setMegaMenuOpen(false)}
+                          >
+                            View All Solutions
+                            <FiChevronRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <Link
+                href="/about"
+                className={`relative group flex items-center text-gray-700 
+                  hover:text-blue-600 transition-all duration-300 
+                  font-medium text-sm uppercase tracking-wider
+                  ${pathname === '/about' ? 'text-blue-600 font-semibold' : ''}`}
+                aria-current={pathname === '/about' ? 'page' : undefined}
+              >
+                <FiInfo className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
+                About
+                <span 
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
+                    transform transition-transform duration-300 origin-left
+                    ${pathname === '/about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                />
+              </Link>
+              
+              <Link
+                href="/contact"
+                className={`relative group flex items-center text-gray-700 
+                  hover:text-blue-600 transition-all duration-300 
+                  font-medium text-sm uppercase tracking-wider
+                  ${pathname === '/contact' ? 'text-blue-600 font-semibold' : ''}`}
+                aria-current={pathname === '/contact' ? 'page' : undefined}
+              >
+                <FiSend className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
+                Contact
+                <span 
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
+                    transform transition-transform duration-300 origin-left
+                    ${pathname === '/contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                />
+              </Link>
+              
               {/* Enhanced Search Bar with Form */}
               <form onSubmit={handleSearch} className="relative group">
                 <input
@@ -218,6 +403,102 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              
+              {/* Solutions Menu Item with Expandable Sub-Items */}
+              <div className="border-t border-b border-gray-100 py-2">
+                <button
+                  onClick={toggleMobileSubMenu}
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-300 text-sm 
+                    ${pathname.startsWith('/solutions') 
+                      ? 'text-blue-600 bg-blue-50 font-semibold' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    }`}
+                  aria-expanded={mobileSubMenuOpen}
+                >
+                  <div className="flex items-center">
+                    <FiTool className="mr-3 opacity-60" />
+                    Solutions
+                  </div>
+                  <FiChevronDown className={`transition-transform duration-300 ${mobileSubMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <div className={`pl-2 space-y-2 transition-all duration-300 overflow-hidden ${mobileSubMenuOpen ? 'mt-2 max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="bg-blue-50/50 rounded-lg p-3 mx-2">
+                    <h3 className="px-3 py-2 text-xs font-bold text-blue-800 uppercase tracking-wider">
+                      By Industry
+                    </h3>
+                    <div className="grid grid-cols-2 gap-1">
+                      {industryLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-blue-600 hover:bg-white"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <span className="mr-2">{link.icon}</span>
+                          <span className="text-xs font-medium">{link.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-purple-50/50 rounded-lg p-3 mx-2">
+                    <h3 className="px-3 py-2 text-xs font-bold text-purple-800 uppercase tracking-wider">
+                      By Function
+                    </h3>
+                    <div className="space-y-1">
+                      {functionLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-purple-600 hover:bg-white"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <span className="mr-2">{link.icon}</span>
+                          <span className="text-xs font-medium">{link.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                    
+                    <Link
+                      href="/solutions"
+                      className="flex items-center justify-between px-3 py-2 mt-2 text-sm text-purple-600 bg-white rounded-lg"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className="font-medium">View All Solutions</span>
+                      <FiChevronRight />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              <Link
+                href="/about"
+                className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
+                  ${pathname === '/about' 
+                    ? 'text-blue-600 bg-blue-50 font-semibold' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
+                onClick={() => setIsOpen(false)}
+                aria-current={pathname === '/about' ? 'page' : undefined}
+              >
+                <FiInfo className="mr-3 opacity-60" />
+                About
+              </Link>
+              
+              <Link
+                href="/contact"
+                className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
+                  ${pathname === '/contact' 
+                    ? 'text-blue-600 bg-blue-50 font-semibold' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
+                onClick={() => setIsOpen(false)}
+                aria-current={pathname === '/contact' ? 'page' : undefined}
+              >
+                <FiSend className="mr-3 opacity-60" />
+                Contact
+              </Link>
               
               {/* Mobile Search */}
               <form onSubmit={handleSearch} className="relative px-4 py-3">
