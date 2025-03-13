@@ -85,7 +85,7 @@ const solutionCategories: SolutionCategory[] = [
     color: 'from-purple-600 to-purple-800'
   },
   {
-    id: 'shopping',
+    id: 'shopping-mall',
     name: 'Shopping Mall',
     description: 'Comprehensive security management for large commercial spaces.',
     image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
@@ -413,7 +413,7 @@ const SolutionsPage: React.FC = () => {
                     </div>
                     
                     <Link 
-                      href={`/solutions/${selectedCategory.id}`}
+                      href={`/${selectedCategory.id}`}
                       className="mt-6 w-full inline-flex items-center justify-center space-x-2 
                                 bg-blue-600 text-white px-6 py-3 rounded-xl shadow-md"
                     >
@@ -502,7 +502,7 @@ const SolutionsPage: React.FC = () => {
                     transition={{ delay: 0.5 }}
                   >
                     <Link 
-                      href={`/solutions/${selectedCategory.id}`}
+                      href={`/${selectedCategory.id}`}
                       className={`inline-flex items-center space-x-2 ${
                         selectedCategory.color ? `bg-gradient-to-r ${selectedCategory.color}` : 'bg-blue-600'
                       } text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-1`}

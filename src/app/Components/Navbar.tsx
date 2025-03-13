@@ -74,22 +74,19 @@ const Navbar = () => {
   };
 
   const industryLinks = [
-    { href: '/solutions/building', label: 'Building', icon: '🏢' },
-    { href: '/solutions/retail', label: 'Retail', icon: '🛒' },
-    { href: '/solutions/bank', label: 'Bank', icon: '🏦' },
-    { href: '/solutions/school', label: 'School', icon: '🎓' },
-    { href: '/solutions/shopping-mall', label: 'Shopping Mall', icon: '🛍️' },
-    { href: '/solutions/hospital', label: 'Hospital', icon: '🏥' },
-    { href: '/solutions/warehouse', label: 'Warehouse and Logistics', icon: '🏭' },
-    { href: '/solutions/stadium', label: 'Stadium', icon: '🏟️' },
-    { href: '/solutions/hotel', label: 'Hotel', icon: '🏨' },
+    { href: '/building', label: 'Building', icon: '🏢' },
+    { href: '/retail', label: 'Retail', icon: '🛒' },
+    { href: '/bank', label: 'Bank', icon: '🏦' },
+    { href: '/school', label: 'School', icon: '🎓' },
+    { href: '/shopping-mall', label: 'Shopping Mall', icon: '🛍️' },
+    { href: '/hospital', label: 'Hospital', icon: '🏥' },
+    { href: '/warehouse', label: 'Warehouse and Logistics', icon: '🏭' },
+    { href: '/stadium', label: 'Stadium', icon: '🏟️' },
+    { href: '/hotel', label: 'Hotel', icon: '🏨' },
   ];
 
   const functionLinks = [
-    { href: '/solutions/video-surveillance', label: 'Video Surveillance', icon: '📹' },
-    { href: '/solutions/access-control', label: 'Access Control', icon: '🔐' },
-    { href: '/solutions/analytics', label: 'Video Analytics', icon: '📊' },
-    { href: '/solutions/integration', label: 'Systems Integration', icon: '🔄' },
+    { href: '/smart-Intrusion-Prevention', label: 'Smart intrusion prevention', icon: '📊' },
   ];
 
   const toggleMegaMenu = (e: React.MouseEvent) => {

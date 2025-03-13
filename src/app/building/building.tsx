@@ -1,0 +1,343 @@
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { 
+  FiShield, 
+  FiVideo, 
+  FiUsers, 
+  FiCheckCircle, 
+  FiArrowRight, 
+  FiSend,
+  FiLock,
+  FiGlobe,
+  FiMap,
+  FiEye
+} from 'react-icons/fi';
+import { motion } from 'framer-motion';
+
+const Building = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white pt-24">
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-12 lg:py-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Building Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Solutions</span>
+          </h1>
+          <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
+            Comprehensive security solutions for commercial and residential complexes designed to protect your property, assets, and people.
+          </p>
+        </div>
+      </section>
+
+      {/* Overview Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 w-64 h-64 bg-blue-100 rounded-full opacity-50 filter blur-3xl"></div>
+              <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-100 rounded-full opacity-50 filter blur-3xl"></div>
+              <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
+                <div className="rounded-lg overflow-hidden">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" 
+                    alt="Building Security" 
+                    width={600} 
+                    height={400} 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing What Matters Most</h2>
+              <p className="text-gray-700 mb-6">
+                In today's world, building security is more important than ever. Uniview offers a comprehensive range of security solutions designed specifically for commercial and residential buildings, providing peace of mind for property managers, business owners, and residents alike.
+              </p>
+              <p className="text-gray-700 mb-6">
+                Our integrated building security systems combine cutting-edge technology with intuitive management interfaces, allowing for complete control and visibility across your entire property. From perimeter protection to access control, video surveillance to visitor management, our solutions form a cohesive security ecosystem tailored to your specific needs.
+              </p>
+              <p className="text-gray-700">
+                Uniview's building security solutions are designed to be scalable, allowing them to grow with your needs while remaining cost-effective and future-proof.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Security Features</h2>
+            <p className="text-xl text-gray-700">
+              Our building security solutions include these essential components to ensure comprehensive protection.
+            </p>
+          </div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-blue-600 transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <FiLock className="text-blue-600 text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Perimeter Protection</h3>
+              <p className="text-gray-700">
+                Secure the boundaries of your property with advanced perimeter sensors, fence detection systems, and smart analytics that detect unauthorized access attempts before they become breaches.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-purple-600 transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                <FiShield className="text-purple-600 text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Access Control Systems</h3>
+              <p className="text-gray-700">
+                Control who enters your building with sophisticated access control solutions including key card systems, biometric authentication, and mobile credentials for touchless entry.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-green-600 transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <FiVideo className="text-green-600 text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Video Surveillance</h3>
+              <p className="text-gray-700">
+                Monitor all areas of your property with high-definition cameras featuring advanced analytics, night vision capabilities, and remote viewing options for comprehensive visual security.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-amber-600 transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
+              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                <FiUsers className="text-amber-600 text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Visitor Management</h3>
+              <p className="text-gray-700">
+                Streamline the registration and tracking of visitors with digital check-in systems, temporary access credentials, and automated notifications to enhance security and improve the visitor experience.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Building Security</h2>
+            <p className="text-xl text-gray-700">
+              Our integrated approach to building security delivers multiple advantages.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Enhanced Safety</h3>
+                <p className="text-gray-600">
+                  Protect occupants and visitors with comprehensive security systems that prevent unauthorized access and quickly respond to potential threats.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Operational Efficiency</h3>
+                <p className="text-gray-600">
+                  Automate security processes to reduce manual workload, streamline operations, and allow your staff to focus on more valuable tasks.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Property Value</h3>
+                <p className="text-gray-600">
+                  Increase the value and attractiveness of your property with advanced security systems that tenants and buyers increasingly expect.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Remote Management</h3>
+                <p className="text-gray-600">
+                  Monitor and control your building security from anywhere with cloud-based solutions offering mobile access and real-time alerts.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Scalable Solutions</h3>
+                <p className="text-gray-600">
+                  Start with essential security components and easily expand your system as your needs grow or as your budget allows.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiCheckCircle className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Regulatory Compliance</h3>
+                <p className="text-gray-600">
+                  Meet industry-specific security requirements and standards with configurable solutions designed for compliance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Applications</h2>
+            <p className="text-xl text-gray-700">
+              Our building security solutions are perfect for a wide range of property types.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-r from-blue-600 to-blue-800 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <FiGlobe className="text-white text-5xl" />
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Commercial Buildings</h3>
+                <p className="text-gray-600 mb-4">
+                  Comprehensive security for office buildings, corporate headquarters, and business parks, protecting both common areas and restricted zones.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-r from-purple-600 to-purple-800 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <FiMap className="text-white text-5xl" />
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Residential Complexes</h3>
+                <p className="text-gray-600 mb-4">
+                  Tailored security for apartment buildings, condominiums, and gated communities that balances access control with resident convenience.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-r from-green-600 to-green-800 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <FiEye className="text-white text-5xl" />
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Mixed-Use Developments</h3>
+                <p className="text-gray-600 mb-4">
+                  Integrated security solutions for buildings combining retail, office, and residential spaces, each with unique security requirements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl overflow-hidden">
+          <div className="p-8 md:p-12 text-white text-center">
+            <h2 className="text-3xl font-bold mb-6">Secure Your Building Today</h2>
+            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+              Let our security experts design a customized building security solution that addresses your specific challenges and requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <Link 
+                href="/contact" 
+                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center justify-center"
+              >
+                <FiSend className="mr-2" />
+                Request a Consultation
+              </Link>
+              <Link 
+                href="/products" 
+                className="bg-transparent text-white border-2 border-white hover:bg-white/10 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg flex items-center justify-center"
+              >
+                Explore Our Products
+                <FiArrowRight className="ml-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Building;
