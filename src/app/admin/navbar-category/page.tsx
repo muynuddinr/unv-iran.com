@@ -10,7 +10,6 @@ interface NavbarCategory {
   description: string;
   slug: string;
   status: 'Active' | 'Inactive';
-  submenu?: { name: string; link: string }[];
 }
 
 export default function NavbarCategory() {
@@ -26,11 +25,7 @@ export default function NavbarCategory() {
     title: '',
     description: '',
     status: 'Active',
-    submenu: [] as { name: string; link: string }[]
   });
-
-  // Add this new state for submenu item form
-  const [submenuItem, setSubmenuItem] = useState({ name: '', link: '' });
 
   // Fetch categories on component mount
   useEffect(() => {
@@ -71,7 +66,6 @@ export default function NavbarCategory() {
       title: category.title,
       description: category.description,
       status: category.status,
-      submenu: category.submenu || []
     });
     setShowModal(true);
   };
@@ -82,7 +76,6 @@ export default function NavbarCategory() {
       title: '',
       description: '',
       status: 'Active',
-      submenu: []
     });
     setShowModal(true);
   };
@@ -130,7 +123,7 @@ export default function NavbarCategory() {
       }
       
       // Clear form and close modal
-      setFormData({ title: '', description: '', status: 'Active', submenu: [] });
+      setFormData({ title: '', description: '', status: 'Active' });
       setShowModal(false);
       
       // Refresh the categories list
@@ -139,25 +132,6 @@ export default function NavbarCategory() {
       setError(`Error ${editingCategory ? 'updating' : 'creating'} category`);
       console.error(err);
     }
-  };
-
-  // Add this function to add submenu items
-  const addSubmenuItem = () => {
-    if (submenuItem.name && submenuItem.link) {
-      setFormData(prev => ({
-        ...prev,
-        submenu: [...prev.submenu, { ...submenuItem }]
-      }));
-      setSubmenuItem({ name: '', link: '' });
-    }
-  };
-
-  // Add this function to remove submenu items
-  const removeSubmenuItem = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      submenu: prev.submenu.filter((_, i) => i !== index)
-    }));
   };
 
   return (

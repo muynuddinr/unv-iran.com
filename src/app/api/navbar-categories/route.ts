@@ -8,7 +8,7 @@ export async function GET() {
     console.log("Connecting to MongoDB...");
     await connectDB();
     console.log("Connected to MongoDB successfully");
-    const categories = await NavbarCategory.find({}).sort({ createdAt: -1 });
+    const categories = await NavbarCategory.find({}).sort({ order: 1 });
     return NextResponse.json(categories, { status: 200 });
   } catch (error) {
     console.error('Error fetching navbar categories:', error);
@@ -22,10 +22,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     await connectDB();
     
+    // Find the highest order number and add 1
+    const highestOrder = await NavbarCategory.findOne({}).sort({ order: -1 }).select('order');
+    const newOrder = highestOrder ? highestOrder.order + 1 : 1;
+    
     const newCategory = await NavbarCategory.create({
-      title: body.title,
-      description: body.description,
-      status: body.status || 'Active',
+      ...body,
+      order: body.order || newOrder,
     });
     
     return NextResponse.json(newCategory, { status: 201 });

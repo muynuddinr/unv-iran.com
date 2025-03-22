@@ -6,6 +6,8 @@ export interface INavbarCategory {
   description: string;
   slug: string;
   status: 'Active' | 'Inactive';
+  image?: string;
+  parentCategory?: mongoose.Types.ObjectId;
   submenu?: Array<{
     name: string;
     link: string;
@@ -20,6 +22,8 @@ const NavbarCategorySchema = new Schema<INavbarCategory>(
     description: { type: String, required: true, trim: true },
     slug: { type: String, unique: true, trim: true },
     status: { type: String, enum: ['Active', 'Inactive'], default: 'Active' },
+    image: { type: String },
+    parentCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'NavbarCategory' },
     submenu: [{
       name: { type: String, required: true },
       link: { type: String, required: true }
@@ -36,5 +40,6 @@ NavbarCategorySchema.pre('save', function(next) {
   next();
 });
 
-export default mongoose.models.NavbarCategory || 
-  mongoose.model<INavbarCategory>('NavbarCategory', NavbarCategorySchema); 
+const NavbarCategory = mongoose.models.NavbarCategory || mongoose.model<INavbarCategory>('NavbarCategory', NavbarCategorySchema);
+
+export default NavbarCategory; 

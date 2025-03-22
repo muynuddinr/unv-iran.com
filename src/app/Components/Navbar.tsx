@@ -737,6 +737,15 @@ const Navbar = () => {
                         </div>
                       ))}
                     </div>
+                    
+                    <Link
+                      href="/products"
+                      className="flex items-center justify-between px-3 py-2 mt-3 text-sm text-blue-600 bg-white/80 backdrop-blur-sm rounded-lg"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className="font-medium">View All Products</span>
+                      <FiChevronRight />
+                    </Link>
                   </div>
                 </div>
               </div>
