@@ -8,6 +8,7 @@ import Footer from '../../../Components/Footer';
 import Link from 'next/link';
 import { FiArrowLeft, FiBox, FiTag, FiInfo, FiCheck } from 'react-icons/fi';
 import Product from '@/models/Product';
+import { Metadata } from 'next';
 
 async function getNavbarCategoryBySlug(slug: string) {
   await connectDB();
@@ -40,9 +41,18 @@ async function getProductsForSubcategory(subcategoryId: string) {
   });
 }
 
-export async function generateMetadata({ params }: { 
-  params: { slug: string, categorySlug: string, subcategorySlug: string } 
-}) {
+// Change the interface to match Next.js 15 expectations
+interface Params {
+  slug: string;
+  categorySlug: string;
+  subcategorySlug: string;
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Params 
+}): Promise<Metadata> {
   const navbarCategory = await getNavbarCategoryBySlug(params.slug);
   
   if (!navbarCategory) {
@@ -70,7 +80,7 @@ export async function generateMetadata({ params }: {
 export default async function SubcategoryDetailPage({ 
   params 
 }: { 
-  params: { slug: string, categorySlug: string, subcategorySlug: string } 
+  params: Params 
 }) {
   const navbarCategory = await getNavbarCategoryBySlug(params.slug);
   

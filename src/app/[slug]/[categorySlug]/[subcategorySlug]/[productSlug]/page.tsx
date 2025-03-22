@@ -8,6 +8,8 @@ import Navbar from '../../../../Components/Navbar';
 import Footer from '../../../../Components/Footer';
 import Link from 'next/link';
 import { FiArrowLeft, FiBox, FiTag, FiInfo, FiCheck } from 'react-icons/fi';
+import { Metadata } from 'next';
+import { ResolvingMetadata } from 'next';
 
 async function getNavbarCategoryBySlug(slug: string) {
   await connectDB();
@@ -41,10 +43,21 @@ async function getProductBySlug(slug: string, subcategoryId: string) {
   });
 }
 
-export default async function ProductDetailPage({ 
-  params 
-}: { 
-  params: { slug: string, categorySlug: string, subcategorySlug: string, productSlug: string } 
+// Define the params type
+type PageParams = {
+  slug: string;
+  categorySlug: string;
+  subcategorySlug: string;
+  productSlug: string;
+}
+
+// Use Next.js's expected type structure
+export default async function ProductDetailPage({
+  params,
+  searchParams,
+}: {
+  params: PageParams;
+  searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const navbarCategory = await getNavbarCategoryBySlug(params.slug);
   if (!navbarCategory) {
@@ -197,4 +210,39 @@ export default async function ProductDetailPage({
       <Footer />
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: PageParams;
+}): Promise<Metadata> {
+  const navbarCategory = await getNavbarCategoryBySlug(params.slug);
+  
+  if (!navbarCategory) {
+    return { title: 'Product Not Found' };
+  }
+  
+  const category = await getCategoryBySlug(params.categorySlug, navbarCategory._id);
+  
+  if (!category) {
+    return { title: 'Product Not Found' };
+  }
+  
+  const subcategory = await getSubcategoryBySlug(params.subcategorySlug, category._id);
+  
+  if (!subcategory) {
+    return { title: 'Product Not Found' };
+  }
+  
+  const product = await getProductBySlug(params.productSlug, subcategory._id);
+  
+  if (!product) {
+    return { title: 'Product Not Found' };
+  }
+  
+  return {
+    title: `${product.title} | ${subcategory.title} | ${category.name} | ${navbarCategory.title}`,
+    description: product.description.substring(0, 160),
+  };
 } 

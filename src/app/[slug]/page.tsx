@@ -6,6 +6,12 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+// Change the interface to match Next.js 15 expectations
+interface Params {
+  slug: string;
+}
 
 export async function generateStaticParams() {
   await connectDB();
@@ -26,7 +32,11 @@ async function getCategoriesByNavbarCategory(navbarCategoryId: string) {
   return Category.find({ navbarCategory: navbarCategoryId, status: 'Active' });
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Params 
+}): Promise<Metadata> {
   const category = await getCategoryBySlug(params.slug);
   
   if (!category) {
@@ -41,7 +51,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
+export default async function CategoryPage({ 
+  params 
+}: { 
+  params: Params 
+}) {
   const navbarCategory = await getCategoryBySlug(params.slug);
   
   if (!navbarCategory) {
