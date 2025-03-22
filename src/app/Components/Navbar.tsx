@@ -10,16 +10,72 @@ import {
   FiChevronDown, FiChevronRight
 } from 'react-icons/fi';
 import logo from '../../../public/logo.svg'
+import { IconType } from 'react-icons';
+
+interface NavbarCategory {
+  _id: string;
+  title: string;
+  description: string;
+  slug: string;
+  status: 'Active' | 'Inactive';
+  submenu?: Array<{
+    name: string;
+    link: string;
+  }>;
+}
+
+// Add this new interface
+interface NavLink {
+  href: string;
+  label: string;
+  icon: IconType;
+  hasMegaMenu?: boolean;
+  submenu?: Array<{
+    name: string;
+    link: string;
+  }>;
+  mobileHidden?: boolean;
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [productsMegaMenuOpen, setProductsMegaMenuOpen] = useState(false);
+  const [solutionsMegaMenuOpen, setSolutionsMegaMenuOpen] = useState(false);
+  const [navbarCategories, setNavbarCategories] = useState<NavbarCategory[]>([]);
+  const [loading, setLoading] = useState(true);
   const pathname = usePathname();
 
   // Mobile menu state for expandable solutions section
   const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState(false);
+
+  // Add state for mobile products submenu
+  const [mobileProductsSubMenuOpen, setMobileProductsSubMenuOpen] = useState(false);
+
+  // Fetch navbar categories from the API
+  useEffect(() => {
+    const fetchNavbarCategories = async () => {
+      try {
+        const response = await fetch('/api/navbar-categories');
+        if (!response.ok) {
+          throw new Error('Failed to fetch navbar categories');
+        }
+        const data = await response.json();
+        // Filter out inactive categories
+        const activeCategories = data.filter(
+          (category: NavbarCategory) => category.status === 'Active'
+        );
+        setNavbarCategories(activeCategories);
+      } catch (error) {
+        console.error('Error fetching navbar categories:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNavbarCategories();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,12 +89,23 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const navLinks = [
+  // Default nav links that will always be present
+  const defaultNavLinks = [
     { href: '/', label: 'Home', icon: FiHome },
-    { href: '/products', label: 'Products', icon: FiBox },
-    // { href: '/solutions', label: 'Solutions', icon: FiTool },
-    // { href: '/about', label: 'About', icon: FiInfo },
-    // { href: '/contact', label: 'Contact', icon: FiSend },
+    // Add Products link with mega menu for desktop only
+    { 
+      href: '/products', 
+      label: 'Products', 
+      icon: FiBox,
+      hasMegaMenu: true,
+      mobileHidden: true
+    }
+  ];
+
+  // Type your navLinks with the new interface - don't include categories here
+  const navLinks: NavLink[] = [
+    ...defaultNavLinks,
+    // Remove the categories mapping here
   ];
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -69,7 +136,6 @@ const Navbar = () => {
     if (searchQuery.trim()) {
       // Implement search functionality
       console.log('Searching for:', searchQuery);
-      // You could navigate to search results or perform search
     }
   };
 
@@ -89,10 +155,10 @@ const Navbar = () => {
     { href: '/smart-Intrusion-Prevention', label: 'Smart intrusion prevention', icon: '📊' },
   ];
 
-  const toggleMegaMenu = (e: React.MouseEvent) => {
+  const toggleSolutionsMegaMenu = (e: React.MouseEvent) => {
     if (window.innerWidth >= 768) { // Only for desktop
       e.preventDefault();
-      setMegaMenuOpen(!megaMenuOpen);
+      setSolutionsMegaMenuOpen(!solutionsMegaMenuOpen);
     }
   };
 
@@ -102,15 +168,15 @@ const Navbar = () => {
       const megaMenu = document.getElementById('solutions-mega-menu');
       const solutionsLink = document.getElementById('solutions-link');
       
-      if (megaMenuOpen && megaMenu && !megaMenu.contains(event.target as Node) && 
+      if (solutionsMegaMenuOpen && megaMenu && !megaMenu.contains(event.target as Node) && 
           solutionsLink && !solutionsLink.contains(event.target as Node)) {
-        setMegaMenuOpen(false);
+        setSolutionsMegaMenuOpen(false);
       }
     };
     
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [megaMenuOpen]);
+  }, [solutionsMegaMenuOpen]);
 
   // Clean up body classes when component unmounts
   useEffect(() => {
@@ -121,6 +187,37 @@ const Navbar = () => {
 
   const toggleMobileSubMenu = () => {
     setMobileSubMenuOpen(!mobileSubMenuOpen);
+  };
+
+  // Add a toggle function for products menu
+  const toggleProductsMegaMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setProductsMegaMenuOpen(!productsMegaMenuOpen);
+    // Close solutions menu if it's open
+    if (solutionsMegaMenuOpen) {
+      setSolutionsMegaMenuOpen(false);
+    }
+  };
+  
+  // Add click outside handler for products menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const productsMegaMenu = document.getElementById('products-mega-menu');
+      const productsLink = document.getElementById('products-link');
+      
+      if (productsMegaMenuOpen && productsMegaMenu && !productsMegaMenu.contains(event.target as Node) && 
+          productsLink && !productsLink.contains(event.target as Node)) {
+        setProductsMegaMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [productsMegaMenuOpen]);
+
+  // Add toggle function for mobile products submenu
+  const toggleMobileProductsSubMenu = () => {
+    setMobileProductsSubMenuOpen(!mobileProductsSubMenuOpen);
   };
 
   return (
@@ -187,25 +284,107 @@ const Navbar = () => {
 
             {/* Desktop Navigation with Enhanced Interactivity */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative group flex items-center text-gray-700 
-                    hover:text-blue-600 transition-all duration-300 
-                    font-medium text-sm uppercase tracking-wider
-                    ${pathname === link.href ? 'text-blue-600 font-semibold' : ''}`}
-                  aria-current={pathname === link.href ? 'page' : undefined}
-                >
-                  <link.icon className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-                  {link.label}
-                  <span 
-                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
-                      transform transition-transform duration-300 origin-left
-                      ${pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
-                  />
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                
+                return link.hasMegaMenu ? (
+                  <div 
+                    key={link.href}
+                    className="relative"
+                  >
+                    <button
+                      id="products-link"
+                      className={`flex items-center py-2 px-3 rounded-lg text-sm transition-colors
+                        ${pathname === link.href 
+                          ? 'text-blue-600 bg-blue-50 font-medium' 
+                          : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        }`}
+                      onClick={toggleProductsMegaMenu}
+                      aria-expanded={productsMegaMenuOpen}
+                      aria-haspopup="true"
+                    >
+                      <div className="flex items-center">
+                        {link.icon && React.createElement(link.icon, { className: "mr-3 opacity-60" })}
+                        {link.label}
+                      </div>
+                      <FiChevronDown className={`ml-1 w-4 h-4 transition-transform ${productsMegaMenuOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {/* Products Mega Menu */}
+                    <div 
+                      id="products-mega-menu"
+                      className={`absolute z-50 top-full mt-3 right-0 w-72 bg-white shadow-lg rounded-lg overflow-hidden
+                        transform transition-all duration-300 origin-top-right
+                        ${productsMegaMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                    >
+                      {productsMegaMenuOpen && (
+                        <div 
+                          className="fixed inset-0 bg-black/5 z-[-1]" 
+                          onClick={() => setProductsMegaMenuOpen(false)}
+                          aria-hidden="true"
+                        />
+                      )}
+                      
+                      <div className="p-3">
+                        <h3 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 border-b pb-1">
+                          Categories
+                        </h3>
+                        <div className="max-h-[60vh] overflow-y-auto pr-1">
+                          {navbarCategories.length > 0 ? (
+                            <div className="grid grid-cols-1 gap-0.5">
+                              {navbarCategories.map((category) => (
+                                <div key={category._id}>
+                                  <Link
+                                    href={`/${category.slug}`}
+                                    className="flex items-center py-1.5 px-2 rounded text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                                    onClick={() => setProductsMegaMenuOpen(false)}
+                                  >
+                                    <span className="text-yellow-500 mr-2">📁</span>
+                                    <span className="text-sm font-medium">{category.title}</span>
+                                  </Link>
+                                  
+                                  {category.submenu && category.submenu.length > 0 && (
+                                    <div className="ml-4 space-y-0.5 mt-0.5">
+                                      {category.submenu.map((item, index) => (
+                                        <Link
+                                          key={index}
+                                          href={item.link}
+                                          className="flex items-center py-1 px-2 rounded text-xs text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                                          onClick={() => setProductsMegaMenuOpen(false)}
+                                        >
+                                          <FiChevronRight className="mr-1 h-3 w-3 text-gray-400" />
+                                          <span>{item.name}</span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="text-sm text-gray-500 py-2">No categories available</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`py-2 px-3 rounded-lg text-sm transition-colors
+                      ${isActive 
+                        ? 'text-blue-600 bg-blue-50 font-medium' 
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      }`}
+                  >
+                    <div className="flex items-center">
+                      {link.icon && React.createElement(link.icon, { className: "mr-3 opacity-60" })}
+                      {link.label}
+                    </div>
+                  </Link>
+                );
+              })}
               
               {/* Solutions with Mega Menu */}
               <div className="relative group" id="solutions-nav-item">
@@ -215,13 +394,13 @@ const Navbar = () => {
                     hover:text-blue-600 transition-all duration-300 
                     font-medium text-sm uppercase tracking-wider
                     ${pathname.startsWith('/solutions') ? 'text-blue-600 font-semibold' : ''}`}
-                  onClick={toggleMegaMenu}
-                  aria-expanded={megaMenuOpen}
+                  onClick={toggleSolutionsMegaMenu}
+                  aria-expanded={solutionsMegaMenuOpen}
                   aria-haspopup="true"
                 >
                   <FiTool className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
                   Solutions
-                  <FiChevronDown className={`ml-1 transition-transform duration-300 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                  <FiChevronDown className={`ml-1 transition-transform duration-300 ${solutionsMegaMenuOpen ? 'rotate-180' : ''}`} />
                   <span 
                     className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
                       transform transition-transform duration-300 origin-left
@@ -229,19 +408,19 @@ const Navbar = () => {
                   />
                 </button>
                 
-                {/* Refined Solutions Mega Menu */}
+                {/* Solutions Mega Menu */}
                 <div 
                   id="solutions-mega-menu"
                   className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-white 
                     shadow-md rounded-md border border-gray-200
                     transform transition-all duration-300 origin-top z-50
-                    ${megaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
+                    ${solutionsMegaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
                 >
                   {/* Light overlay for rest of the page when mega menu is open */}
-                  {megaMenuOpen && (
+                  {solutionsMegaMenuOpen && (
                     <div 
                       className="fixed inset-0 bg-black/5 z-[-1]" 
-                      onClick={() => setMegaMenuOpen(false)}
+                      onClick={() => setSolutionsMegaMenuOpen(false)}
                       aria-hidden="true"
                     />
                   )}
@@ -258,7 +437,7 @@ const Navbar = () => {
                               key={link.href}
                               href={link.href}
                               className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
-                              onClick={() => setMegaMenuOpen(false)}
+                              onClick={() => setSolutionsMegaMenuOpen(false)}
                             >
                               <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
                               <span className="font-medium text-sm">{link.label}</span>
@@ -277,7 +456,7 @@ const Navbar = () => {
                               key={link.href}
                               href={link.href}
                               className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
-                              onClick={() => setMegaMenuOpen(false)}
+                              onClick={() => setSolutionsMegaMenuOpen(false)}
                             >
                               <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
                               <span className="font-medium text-sm">{link.label}</span>
@@ -288,7 +467,7 @@ const Navbar = () => {
                           <Link 
                             href="/solutions"
                             className="flex items-center justify-between text-blue-600 hover:text-blue-800 font-medium text-sm"
-                            onClick={() => setMegaMenuOpen(false)}
+                            onClick={() => setSolutionsMegaMenuOpen(false)}
                           >
                             View All Solutions
                             <FiChevronRight />
@@ -384,22 +563,26 @@ const Navbar = () => {
             aria-hidden={!isOpen}
           >
             <div className="px-2 pt-2 pb-4 space-y-2 sm:px-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
-                    ${pathname === link.href 
-                      ? 'text-blue-600 bg-blue-50 font-semibold' 
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                    }`}
-                  onClick={() => setIsOpen(false)}
-                  aria-current={pathname === link.href ? 'page' : undefined}
-                >
-                  <link.icon className="mr-3 opacity-60" />
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks
+                .filter(link => !link.mobileHidden)
+                .map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
+                      ${pathname === link.href 
+                        ? 'text-blue-600 bg-blue-50 font-semibold' 
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      }`}
+                    onClick={() => setIsOpen(false)}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                  >
+                    <div className="flex items-center">
+                      {link.icon && React.createElement(link.icon, { className: "mr-3 opacity-60" })}
+                      {link.label}
+                    </div>
+                  </Link>
+                ))}
               
               {/* Solutions Menu Item with Expandable Sub-Items */}
               <div className="border-t border-b border-gray-100 py-2">
@@ -498,6 +681,65 @@ const Navbar = () => {
                 <FiSend className="mr-3 opacity-60" />
                 Contact
               </Link>
+              
+              {/* Products Menu Item with Expandable Categories */}
+              <div className="border-t border-gray-100 py-2">
+                <button
+                  onClick={toggleMobileProductsSubMenu}
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-300 text-sm 
+                    ${pathname.startsWith('/products') 
+                      ? 'text-blue-600 bg-blue-50 font-semibold' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    }`}
+                  aria-expanded={mobileProductsSubMenuOpen}
+                >
+                  <div className="flex items-center">
+                    <FiBox className="mr-3 opacity-60" />
+                    Products
+                  </div>
+                  <FiChevronDown className={`transition-transform duration-300 ${mobileProductsSubMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <div className={`pl-2 space-y-2 transition-all duration-300 
+                  ${mobileProductsSubMenuOpen ? 'mt-2 max-h-[2000px] opacity-100 visible' : 'max-h-0 opacity-0 invisible overflow-hidden'}`}
+                >
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 mx-2">
+                    <h3 className="px-3 py-2 text-xs font-bold text-blue-800 uppercase tracking-wider">
+                      Categories
+                    </h3>
+                    <div className="space-y-1">
+                      {navbarCategories.map((category) => (
+                        <div key={category._id} className="mb-2">
+                          <Link
+                            href={`/${category.slug}`}
+                            className="flex items-center px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600 hover:bg-white/80"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <span className="mr-2">📁</span>
+                            <span className="font-medium">{category.title}</span>
+                          </Link>
+                          
+                          {category.submenu && category.submenu.length > 0 && (
+                            <div className="ml-8 space-y-1 mt-1">
+                              {category.submenu.map((item, index) => (
+                                <Link
+                                  key={index}
+                                  href={item.link}
+                                  className="flex items-center px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-blue-600 hover:bg-white/80"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <FiChevronRight className="mr-1 h-3 w-3 text-gray-400" />
+                                  <span>{item.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
               
               {/* Mobile Search */}
               <form onSubmit={handleSearch} className="relative px-4 py-3">
