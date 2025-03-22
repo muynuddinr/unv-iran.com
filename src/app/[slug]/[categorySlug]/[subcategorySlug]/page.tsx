@@ -7,6 +7,7 @@ import Navbar from '../../../Components/Navbar';
 import Footer from '../../../Components/Footer';
 import Link from 'next/link';
 import { FiArrowLeft, FiBox, FiTag, FiInfo, FiCheck } from 'react-icons/fi';
+import Product from '@/models/Product';
 
 async function getNavbarCategoryBySlug(slug: string) {
   await connectDB();
@@ -27,6 +28,14 @@ async function getSubcategoryBySlug(slug: string, categoryId: string) {
   return SubCategory.findOne({ 
     slug, 
     category: categoryId,
+    status: 'Active' 
+  });
+}
+
+async function getProductsForSubcategory(subcategoryId: string) {
+  await connectDB();
+  return Product.find({ 
+    subcategory: subcategoryId,
     status: 'Active' 
   });
 }
@@ -80,6 +89,8 @@ export default async function SubcategoryDetailPage({
   if (!subcategory) {
     notFound();
   }
+  
+  const products = await getProductsForSubcategory(subcategory._id);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -208,40 +219,52 @@ export default async function SubcategoryDetailPage({
             </div>
           </div>
           
-          {/* Additional product information - can be expanded further */}
-          <div className="mt-16 border-t pt-12">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Technical Specifications</h2>
-            
-            <div className="bg-gray-50 rounded-xl p-8">
-              <p className="text-gray-600 mb-6">
-                For detailed technical specifications, product options, and pricing information, please contact our sales team.
-              </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <Link 
-                  href="/contact" 
-                  className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-                >
-                  Contact Sales
-                </Link>
-                
-                <Link 
-                  href="/downloads" 
-                  className="inline-flex items-center px-6 py-3 border border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Download Brochure
-                </Link>
-              </div>
-            </div>
-          </div>
           
           {/* Related products section - placeholder */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Related Products</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Products</h2>
             
-            <div className="p-12 border border-dashed border-gray-300 rounded-xl text-center">
-              <p className="text-gray-500">Product listings coming soon</p>
-            </div>
+            {products.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {products.map((product) => (
+                  <Link 
+                    key={product._id}
+                    href={`/${navbarCategory.slug}/${category.slug}/${subcategory.slug}/${product.slug}`}
+                    className="group bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                      {product.mainImage ? (
+                        <img 
+                          src={product.mainImage} 
+                          alt={product.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="text-6xl text-gray-300">🖼️</div>
+                      )}
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-600 line-clamp-2 mb-4">
+                        {product.description.substring(0, 100)}...
+                      </p>
+                      <div className="flex justify-end items-center">
+                        <span className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full group-hover:bg-blue-700 transition-colors">
+                          View Details
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="p-12 border border-dashed border-gray-300 rounded-xl text-center">
+                <p className="text-gray-500">No products available in this subcategory yet.</p>
+              </div>
+            )}
           </div>
         </div>
       </main>

@@ -107,7 +107,7 @@ export default async function CategoryDetailPage({
       <main className="flex-grow container mx-auto px-4 -mt-16 max-w-6xl pb-16">
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-8 border-t border-blue-50">
           {/* Breadcrumb navigation */}
-          <div className="mb-8">
+          <div className="mt-4 mb-8">
             <div className="flex items-center text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-blue-600 transition-colors">
                 Home
