@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import connectDB from '@/lib/mongodb';
 import NavbarCategory from '@/models/NavbarCategory';
 import Category from '@/models/Category';
+import SubCategory from '@/models/SubCategory';
 import Navbar from '../../Components/Navbar';
 import Footer from '../../Components/Footer';
 import Link from 'next/link';
@@ -18,6 +19,14 @@ async function getCategoryBySlug(slug: string, navbarCategoryId: string) {
     slug, 
     navbarCategory: navbarCategoryId, 
     status: 'Active' 
+  });
+}
+
+async function getSubcategoriesByCategory(categoryId: string) {
+  await connectDB();
+  return SubCategory.find({ 
+    category: categoryId,
+    status: 'Active'
   });
 }
 
@@ -57,6 +66,9 @@ export default async function CategoryDetailPage({
     notFound();
   }
   
+  // Fetch subcategories for this category
+  const subcategories = await getSubcategoriesByCategory(category._id);
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -92,7 +104,7 @@ export default async function CategoryDetailPage({
       </div>
       
       {/* Main content */}
-      <main className="flex-grow container mx-auto px-4 py-16 max-w-6xl -mt-14 relative z-20">
+      <main className="flex-grow container mx-auto px-4 -mt-16 max-w-6xl pb-16">
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-8 border-t border-blue-50">
           {/* Breadcrumb navigation */}
           <div className="mb-8">
@@ -110,7 +122,7 @@ export default async function CategoryDetailPage({
           </div>
 
           {/* Product image and description section */}
-          <div className="flex flex-col md:flex-row gap-8 mb-12">
+          <div className="md:flex md:space-x-8 mb-12">
             <div className="md:w-1/3 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
               {category.icon ? (
                 <img 
@@ -150,22 +162,56 @@ export default async function CategoryDetailPage({
             </div>
           </div>
           
-          {/* Products placeholder section */}
+          {/* Subcategories section */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Sub Categories in this Category</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Subcategories in this Category</h2>
             
-            {category.products > 0 ? (
+            {subcategories.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Product cards */}
+                {subcategories.map((subcategory) => (
+                  <Link 
+                    key={subcategory._id}
+                    href={`/${navbarCategory.slug}/${category.slug}/${subcategory.slug}`}
+                    className="group bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                      {subcategory.image ? (
+                        <img 
+                          src={subcategory.image} 
+                          alt={subcategory.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="text-6xl text-gray-300">🖼️</div>
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                        {subcategory.title}
+                      </h3>
+                      <p className="text-gray-600 line-clamp-2 mb-4">
+                        {subcategory.description}
+                      </p>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium text-blue-600">
+                          {subcategory.products} products
+                        </span>
+                        <span className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full group-hover:bg-blue-700 transition-colors">
+                          View Details
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             ) : (
               <div className="text-center py-10 bg-gray-50 rounded-lg">
-                <p className="text-gray-500">No products available in this category yet.</p>
+                <p className="text-gray-500">No subcategories available in this category yet.</p>
                 <Link 
                   href="/contact" 
                   className="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 >
-                  Contact Us to Request Products
+                  Contact Us to Request Subcategories
                 </Link>
               </div>
             )}
