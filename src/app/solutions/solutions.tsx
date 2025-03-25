@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { 
   FiArrowRight, 
@@ -14,6 +14,16 @@ import {
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import bank from '../../../public/solutions/bank.webp'
+import hospital from '../../../public/solutions/hospital.webp';
+import building from '../../../public/solutions/bank.webp'
+import school from '../../../public/solutions/school.webp';
+import hotel from '../../../public/solutions/hotel.webp';
+import shopping from '../../../public/solutions/shopping.webp';
+import warehouse from '../../../public/solutions/wherehouse.webp';
+import retail from '../../../public/solutions/retail.webp';
+import stadium from '../../../public/solutions/stadium.webp';
+
 
 // Add TypeScript interfaces for better type safety
 interface Feature {
@@ -26,7 +36,7 @@ interface SolutionCategory {
   id: string;
   name: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   features: string[];
   color?: string;
 }
@@ -36,7 +46,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'building',
     name: 'Building',
     description: 'Comprehensive security solutions for commercial and residential complexes.',
-    image: 'https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80',
+    image: building,
     features: [
       'Perimeter Protection',
       'Access Control Systems',
@@ -49,7 +59,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'school',
     name: 'School',
     description: 'Advanced safety and security systems for educational institutions.',
-    image: 'https://images.unsplash.com/photo-1531537571171-dbba9a9d2d1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
+    image: school,
     features: [
       'Campus-wide Monitoring',
       'Emergency Response Integration',
@@ -62,7 +72,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'hotel',
     name: 'Hotel',
     description: 'Tailored security solutions for hospitality environments.',
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: hotel,
     features: [
       'Guest Room Security',
       'Lobby and Common Area Surveillance',
@@ -75,7 +85,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'retail',
     name: 'Retail',
     description: 'Loss prevention and operational intelligence for retail spaces.',
-    image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: retail,
     features: [
       'Theft Prevention',
       'Customer Flow Analysis',
@@ -88,7 +98,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'shopping-mall',
     name: 'Shopping Mall',
     description: 'Comprehensive security management for large commercial spaces.',
-    image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: shopping,
     features: [
       'Multi-zone Monitoring',
       'Crowd Management',
@@ -101,7 +111,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'stadium',
     name: 'Stadium',
     description: 'High-performance security for large event venues.',
-    image: 'https://images.unsplash.com/photo-1508098682722-4b6a4d3d9827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: stadium,
     features: [
       'Crowd Control',
       'VIP Area Protection',
@@ -114,7 +124,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'bank',
     name: 'Bank',
     description: 'Mission-critical security for financial institutions.',
-    image: 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: bank,
     features: [
       'Vault Monitoring',
       'ATM Surveillance',
@@ -127,7 +137,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'hospital',
     name: 'Hospital',
     description: 'Specialized security solutions for healthcare environments.',
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80',
+    image: hospital,
     features: [
       'Patient Safety',
       'Restricted Area Control',
@@ -140,7 +150,7 @@ const solutionCategories: SolutionCategory[] = [
     id: 'warehouse',
     name: 'Warehouse & Logistics',
     description: 'Comprehensive security for storage and distribution centers.',
-    image: 'https://images.unsplash.com/photo-1586528116311-c6ff7f1c4e94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: warehouse,
     features: [
       'Inventory Protection',
       'Perimeter Security',
