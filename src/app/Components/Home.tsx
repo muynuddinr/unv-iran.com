@@ -286,19 +286,22 @@ const Home = () => {
                 title: "Retail",
                 color: "blue",
                 description: "Prevent theft, monitor customer flow, and improve store operations.",
-                bgImage: retail.src
+                bgImage: retail.src,
+                link: "/retail"
               },
               {
                 title: "Banking",
                 color: "purple",
                 description: "Comprehensive security for financial institutions, ATMs, and vaults.",
-                bgImage: bank.src
+                bgImage: bank.src,
+                link: "/bank"
               },
               {
                 title: "Education",
                 color: "green",
                 description: "Protect students and staff with specialized campus security systems.",
-                bgImage: school.src
+                bgImage: school.src,
+                link: "/school"
               }
             ].map((industry, index) => (
               <motion.div 
@@ -306,7 +309,7 @@ const Home = () => {
                 variants={fadeIn}
                 className="group"
               >
-                <Link href={`/solutions/${industry.title.toLowerCase()}`}>
+                <Link href={industry.link}>
                   <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                     <div 
                       className="h-56 relative overflow-hidden"
