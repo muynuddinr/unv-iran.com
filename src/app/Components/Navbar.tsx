@@ -222,10 +222,10 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Enhanced Top Contact Bar - Now with gradient and better spacing */}
+      {/* Enhanced Top Contact Bar - Now with white background and no shadow */}
       <div 
-        className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 
-          text-gray-800 py-2.5 shadow-sm transition-all duration-300
+        className={`fixed top-0 left-0 right-0 z-50 bg-white
+          text-gray-800 py-2.5 transition-all duration-300
           ${isScrolled ? 'opacity-95 backdrop-blur-sm' : 'opacity-100'}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-8">
@@ -254,12 +254,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navigation - Enhanced with better shadows and transitions */}
+      {/* Main Navigation - Now with white background to match top navbar */}
       <nav 
         className={`fixed w-full z-40 top-10 transition-all duration-300 
           ${isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-blue-100/50' 
-            : 'bg-white/90 backdrop-blur-sm'
+            ? 'bg-white/95 backdrop-blur-md' 
+            : 'bg-white'
           }`}
         role="navigation"
         aria-label="Main navigation"
@@ -728,7 +728,8 @@ const Navbar = () => {
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="font-medium">View All Solutions</span>
-                      <FiChevronRight />
+                      <FiChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 
+                        group-hover:translate-x-1 transition-all duration-300" />
                     </Link>
                   </div>
                 </div>
