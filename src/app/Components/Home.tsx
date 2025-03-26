@@ -437,8 +437,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-            {/* CTA Section - Enhanced */}
-            <section className="py-24 bg-white">
+
+      {/* CTA Section - Enhanced */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
@@ -470,6 +471,102 @@ const Home = () => {
                 Browse Products
               </Link>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Find answers to the most common questions about our security solutions and services.
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="max-w-4xl mx-auto"
+          >
+            {[
+              {
+                question: "What types of businesses can benefit from Uniview security systems?",
+                answer: "Uniview security systems are designed to serve a wide range of industries including retail, banking, education, healthcare, manufacturing, hospitality, and more. Our solutions are scalable and can be customized to meet the specific needs of businesses of all sizes, from small shops to large enterprise facilities."
+              },
+              {
+                question: "How difficult is it to integrate your systems with our existing infrastructure?",
+                answer: "Our systems are designed for seamless integration with most existing security and IT infrastructure. Our experienced technicians will assess your current setup and ensure a smooth integration process with minimal disruption to your operations. We support standard protocols and interfaces to connect with third-party systems and devices."
+              },
+              {
+                question: "What kind of customer support do you offer after installation?",
+                answer: "We provide comprehensive 24/7 technical support for all our products and solutions. Our support includes phone and email assistance, remote troubleshooting, regular maintenance, firmware updates, and on-site service when needed. We also offer various support plans to match your specific requirements and budget."
+              },
+              {
+                question: "Can I access my security system remotely?",
+                answer: "Yes, all our modern security solutions include secure remote access capabilities. You can monitor your security feeds, manage access control, and receive alerts from anywhere using our mobile apps or web interfaces. Our remote access features use enterprise-grade encryption to ensure your security data remains protected."
+              },
+              {
+                question: "What makes Uniview different from other security providers?",
+                answer: "Uniview stands out through our combination of cutting-edge technology, reliability, and customer-focused approach. We develop our own hardware and software solutions to ensure optimal performance and compatibility. Additionally, our extensive industry experience, dedicated support team, and commitment to innovation make us a trusted partner for your security needs."
+              }
+            ].map((faq, index) => (
+              <motion.div 
+                key={index}
+                variants={fadeIn}
+                className="mb-6 last:mb-0"
+              >
+                <details className="group bg-white rounded-lg shadow-md overflow-hidden">
+                  <summary className="flex justify-between items-center p-6 cursor-pointer list-none font-semibold text-lg text-gray-800">
+                    {faq.question}
+                    <span className="text-blue-600 transition-transform duration-300 group-open:rotate-45">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4V20M4 12H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="p-6 pt-0 text-gray-600">
+                    <p>{faq.answer}</p>
+                  </div>
+                </details>
+              </motion.div>
+            ))}
+          </motion.div>
+          
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mt-12"
+          >
+            <p className="text-gray-600 mb-6">Still have questions? We're here to help.</p>
+            <Link 
+              href="/support" 
+              className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors"
+            >
+              Contact our support team <FiArrowRight className="ml-2" />
+            </Link>
           </motion.div>
         </div>
       </section>
