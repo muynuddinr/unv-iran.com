@@ -5,6 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FiCamera, FiShield, FiVideo, FiBarChart, FiArrowRight, FiCheckCircle, FiStar, FiUsers, FiGlobe, FiAward } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import homebanner from '../../../public/Homebanner.jpg'
+import retail from '../../../public/solutions/retail.webp'
+import bank from '../../../public/solutions/bank.webp'
+import school from '../../../public/solutions/school.webp'
 
 const Home = () => {
   useEffect(() => {
@@ -102,7 +106,7 @@ const Home = () => {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20"></div>
                   <div className="bg-white p-2 sm:p-3 rounded-xl shadow-2xl relative">
                     <Image 
-                      src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                      src={homebanner} 
                       alt="Security System" 
                       width={1200} 
                       height={600} 
@@ -281,17 +285,20 @@ const Home = () => {
               {
                 title: "Retail",
                 color: "blue",
-                description: "Prevent theft, monitor customer flow, and improve store operations."
+                description: "Prevent theft, monitor customer flow, and improve store operations.",
+                bgImage: retail.src
               },
               {
                 title: "Banking",
                 color: "purple",
-                description: "Comprehensive security for financial institutions, ATMs, and vaults."
+                description: "Comprehensive security for financial institutions, ATMs, and vaults.",
+                bgImage: bank.src
               },
               {
                 title: "Education",
                 color: "green",
-                description: "Protect students and staff with specialized campus security systems."
+                description: "Protect students and staff with specialized campus security systems.",
+                bgImage: school.src
               }
             ].map((industry, index) => (
               <motion.div 
@@ -301,7 +308,14 @@ const Home = () => {
               >
                 <Link href={`/solutions/${industry.title.toLowerCase()}`}>
                   <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                    <div className={`h-56 bg-${industry.color}-600 relative overflow-hidden`}>
+                    <div 
+                      className="h-56 relative overflow-hidden"
+                      style={{
+                        backgroundImage: `url(${industry.bgImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
+                    >
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-70"></div>
                       <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                         <h3 className="text-2xl font-bold text-white">{industry.title}</h3>
