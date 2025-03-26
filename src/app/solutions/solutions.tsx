@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import bank from '../../../public/solutions/bank.webp'
 import hospital from '../../../public/solutions/hospital.webp';
-import building from '../../../public/solutions/bank.webp'
+import building from '../../../public/solutions/Buildings .webp'
 import school from '../../../public/solutions/school.webp';
 import hotel from '../../../public/solutions/hotel.webp';
 import shopping from '../../../public/solutions/shopping.webp';

@@ -1,180 +1,338 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiCamera, FiShield, FiVideo, FiBarChart, FiArrowRight, FiCheckCircle, FiStar } from 'react-icons/fi';
+import { FiCamera, FiShield, FiVideo, FiBarChart, FiArrowRight, FiCheckCircle, FiStar, FiUsers, FiGlobe, FiAward } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 const Home = () => {
+  useEffect(() => {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href') as string)?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  }, []);
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 mb-10 lg:mb-0">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6">
-                Advanced Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Solutions</span> for Modern Protection
-              </h1>
-              <p className="text-lg text-gray-700 mb-8 max-w-lg">
-                Uniview provides cutting-edge surveillance technologies that help businesses and homes stay secure in today&apos;s challenging environment.
-              </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+      {/* Hero Section - Enhanced Text Above Image Layout */}
+      <section className="pt-24 pb-32 bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden relative">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 -mr-20 w-96 h-96 bg-blue-100 rounded-full opacity-50 filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-indigo-100 rounded-full opacity-50 filter blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="mb-16 max-w-3xl pt-8">
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium text-sm mb-10 shadow-md mt-8"
+              >
+                <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
+                Advanced Security Solutions
+              </motion.div>
+              
+              <motion.h1 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight"
+              >
+                Protect What <span className="text-blue-600">Matters Most</span> with Uniview
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed"
+              >
+                Enterprise-grade surveillance systems designed for businesses that demand reliability, performance, and intelligent security insights.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+              >
                 <Link 
                   href="/products" 
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Explore Products <FiArrowRight className="ml-2" />
+                  Explore Products
                 </Link>
                 <Link 
-                  href="/contact" 
-                  className="bg-white text-blue-600 border border-blue-200 hover:border-blue-300 px-8 py-3 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center"
+                  href="/demo" 
+                  className="bg-white text-blue-600 border border-blue-200 hover:border-blue-300 px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow hover:shadow-md transform hover:-translate-y-1"
                 >
-                  Contact Sales
+                  Request Demo
                 </Link>
-              </div>
+              </motion.div>
             </div>
-            <div className="lg:w-1/2">
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="w-full max-w-5xl"
+            >
               <div className="relative">
-                <div className="absolute -top-6 -left-6 w-64 h-64 bg-blue-100 rounded-full opacity-50 filter blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-100 rounded-full opacity-50 filter blur-3xl"></div>
-                <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
-                  <div className="rounded-lg overflow-hidden">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1586473219010-2ffc9b84d1c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
-                      alt="Security Camera System" 
-                      width={600} 
-                      height={400} 
-                      className="w-full h-auto object-cover"
-                      priority
-                    />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20"></div>
+                <div className="bg-white p-3 rounded-xl shadow-2xl relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                    alt="Security System" 
+                    width={1200} 
+                    height={600} 
+                    className="w-full h-auto object-cover rounded-lg"
+                    priority
+                  />
+                  
+                  {/* Overlay badge in the corner */}
+                  <div className="absolute top-5 right-5 bg-black bg-opacity-75 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+                    4K Ultra HD
+                  </div>
+                </div>
+                
+                {/* Feature highlights overlaid on the bottom of the image */}
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+                  <div className="bg-white rounded-xl shadow-xl py-5 px-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="flex items-center">
+                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-full p-3 mr-4 shadow-inner">
+                        <FiShield className="text-blue-600 text-xl" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">24/7 Protection</p>
+                        <p className="text-sm text-gray-500">Continuous monitoring</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-full p-3 mr-4 shadow-inner">
+                        <FiVideo className="text-green-600 text-xl" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">4K Resolution</p>
+                        <p className="text-sm text-gray-500">Crystal-clear footage</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-full p-3 mr-4 shadow-inner">
+                        <FiBarChart className="text-purple-600 text-xl" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Smart Analytics</p>
+                        <p className="text-sm text-gray-500">AI-powered insights</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trusted By Section - New */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <p className="text-gray-500 font-medium uppercase tracking-wider text-sm">Trusted By Industry Leaders</p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+            {["Microsoft", "Amazon", "Google", "IBM", "Samsung"].map((company, index) => (
+              <div key={index} className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <div className="h-8 flex items-center">
+                  <span className="text-gray-400 font-bold text-xl">{company}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20">
+      {/* Features Section - Enhanced */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Our Offerings
+            </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Comprehensive Security Solutions</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our integrated systems provide complete protection for your property, assets, and people.
+              Our integrated systems provide complete protection for your property, assets, and people with cutting-edge technology.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-6 transform transition-transform hover:scale-105 border-t-4 border-blue-600">
-              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <FiCamera className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">Surveillance Cameras</h3>
-              <p className="text-gray-600">
-                High-definition cameras with advanced features for indoor and outdoor monitoring.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 transform transition-transform hover:scale-105 border-t-4 border-purple-600">
-              <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                <FiShield className="text-purple-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">Access Control</h3>
-              <p className="text-gray-600">
-                Secure entry systems with keycard, biometric, and mobile access options.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 transform transition-transform hover:scale-105 border-t-4 border-green-600">
-              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <FiVideo className="text-green-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">Video Management</h3>
-              <p className="text-gray-600">
-                Intuitive software for monitoring, recording and managing your security footage.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 transform transition-transform hover:scale-105 border-t-4 border-orange-600">
-              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                <FiBarChart className="text-orange-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">Analytics</h3>
-              <p className="text-gray-600">
-                AI-powered video analytics for threat detection and business intelligence.
-              </p>
-            </div>
-          </div>
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {[
+              {
+                icon: FiCamera,
+                color: "blue",
+                title: "Surveillance Cameras",
+                description: "High-definition cameras with advanced features for indoor and outdoor monitoring."
+              },
+              {
+                icon: FiShield,
+                color: "purple",
+                title: "Access Control",
+                description: "Secure entry systems with keycard, biometric, and mobile access options."
+              },
+              {
+                icon: FiVideo,
+                color: "green",
+                title: "Video Management",
+                description: "Intuitive software for monitoring, recording and managing your security footage."
+              },
+              {
+                icon: FiBarChart,
+                color: "orange",
+                title: "Analytics",
+                description: "AI-powered video analytics for threat detection and business intelligence."
+              }
+            ].map((feature, index) => (
+              <motion.div 
+                key={index}
+                variants={fadeIn}
+                className={`bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:scale-105 border-t-4 border-${feature.color}-600 hover:shadow-xl`}
+              >
+                <div className={`w-16 h-16 bg-${feature.color}-100 rounded-full flex items-center justify-center mb-6`}>
+                  <feature.icon className={`text-${feature.color}-600 text-2xl`} />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{feature.title}</h3>
+                <p className="text-gray-600">
+                  {feature.description}
+                </p>
+                <div className="mt-6">
+                  <Link 
+                    href={`/products/${feature.title.toLowerCase().replace(/\s+/g, '-')}`} 
+                    className={`text-${feature.color}-600 font-medium flex items-center text-sm hover:underline`}
+                  >
+                    Learn more <FiArrowRight className="ml-2 text-sm" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Solutions For Industries Section */}
-      <section className="py-20 bg-white">
+      {/* Solutions For Industries Section - Enhanced */}
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Industry Expertise
+            </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Solutions For Every Industry</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Tailored security approaches for different business environments and requirements.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/solutions/retail" className="group">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-transform group-hover:scale-105">
-                <div className="h-48 bg-blue-600 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white">Retail</h3>
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: "Retail",
+                color: "blue",
+                description: "Prevent theft, monitor customer flow, and improve store operations."
+              },
+              {
+                title: "Banking",
+                color: "purple",
+                description: "Comprehensive security for financial institutions, ATMs, and vaults."
+              },
+              {
+                title: "Education",
+                color: "green",
+                description: "Protect students and staff with specialized campus security systems."
+              }
+            ].map((industry, index) => (
+              <motion.div 
+                key={index}
+                variants={fadeIn}
+                className="group"
+              >
+                <Link href={`/solutions/${industry.title.toLowerCase()}`}>
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
+                    <div className={`h-56 bg-${industry.color}-600 relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-70"></div>
+                      <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                        <h3 className="text-2xl font-bold text-white">{industry.title}</h3>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-gray-600 mb-4">
+                        {industry.description}
+                      </p>
+                      <span className={`text-${industry.color}-600 font-medium flex items-center group-hover:underline`}>
+                        Learn more <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">
-                    Prevent theft, monitor customer flow, and improve store operations.
-                  </p>
-                  <span className="text-blue-600 font-medium flex items-center group-hover:underline">
-                    Learn more <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-            
-            <Link href="/solutions/bank" className="group">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-transform group-hover:scale-105">
-                <div className="h-48 bg-purple-600 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white">Banking</h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">
-                    Comprehensive security for financial institutions, ATMs, and vaults.
-                  </p>
-                  <span className="text-purple-600 font-medium flex items-center group-hover:underline">
-                    Learn more <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-            
-            <Link href="/solutions/school" className="group">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden h-full transform transition-transform group-hover:scale-105">
-                <div className="h-48 bg-green-600 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white">Education</h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">
-                    Protect students and staff with specialized campus security systems.
-                  </p>
-                  <span className="text-green-600 font-medium flex items-center group-hover:underline">
-                    Learn more <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
           
           <div className="text-center mt-12">
             <Link 
@@ -187,100 +345,150 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20">
+      {/* Stats Section - New */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          >
+            {[
+              { number: "5,000+", label: "Installations", icon: FiCheckCircle },
+              { number: "98%", label: "Client Satisfaction", icon: FiUsers },
+              { number: "24/7", label: "Support Available", icon: FiGlobe },
+              { number: "15+", label: "Years Experience", icon: FiAward }
+            ].map((stat, index) => (
+              <div key={index} className="p-6">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="text-white text-2xl" />
+                </div>
+                <h3 className="text-4xl font-bold mb-2">{stat.number}</h3>
+                <p className="text-blue-100">{stat.label}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section - Enhanced */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Client Success Stories
+            </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Trusted by businesses and organizations worldwide.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
               <div className="flex text-yellow-400 mb-4">
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
+                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
               </div>
               <blockquote className="text-gray-700 mb-6">
                 &ldquo;Uniview&apos;s integrated security system has transformed how we monitor our retail locations. The analytics features have helped us not only improve security but also understand customer behavior.&rdquo;
               </blockquote>
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-blue-600 font-semibold">JD</span>
+                <div className="w-12 h-12 bg-blue-100 rounded-full overflow-hidden">
+                  <Image src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" width={48} height={48} />
                 </div>
-                <div>
+                <div className="ml-4">
                   <p className="font-semibold text-gray-900">John Doe</p>
                   <p className="text-sm text-gray-500">Security Director, Retail Chain</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
               <div className="flex text-yellow-400 mb-4">
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
+                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
               </div>
               <blockquote className="text-gray-700 mb-6">
                 &ldquo;The access control system has been flawless. Easy to manage, reliable, and our employees appreciate being able to use their phones for building access. Installation was quick and support has been excellent.&rdquo;
               </blockquote>
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-purple-600 font-semibold">SW</span>
+                <div className="w-12 h-12 bg-purple-100 rounded-full overflow-hidden">
+                  <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wilson" width={48} height={48} />
                 </div>
-                <div>
+                <div className="ml-4">
                   <p className="font-semibold text-gray-900">Sarah Wilson</p>
                   <p className="text-sm text-gray-500">Facility Manager, Tech Company</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
               <div className="flex text-yellow-400 mb-4">
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
-                <FiStar className="fill-current" />
+                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
               </div>
               <blockquote className="text-gray-700 mb-6">
                 &ldquo;We&apos;ve used several security vendors over the years, but Uniview&apos;s cameras and software are in a different league. The image quality and night vision capabilities are outstanding for our campus security.&rdquo;
               </blockquote>
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-green-600 font-semibold">RM</span>
+                <div className="w-12 h-12 bg-green-100 rounded-full overflow-hidden">
+                  <Image src="https://randomuser.me/api/portraits/men/62.jpg" alt="Robert Miller" width={48} height={48} />
                 </div>
-                <div>
+                <div className="ml-4">
                   <p className="font-semibold text-gray-900">Robert Miller</p>
                   <p className="text-sm text-gray-500">Director of Safety, University</p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-white text-blue-600">
+      {/* CTA Section - Enhanced */}
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to enhance your security?</h2>
-            <p className="text-xl opacity-90 mb-8">
-              Let&apos;s discuss how Uniview&apos;s solutions can address your security challenges.
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Get Started Today
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Ready to enhance your security?</h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Let&apos;s discuss how Uniview&apos;s solutions can address your security challenges and protect what matters most.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
                 href="/contact" 
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg group"
               >
-                Contact Our Team
+                <span className="flex items-center justify-center">
+                  Contact Our Team <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
               </Link>
               <Link 
                 href="/products" 
@@ -289,105 +497,85 @@ const Home = () => {
                 Browse Products
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      {/* Why Choose Us Section - Enhanced */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Our Advantages
+            </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Why Choose Uniview</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We deliver exceptional security solutions backed by innovation and reliability.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.05
+                }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: "Industry-Leading Technology",
+                description: "Cutting-edge hardware and software solutions that stay ahead of security challenges."
+              },
+              {
+                title: "Seamless Integration",
+                description: "Our systems work together perfectly and integrate with your existing infrastructure."
+              },
+              {
+                title: "Exceptional Support",
+                description: "24/7 technical support and maintenance services to keep your systems running smoothly."
+              },
+              {
+                title: "Scalable Solutions",
+                description: "Systems that grow with your business, from small installations to enterprise-scale deployments."
+              },
+              {
+                title: "Easy Management",
+                description: "User-friendly interfaces that simplify security administration for your team."
+              },
+              {
+                title: "Cost-Effective",
+                description: "Optimal balance of performance and value, with solutions for every budget."
+              }
+            ].map((item, index) => (
+              <motion.div key={index} variants={fadeIn} className="flex p-6 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="flex-shrink-0 mr-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <FiCheckCircle className="text-blue-600 text-xl" />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Industry-Leading Technology</h3>
-                <p className="text-gray-600">
-                  Cutting-edge hardware and software solutions that stay ahead of security challenges.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{item.title}</h3>
+                  <p className="text-gray-600">
+                    {item.description}
+                  </p>
                 </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Seamless Integration</h3>
-                <p className="text-gray-600">
-                  Our systems work together perfectly and integrate with your existing infrastructure.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Exceptional Support</h3>
-                <p className="text-gray-600">
-                  24/7 technical support and maintenance services to keep your systems running smoothly.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Scalable Solutions</h3>
-                <p className="text-gray-600">
-                  Systems that grow with your business, from small installations to enterprise-scale deployments.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Easy Management</h3>
-                <p className="text-gray-600">
-                  User-friendly interfaces that simplify security administration for your team.
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex p-6">
-              <div className="flex-shrink-0 mr-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <FiCheckCircle className="text-blue-600 text-xl" />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Cost-Effective</h3>
-                <p className="text-gray-600">
-                  Optimal balance of performance and value, with solutions for every budget.
-                </p>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>

@@ -13,7 +13,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['randomuser.me', 'images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'https',
