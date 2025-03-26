@@ -370,9 +370,9 @@ const SolutionsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30">
       <div className="container mx-auto px-4 py-12 lg:py-20">
-        {/* Refined Hero Section */}
+        {/* Refined Hero Section - added mt-12 to increase top margin */}
         <motion.section 
-          className="text-center mb-16 space-y-6 mt-6"
+          className="text-center mb-16 space-y-6 mt-12 lg:mt-16"
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
@@ -395,7 +395,7 @@ const SolutionsPage: React.FC = () => {
 
           <div className="relative inline-block">
             <motion.h1 
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
