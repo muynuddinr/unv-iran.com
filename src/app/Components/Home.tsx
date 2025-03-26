@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Enhanced Text Above Image Layout */}
-      <section className="pt-24 pb-32 bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden relative">
+      <section className="pt-20 pb-8 bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden relative">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 -mr-20 w-96 h-96 bg-blue-100 rounded-full opacity-50 filter blur-3xl"></div>
         <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-indigo-100 rounded-full opacity-50 filter blur-3xl"></div>
@@ -40,7 +40,7 @@ const Home = () => {
             variants={fadeIn}
             className="flex flex-col items-center text-center"
           >
-            <div className="mb-16 max-w-3xl pt-8">
+            <div className="mb-10 max-w-3xl pt-8">
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -94,54 +94,59 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="w-full max-w-5xl"
+              className="w-full max-w-5xl mx-auto px-4 sm:px-0"
             >
-              <div className="relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20"></div>
-                <div className="bg-white p-3 rounded-xl shadow-2xl relative">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
-                    alt="Security System" 
-                    width={1200} 
-                    height={600} 
-                    className="w-full h-auto object-cover rounded-lg"
-                    priority
-                  />
-                  
-                  {/* Overlay badge in the corner */}
-                  <div className="absolute top-5 right-5 bg-black bg-opacity-75 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
-                    4K Ultra HD
+              <div className="relative mb-10 sm:mb-4">
+                {/* Image container */}
+                <div className="relative">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20"></div>
+                  <div className="bg-white p-2 sm:p-3 rounded-xl shadow-2xl relative">
+                    <Image 
+                      src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                      alt="Security System" 
+                      width={1200} 
+                      height={600} 
+                      className="w-full h-auto object-cover rounded-lg"
+                      priority
+                    />
+                    
+                    {/* Overlay badge in the corner */}
+                    <div className="absolute top-5 right-5 bg-black bg-opacity-75 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+                      4K Ultra HD
+                    </div>
                   </div>
                 </div>
                 
-                {/* Feature highlights overlaid on the bottom of the image */}
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
-                  <div className="bg-white rounded-xl shadow-xl py-5 px-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div className="flex items-center">
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-full p-3 mr-4 shadow-inner">
-                        <FiShield className="text-blue-600 text-xl" />
+                {/* Feature highlights below the image instead of overlaid */}
+                <div className="mt-6 w-full max-w-4xl mx-auto">
+                  <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+                      <div className="flex items-center p-4 sm:p-6">
+                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-full p-3 mr-4 shadow-inner flex-shrink-0">
+                          <FiShield className="text-blue-600 text-xl" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">24/7 Protection</p>
+                          <p className="text-sm text-gray-500">Continuous monitoring</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">24/7 Protection</p>
-                        <p className="text-sm text-gray-500">Continuous monitoring</p>
+                      <div className="flex items-center p-4 sm:p-6">
+                        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-full p-3 mr-4 shadow-inner flex-shrink-0">
+                          <FiVideo className="text-green-600 text-xl" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">4K Resolution</p>
+                          <p className="text-sm text-gray-500">Crystal-clear footage</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-full p-3 mr-4 shadow-inner">
-                        <FiVideo className="text-green-600 text-xl" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">4K Resolution</p>
-                        <p className="text-sm text-gray-500">Crystal-clear footage</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-full p-3 mr-4 shadow-inner">
-                        <FiBarChart className="text-purple-600 text-xl" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Smart Analytics</p>
-                        <p className="text-sm text-gray-500">AI-powered insights</p>
+                      <div className="flex items-center p-4 sm:p-6">
+                        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-full p-3 mr-4 shadow-inner flex-shrink-0">
+                          <FiBarChart className="text-purple-600 text-xl" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">Smart Analytics</p>
+                          <p className="text-sm text-gray-500">AI-powered insights</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -152,33 +157,15 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Trusted By Section - New */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <p className="text-gray-500 font-medium uppercase tracking-wider text-sm">Trusted By Industry Leaders</p>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-            {["Microsoft", "Amazon", "Google", "IBM", "Samsung"].map((company, index) => (
-              <div key={index} className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                <div className="h-8 flex items-center">
-                  <span className="text-gray-400 font-bold text-xl">{company}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features Section - Enhanced */}
-      <section className="py-24 bg-white">
+      <section className="py-4 md:py-8 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-10"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
               Our Offerings
@@ -257,7 +244,7 @@ const Home = () => {
       </section>
 
       {/* Solutions For Industries Section - Enhanced */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
@@ -373,134 +360,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section - Enhanced */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeIn}
-            className="text-center mb-16"
-          >
-            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Client Success Stories
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Trusted by businesses and organizations worldwide.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-              <div className="flex text-yellow-400 mb-4">
-                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
-              </div>
-              <blockquote className="text-gray-700 mb-6">
-                &ldquo;Uniview&apos;s integrated security system has transformed how we monitor our retail locations. The analytics features have helped us not only improve security but also understand customer behavior.&rdquo;
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full overflow-hidden">
-                  <Image src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" width={48} height={48} />
-                </div>
-                <div className="ml-4">
-                  <p className="font-semibold text-gray-900">John Doe</p>
-                  <p className="text-sm text-gray-500">Security Director, Retail Chain</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-              <div className="flex text-yellow-400 mb-4">
-                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
-              </div>
-              <blockquote className="text-gray-700 mb-6">
-                &ldquo;The access control system has been flawless. Easy to manage, reliable, and our employees appreciate being able to use their phones for building access. Installation was quick and support has been excellent.&rdquo;
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full overflow-hidden">
-                  <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wilson" width={48} height={48} />
-                </div>
-                <div className="ml-4">
-                  <p className="font-semibold text-gray-900">Sarah Wilson</p>
-                  <p className="text-sm text-gray-500">Facility Manager, Tech Company</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div variants={fadeIn} className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-              <div className="flex text-yellow-400 mb-4">
-                {[1, 2, 3, 4, 5].map(i => <FiStar key={i} className="fill-current" />)}
-              </div>
-              <blockquote className="text-gray-700 mb-6">
-                &ldquo;We&apos;ve used several security vendors over the years, but Uniview&apos;s cameras and software are in a different league. The image quality and night vision capabilities are outstanding for our campus security.&rdquo;
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full overflow-hidden">
-                  <Image src="https://randomuser.me/api/portraits/men/62.jpg" alt="Robert Miller" width={48} height={48} />
-                </div>
-                <div className="ml-4">
-                  <p className="font-semibold text-gray-900">Robert Miller</p>
-                  <p className="text-sm text-gray-500">Director of Safety, University</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section - Enhanced */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeIn}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Get Started Today
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Ready to enhance your security?</h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss how Uniview&apos;s solutions can address your security challenges and protect what matters most.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link 
-                href="/contact" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg group"
-              >
-                <span className="flex items-center justify-center">
-                  Contact Our Team <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-              <Link 
-                href="/products" 
-                className="bg-transparent text-blue-600 border-2 border-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg"
-              >
-                Browse Products
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Why Choose Us Section - Enhanced */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -575,6 +434,42 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+            {/* CTA Section - Enhanced */}
+            <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
+              Get Started Today
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Ready to enhance your security?</h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Let&apos;s discuss how Uniview&apos;s solutions can address your security challenges and protect what matters most.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <Link 
+                href="/contact" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg group"
+              >
+                <span className="flex items-center justify-center">
+                  Contact Our Team <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+              <Link 
+                href="/products" 
+                className="bg-transparent text-blue-600 border-2 border-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg"
+              >
+                Browse Products
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
