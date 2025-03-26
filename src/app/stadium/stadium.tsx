@@ -259,10 +259,13 @@ const Stadium = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-orange-500 to-orange-700 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiLayers className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src="/images/sports-stadium.jpg" 
+                  alt="Sports Stadiums"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Sports Stadiums</h3>
@@ -273,10 +276,13 @@ const Stadium = () => {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-yellow-500 to-yellow-700 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiRadio className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src="/images/concert-venue.jpg" 
+                  alt="Concert Venues"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Concert Venues</h3>
@@ -287,10 +293,13 @@ const Stadium = () => {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-red-500 to-red-700 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiEye className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src="/images/multi-purpose-arena.jpg" 
+                  alt="Multi-Purpose Arenas"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Multi-Purpose Arenas</h3>

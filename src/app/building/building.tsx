@@ -16,6 +16,10 @@ import {
   FiEye
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/buildings/Securing_What_Matters_Most[1].webp'
+import img2 from '../../../public/buildings/res.webp'
+import img3 from '../../../public/buildings/commerce.webp'
+import img4 from '../../../public/buildings/mixed.webp'
 
 const Building = () => {
   const fadeInUp = {
@@ -57,7 +61,7 @@ const Building = () => {
               <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
                 <div className="rounded-lg overflow-hidden">
                   <Image 
-                    src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" 
+                    src={img1} 
                     alt="Building Security" 
                     width={600} 
                     height={400} 
@@ -265,10 +269,13 @@ const Building = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-blue-600 to-blue-800 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiGlobe className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src={img3} 
+                  alt="Commercial Buildings"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Commercial Buildings</h3>
@@ -279,10 +286,13 @@ const Building = () => {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-purple-600 to-purple-800 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiMap className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src={img2} 
+                  alt="Residential Complexes"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Residential Complexes</h3>
@@ -293,10 +303,13 @@ const Building = () => {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-r from-green-600 to-green-800 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FiEye className="text-white text-5xl" />
-                </div>
+              <div className="h-48 relative">
+                <Image 
+                  src={img4} 
+                  alt="Mixed-Use Developments"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">Mixed-Use Developments</h3>
