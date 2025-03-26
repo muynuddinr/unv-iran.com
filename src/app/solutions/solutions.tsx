@@ -10,7 +10,8 @@ import {
   FiVideo, 
   FiBarChart,
   FiCheckCircle,
-  FiArrowDown
+  FiArrowDown,
+  FiArrowUp
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -209,36 +210,109 @@ const staggerContainer = {
   }
 };
 
-// Add this new component for mobile view
-const MobileSolutionCard = ({ category, onSelect }: {
+// Refined animations
+const shimmer = {
+  hidden: { backgroundPosition: "200% 0" },
+  visible: { 
+    backgroundPosition: "-200% 0",
+    transition: { repeat: Infinity, duration: 2.5 }
+  }
+};
+
+const float = {
+  initial: { y: 0 },
+  animate: {
+    y: [-8, 8, -8],
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
+
+// Enhanced gradient overlays
+const gradientOverlay = "after:absolute after:inset-0 after:bg-gradient-to-t after:from-black/80 after:via-black/40 after:to-transparent after:z-10";
+const glassEffect = "backdrop-blur-md bg-white/10 border border-white/20";
+
+// Enhanced MobileSolutionCard with interactive features
+const MobileSolutionCard = ({ category, onSelect, isSelected }: {
   category: SolutionCategory;
   onSelect: () => void;
+  isSelected: boolean;
 }) => (
   <motion.div 
-    className="bg-white rounded-2xl shadow-md overflow-hidden"
-    initial={{ opacity: 0, y: 20 }}
+    className={`relative backdrop-blur-lg rounded-xl shadow-lg overflow-hidden 
+               transform transition-all border ${
+                 isSelected 
+                   ? 'bg-gradient-to-br from-white via-white to-blue-50 border-blue-200 shadow-blue-100/50' 
+                   : 'bg-white/90 border-white/20'
+               }`}
+    initial={{ opacity: 0, y: 15 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3 }}
+    whileTap={{ scale: 0.98 }}
   >
-    <div className="relative h-48">
+    <div 
+      className={`relative h-32 ${gradientOverlay} overflow-hidden`}
+      onClick={onSelect}
+    >
       <Image 
         src={category.image}
         alt={category.name}
         fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw"
+        className={`object-cover transition-transform duration-300 ${
+          isSelected ? 'scale-105' : 'scale-100'
+        }`}
+        sizes="(max-width: 768px) 50vw"
       />
-      <div className="absolute inset-0 p-4 flex flex-col justify-between">
-        <h3 className="text-2xl font-bold text-white drop-shadow-lg">{category.name}</h3>
-        <button
-          onClick={onSelect}
-          className="self-end bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full 
-                   flex items-center space-x-2 hover:bg-black/90 transition-colors shadow-md"
-        >
-          <span>View Details</span>
-          <FiArrowRight />
-        </button>
+      <div className="absolute inset-0 p-3 flex flex-col justify-between z-20">
+        <div className="flex items-start justify-between">
+          <h3 className="text-lg font-bold text-white drop-shadow-lg">
+            {category.name}
+          </h3>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: isSelected ? 1 : 0 }}
+            className="bg-blue-500 text-white p-1 rounded-full shadow-lg"
+          >
+            <FiCheckCircle size={16} />
+          </motion.div>
+        </div>
       </div>
+    </div>
+    <div className="p-3">
+      <p className="text-xs text-gray-600 line-clamp-2 mb-2 h-8">
+        {category.description}
+      </p>
+      <div className="flex flex-wrap gap-1.5 mb-2">
+        {category.features.slice(0, 2).map((feature) => (
+          <span 
+            key={feature}
+            className={`text-[10px] px-2 py-0.5 rounded-full ${
+              isSelected 
+                ? `bg-gradient-to-r ${category.color} text-white` 
+                : 'bg-gray-100 text-gray-600'
+            }`}
+          >
+            {feature}
+          </span>
+        ))}
+      </div>
+      <button
+        onClick={onSelect}
+        className={`w-full flex items-center justify-center space-x-1.5 py-2 px-3 rounded-lg 
+                   text-xs font-medium transition-all duration-300 ${
+                     isSelected
+                       ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                   }`}
+      >
+        <span>{isSelected ? 'Selected' : 'View Details'}</span>
+        <FiArrowRight className={`text-xs transition-transform duration-300 ${
+          isSelected ? 'translate-x-0.5' : ''
+        }`} />
+      </button>
     </div>
   </motion.div>
 );
@@ -294,41 +368,94 @@ const SolutionsPage: React.FC = () => {
   ), [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24">
-        {/* Hero Section with Enhanced Typography and Animation */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30">
+      <div className="container mx-auto px-4 py-12 lg:py-20">
+        {/* Refined Hero Section */}
         <motion.section 
-          className="text-center mb-16 space-y-6 mt-12"
+          className="text-center mb-16 space-y-6 mt-6"
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
         >
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Tailored Security Solutions for{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block">
-              Every Industry
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Uniview delivers state-of-the-art security solutions designed to address the unique challenges faced by businesses across various sectors.
-          </p>
-          
-          {/* Mobile CTA for scrolling to solutions */}
-          <motion.div 
-            className="md:hidden mt-8 animate-bounce"
-            whileHover={{ scale: 1.1 }}
-          >
-            <button 
-              onClick={() => document.getElementById('mobile-solutions')?.scrollIntoView({ behavior: 'smooth' })}
-              aria-label="Scroll to solutions"
-              className="flex items-center justify-center mx-auto bg-blue-50 text-blue-600 rounded-full p-3 shadow-md hover:shadow-lg transition-all"
+          {/* Decorative elements */}
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <motion.div 
+              className="absolute -top-24 -right-24 w-56 h-56 bg-blue-200 rounded-full blur-3xl opacity-30"
+              variants={float}
+              initial="initial"
+              animate="animate"
+            />
+            <motion.div 
+              className="absolute -bottom-24 -left-24 w-56 h-56 bg-purple-200 rounded-full blur-3xl opacity-30"
+              variants={float}
+              initial="initial"
+              animate="animate"
+            />
+          </div>
+
+          <div className="relative inline-block">
+            <motion.h1 
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <FiArrowDown className="h-6 w-6" />
-            </button>
+              Intelligent Security for{' '}
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
+                  Every Industry
+                </span>
+                <motion.div
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                />
+              </span>
+            </motion.h1>
+          </div>
+          
+          <motion.p 
+            className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-light"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Experience next-generation security solutions powered by AI and advanced analytics, 
+            tailored for your industry's unique challenges.
+          </motion.p>
+
+          {/* Refined action buttons */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-2 mt-4"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Link 
+              href="/contact"
+              className="group px-5 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full 
+                        hover:shadow-md hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <span className="flex items-center space-x-2">
+                <span className="text-sm">Get Started</span>
+                <FiArrowRight className="transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+            <Link 
+              href="/demo"
+              className="group px-5 py-2.5 border border-gray-300 text-gray-700 rounded-full 
+                        hover:border-blue-500 hover:text-blue-600 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <span className="flex items-center space-x-2">
+                <span className="text-sm">Watch Demo</span>
+                <FiVideo className="transition-transform group-hover:scale-110" />
+              </span>
+            </Link>
           </motion.div>
         </motion.section>
 
-        {/* Main Content */}
+        {/* Enhanced Main Content Grid */}
         <motion.section 
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -338,26 +465,28 @@ const SolutionsPage: React.FC = () => {
         >
           {/* Category List */}
           <div className="hidden md:block sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-            <div className="mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">
+            <div className="mb-4">
+              <h2 className="text-lg font-semibold text-gray-900">
                 Industries
               </h2>
             </div>
             {CategoryList}
           </div>
 
-          {/* Mobile View */}
-          <div className="md:hidden" id="mobile-solutions">
-            <div className="grid grid-cols-1 gap-4">
+          {/* Mobile View Updates */}
+          <div className="md:hidden space-y-6" id="mobile-solutions">
+            <div className="grid grid-cols-2 gap-3 px-1">
               {solutionCategories.map((category) => (
                 <MobileSolutionCard
                   key={category.id}
                   category={category}
+                  isSelected={selectedCategory.id === category.id}
                   onSelect={() => {
                     setSelectedCategory(category);
                     document.getElementById('solution-details')?.scrollIntoView({ 
                       behavior: 'smooth',
-                      block: 'start'
+                      block: 'start',
+                      inline: 'nearest'
                     });
                   }}
                 />
@@ -367,7 +496,7 @@ const SolutionsPage: React.FC = () => {
             {/* Mobile Solution Details */}
             <motion.div
               id="solution-details"
-              className="mt-8"
+              className="mt-6 px-1"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -378,10 +507,9 @@ const SolutionsPage: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                  className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
                 >
-                  {/* Add image section */}
-                  <div className="relative h-48 w-full">
+                  <div className="relative h-48">
                     <Image 
                       src={selectedCategory.image}
                       alt={`${selectedCategory.name} Security Solutions`}
@@ -390,8 +518,19 @@ const SolutionsPage: React.FC = () => {
                       sizes="(max-width: 768px) 100vw"
                       priority
                     />
-                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <h3 className="text-2xl font-bold text-white mb-2">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                    <div className="absolute bottom-0 p-4">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center space-x-2 mb-2"
+                      >
+                        <div className={`w-2 h-2 rounded-full bg-white`} />
+                        <span className="text-white/80 text-sm font-medium">
+                          Security Solution
+                        </span>
+                      </motion.div>
+                      <h3 className="text-2xl font-bold text-white mb-1">
                         {selectedCategory.name}
                       </h3>
                       <p className="text-white/90 text-sm">
@@ -400,34 +539,53 @@ const SolutionsPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Features section */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">
-                      Key Features
-                    </h3>
-                    <div className="space-y-3">
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        Key Features
+                      </h4>
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          document.getElementById('mobile-solutions')?.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
+                        }}
+                        className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-sm
+                                   bg-gradient-to-r ${selectedCategory.color} text-white`}
+                      >
+                        <FiArrowUp className="mr-1" />
+                        <span>Back to solutions</span>
+                      </motion.button>
+                    </div>
+                    
+                    <div className="space-y-2.5">
                       {selectedCategory.features.map((feature, index) => (
                         <motion.div
                           key={feature}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="p-4 rounded-lg bg-gray-50"
+                          className={`flex items-center space-x-3 p-3 rounded-lg
+                                     bg-gradient-to-r from-gray-50 to-white border border-gray-100`}
                         >
-                          <div className="flex items-center space-x-3">
-                            <FiCheckCircle className="text-blue-600" />
-                            <span className="text-gray-800 font-medium">{feature}</span>
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center
+                                          bg-gradient-to-r ${selectedCategory.color} text-white`}>
+                            <FiCheckCircle />
                           </div>
+                          <span className="text-sm text-gray-800 font-medium">{feature}</span>
                         </motion.div>
                       ))}
                     </div>
                     
                     <Link 
                       href={`/${selectedCategory.id}`}
-                      className="mt-6 w-full inline-flex items-center justify-center space-x-2 
-                                bg-blue-600 text-white px-6 py-3 rounded-xl shadow-md"
+                      className={`mt-6 w-full inline-flex items-center justify-center space-x-2 
+                                bg-gradient-to-r ${selectedCategory.color} 
+                                text-white px-4 py-3.5 rounded-lg shadow-lg text-sm font-medium`}
                     >
-                      <span>Learn more about {selectedCategory.name}</span>
+                      <span>Explore {selectedCategory.name} Solutions</span>
                       <FiArrowRight />
                     </Link>
                   </div>
@@ -445,9 +603,9 @@ const SolutionsPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+                className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100"
               >
-                <div className="relative h-80 md:h-96 group">
+                <div className="relative h-64 group">
                   <Image 
                     src={selectedCategory.image}
                     alt={`${selectedCategory.name} Security Solutions`}
@@ -456,10 +614,10 @@ const SolutionsPage: React.FC = () => {
                     className="object-cover transition duration-500 ease-in-out group-hover:scale-105"
                     priority
                   />
-                  <div className="absolute inset-0 flex items-end p-8">
+                  <div className="absolute inset-0 flex items-end p-6">
                     <div>
                       <motion.h2 
-                        className="text-3xl font-bold text-white mb-2 drop-shadow-lg"
+                        className="text-2xl font-bold text-white mb-2 drop-shadow-lg"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -467,7 +625,7 @@ const SolutionsPage: React.FC = () => {
                         {selectedCategory.name}
                       </motion.h2>
                       <motion.p 
-                        className="text-lg text-white/90 drop-shadow max-w-xl"
+                        className="text-base text-white/90 drop-shadow max-w-xl"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
@@ -478,10 +636,10 @@ const SolutionsPage: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-gray-800 mb-6">Key Features</h3>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Key Features</h3>
                   <motion.ul 
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                     variants={staggerContainer}
                     initial="hidden"
                     animate="visible"
@@ -490,15 +648,15 @@ const SolutionsPage: React.FC = () => {
                     {selectedCategory.features.map((feature, index) => (
                       <motion.li 
                         key={index} 
-                        className="flex items-center space-x-3 group hover:bg-blue-50 p-3 rounded-lg transition-colors"
+                        className="flex items-center space-x-3 group hover:bg-blue-50 p-2.5 rounded-lg transition-colors"
                         variants={fadeInUp}
                       >
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                           selectedCategory.color ? `bg-gradient-to-r ${selectedCategory.color}` : 'bg-blue-600'
                         } text-white shadow-md group-hover:scale-110 transition-transform`}>
-                          <FiCheckCircle className="text-lg" />
+                          <FiCheckCircle className="text-base" />
                         </div>
-                        <span className="text-lg text-gray-700 group-hover:text-blue-700 transition font-medium">
+                        <span className="text-base text-gray-700 group-hover:text-blue-700 transition font-medium">
                           {feature}
                         </span>
                       </motion.li>
@@ -506,7 +664,7 @@ const SolutionsPage: React.FC = () => {
                   </motion.ul>
                   
                   <motion.div 
-                    className="mt-10 flex justify-end"
+                    className="mt-8 flex justify-end"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -515,7 +673,7 @@ const SolutionsPage: React.FC = () => {
                       href={`/${selectedCategory.id}`}
                       className={`inline-flex items-center space-x-2 ${
                         selectedCategory.color ? `bg-gradient-to-r ${selectedCategory.color}` : 'bg-blue-600'
-                      } text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-1`}
+                      } text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-1`}
                     >
                       <span>Learn more</span>
                       <FiArrowRight />
@@ -527,16 +685,17 @@ const SolutionsPage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Core Solutions Section */}
+        {/* Enhanced Core Solutions Section */}
         <motion.section 
-          className="mt-24"
+          className="mt-32 relative"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-transparent -z-10 rounded-3xl" />
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Our Core Security Technologies
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -551,17 +710,20 @@ const SolutionsPage: React.FC = () => {
             {coreSolutions.map((solution, index) => (
               <motion.div 
                 key={index} 
-                className="bg-white rounded-2xl shadow-lg p-8 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-xl border-t-4 border-blue-600 group"
+                className="bg-white rounded-3xl shadow-lg p-8 transform transition duration-500 
+                           hover:scale-105 hover:shadow-xl border border-gray-100 group"
                 variants={fadeInUp}
                 whileHover={{ y: -10 }}
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
-                  <solution.icon className="text-blue-600 text-3xl group-hover:text-blue-700 transition-colors group-hover:scale-110 transition-transform" />
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 
+                                bg-gradient-to-br from-blue-500 to-blue-600 group-hover:from-blue-600 
+                                group-hover:to-blue-700 transition-all duration-300`}>
+                  <solution.icon className="text-white text-2xl group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-blue-700 transition-colors">
                   {solution.title}
                 </h3>
-                <p className="text-gray-600 text-lg">{solution.description}</p>
+                <p className="text-gray-600 text-lg leading-relaxed">{solution.description}</p>
               </motion.div>
             ))}
           </motion.div>
