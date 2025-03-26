@@ -95,49 +95,66 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 pt-24">
+    <div className="min-h-screen bg-white pt-24">
       <Toaster position="top-right" />
       
       <div className="container mx-auto px-4 py-16 lg:py-24">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-gradient">
+            Get in Touch
+          </h1>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          </p>
+        </div>
+
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* Contact Information Section */}
-          <div className="bg-white shadow-2xl rounded-2xl p-8 border-t-4 border-blue-600">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+          <div className="bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl p-8 border-t-4 border-blue-600 
+              hover:transform hover:scale-105 transition-all duration-300 relative overflow-hidden
+              before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 
+              before:bg-gradient-to-r before:from-blue-600 before:via-purple-600 before:to-indigo-600">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
               <FiSend className="mr-3 text-blue-600" /> Contact Us
             </h2>
             
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <FiMail className="text-blue-600 text-2xl" />
+            <div className="space-y-8">
+              <div className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <FiMail className="text-blue-600 text-2xl" />
+                </div>
                 <div>
-                  <p className="text-gray-600">Email</p>
+                  <p className="text-gray-600 text-sm">Email</p>
                   <a 
                     href="mailto:info@uniview.com" 
-                    className="text-blue-800 hover:underline"
+                    className="text-blue-800 hover:text-blue-600 font-medium"
                   >
                     info@uniview.com
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <FiPhone className="text-blue-600 text-2xl" />
+              <div className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <FiPhone className="text-blue-600 text-2xl" />
+                </div>
                 <div>
-                  <p className="text-gray-600">Phone</p>
+                  <p className="text-gray-600 text-sm">Phone</p>
                   <a 
                     href="tel:+1-555-123-4567" 
-                    className="text-blue-800 hover:underline"
+                    className="text-blue-800 hover:text-blue-600 font-medium"
                   >
                     +1 (555) 123-4567
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <FiMapPin className="text-blue-600 text-2xl" />
+              <div className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <FiMapPin className="text-blue-600 text-2xl" />
+                </div>
                 <div>
-                  <p className="text-gray-600">Address</p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-600 text-sm">Address</p>
+                  <p className="text-gray-800 font-medium">
                     123 Tech Lane, Innovation Park, CA 94000
                   </p>
                 </div>
@@ -145,77 +162,94 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Contact Form Section */}
-          <div className="bg-white shadow-2xl rounded-2xl p-8 border-t-4 border-purple-600">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+          <div className="bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl p-8 border-t-4 border-purple-600 
+              hover:transform hover:scale-105 transition-all duration-300 relative overflow-hidden
+              before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 
+              before:bg-gradient-to-r before:from-purple-600 before:via-indigo-600 before:to-blue-600">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">Send us a Message</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
-                    placeholder="Your Name"
+                    placeholder="John Doe"
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border 
-                      ${errors.name ? 'border-red-500' : 'border-gray-200'}
+                      ${errors.name ? 'border-red-500' : 'border-gray-300'}
                       focus:outline-none focus:ring-2 focus:ring-blue-300 
-                      bg-gray-100 hover:bg-white transition-all duration-300`}
+                      bg-white/50 hover:bg-white transition-all duration-300
+                      shadow-sm hover:shadow-md`}
                   />
                   {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
                 <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
-                    placeholder="Email Address"
+                    placeholder="john@example.com"
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border 
-                      ${errors.email ? 'border-red-500' : 'border-gray-200'}
+                      ${errors.email ? 'border-red-500' : 'border-gray-300'}
                       focus:outline-none focus:ring-2 focus:ring-blue-300 
-                      bg-gray-100 hover:bg-white transition-all duration-300`}
+                      bg-white/50 hover:bg-white transition-all duration-300
+                      shadow-sm hover:shadow-md`}
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
               </div>
               
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number (Optional)"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 
-                  focus:outline-none focus:ring-2 focus:ring-blue-300 
-                  bg-gray-100 hover:bg-white transition-all duration-300"
-              />
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number (Optional)</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  placeholder="+1 (555) 123-4567"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300
+                    focus:outline-none focus:ring-2 focus:ring-blue-300 
+                    bg-white/50 hover:bg-white transition-all duration-300
+                    shadow-sm hover:shadow-md"
+                />
+              </div>
               
               <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
                 <textarea
+                  id="message"
                   name="message"
-                  placeholder="Your Message"
+                  placeholder="How can we help you?"
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-lg border 
-                    ${errors.message ? 'border-red-500' : 'border-gray-200'}
+                    ${errors.message ? 'border-red-500' : 'border-gray-300'}
                     focus:outline-none focus:ring-2 focus:ring-blue-300 
-                    bg-gray-100 hover:bg-white transition-all duration-300 resize-none`}
+                    bg-white/50 hover:bg-white transition-all duration-300 resize-none
+                    shadow-sm hover:shadow-md`}
                 />
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 
-                  text-white py-4 rounded-full hover:from-blue-700 hover:to-purple-700 
+                className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 
+                  text-white py-4 px-8 rounded-lg hover:opacity-90
                   transition-all duration-300 flex items-center justify-center space-x-2 
-                  group shadow-md hover:shadow-lg"
+                  group shadow-lg hover:shadow-xl transform hover:-translate-y-1
+                  relative overflow-hidden animate-gradient bg-[length:200%_auto]"
               >
-                <FiSend className="mr-2 group-hover:animate-bounce" />
-                Send Message
+                <span className="font-medium relative z-10">Send Message</span>
+                <FiSend className="ml-2 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
             </form>
           </div>
