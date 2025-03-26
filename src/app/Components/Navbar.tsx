@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { 
   FiSearch, FiMenu, FiX, FiMail, FiPhone, 
   FiHome, FiBox, FiTool, FiInfo, FiSend,
-  FiChevronDown, FiChevronRight
+  FiChevronDown, FiChevronRight, FiCamera, FiGlobe, FiHardDrive, FiLock
 } from 'react-icons/fi';
 import logo from '../../../public/UNV-IRAN.png'
 import { IconType } from 'react-icons';
@@ -222,27 +222,31 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Enhanced Top Contact Bar - Now with fixed positioning */}
+      {/* Enhanced Top Contact Bar - Now with gradient and better spacing */}
       <div 
-        className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-100 to-purple-100 
-          text-gray-800 py-2 shadow-sm transition-all duration-300
-          ${isScrolled ? 'opacity-100' : 'opacity-100'}`}
+        className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 
+          text-gray-800 py-2.5 shadow-sm transition-all duration-300
+          ${isScrolled ? 'opacity-95 backdrop-blur-sm' : 'opacity-100'}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-6 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-8">
           <div className="flex items-center space-x-2 hover:text-blue-800 transition-all group">
-            <FiMail className="text-blue-600 group-hover:scale-110 transition-transform" />
+            <div className="p-1.5 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
+              <FiMail className="text-blue-600 group-hover:scale-110 transition-transform w-4 h-4" />
+            </div>
             <a 
               href="mailto:info@uniview.com" 
-              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm"
+              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm font-medium"
             >
               info@uniview.com
             </a>
           </div>
           <div className="flex items-center space-x-2 hover:text-blue-800 transition-all group">
-            <FiPhone className="text-blue-600 group-hover:scale-110 transition-transform" />
+            <div className="p-1.5 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
+              <FiPhone className="text-blue-600 group-hover:scale-110 transition-transform w-4 h-4" />
+            </div>
             <a 
               href="tel:+1-555-123-4567" 
-              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm"
+              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm font-medium"
             >
               +1 (555) 123-4567
             </a>
@@ -250,11 +254,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navigation - Adjusted top padding to account for fixed contact bar */}
+      {/* Main Navigation - Enhanced with better shadows and transitions */}
       <nav 
-        className={`fixed w-full z-40 top-8 transition-all duration-300 
+        className={`fixed w-full z-40 top-10 transition-all duration-300 
           ${isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+            ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-blue-100/50' 
             : 'bg-white/90 backdrop-blur-sm'
           }`}
         role="navigation"
@@ -316,60 +320,83 @@ const Navbar = () => {
                       <FiChevronDown className={`ml-1 w-4 h-4 transition-transform ${productsMegaMenuOpen ? 'rotate-180' : ''}`} />
                     </button>
                     
-                    {/* Products Mega Menu */}
+                    {/* Products Mega Menu - Blue Icons */}
                     <div 
                       id="products-mega-menu"
-                      className={`absolute z-50 top-full mt-3 right-0 w-72 bg-white shadow-lg rounded-lg overflow-hidden
-                        transform transition-all duration-300 origin-top-right
-                        ${productsMegaMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                      className={`absolute right-0 mt-8 w-[420px] transform transition-all duration-300 origin-top-right z-50
+                        ${productsMegaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
                     >
-                      {productsMegaMenuOpen && (
-                        <div 
-                          className="fixed inset-0 bg-black/5 z-[-1]" 
-                          onClick={() => setProductsMegaMenuOpen(false)}
-                          aria-hidden="true"
-                        />
-                      )}
-                      
-                      <div className="p-3">
-                        <h3 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 border-b pb-1">
-                          Categories
-                        </h3>
-                        <div className="max-h-[60vh] overflow-y-auto pr-1">
-                          {navbarCategories.length > 0 ? (
-                            <div className="grid grid-cols-1 gap-0.5">
-                              {navbarCategories.map((category) => (
-                                <div key={category._id}>
-                                  <Link
-                                    href={`/${category.slug}`}
-                                    className="flex items-center py-1.5 px-2 rounded text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
-                                    onClick={() => setProductsMegaMenuOpen(false)}
-                                  >
-                                    <span className="text-yellow-500 mr-2">📁</span>
-                                    <span className="text-sm font-medium">{category.title}</span>
-                                  </Link>
-                                  
-                                  {category.submenu && category.submenu.length > 0 && (
-                                    <div className="ml-4 space-y-0.5 mt-0.5">
-                                      {category.submenu.map((item, index) => (
-                                        <Link
-                                          key={index}
-                                          href={item.link}
-                                          className="flex items-center py-1 px-2 rounded text-xs text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
-                                          onClick={() => setProductsMegaMenuOpen(false)}
-                                        >
-                                          <FiChevronRight className="mr-1 h-3 w-3 text-gray-400" />
-                                          <span>{item.name}</span>
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
+                      <div className="relative bg-gradient-to-b from-white to-gray-50/95 backdrop-blur-xl 
+                        rounded-2xl shadow-2xl shadow-blue-200/50 border border-gray-100 overflow-hidden">
+                        {/* Decorative Elements */}
+                        <div className="absolute inset-0 bg-grid-gray-100/40 bg-[size:20px_20px]" />
+                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+                        
+                        <div className="relative p-5">
+                          <div className="flex items-center space-x-2 mb-4">
+                            <div className="p-1.5 bg-blue-100 rounded-lg">
+                              <FiBox className="w-5 h-5 text-blue-600" />
                             </div>
-                          ) : (
-                            <p className="text-sm text-gray-500 py-2">No categories available</p>
-                          )}
+                            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+                              Product Categories
+                            </h3>
+                          </div>
+
+                          <div className="max-h-[65vh] overflow-y-auto pr-2 space-y-0.5">
+                            {navbarCategories.map((category) => (
+                              <div key={category._id} className="group">
+                                <Link
+                                  href={`/${category.slug}`}
+                                  className="flex items-center py-2.5 px-3 rounded-lg group-hover:bg-gradient-to-r 
+                                    from-blue-50/80 to-indigo-50/80 transition-all duration-300"
+                                  onClick={() => setProductsMegaMenuOpen(false)}
+                                >
+                                  <span className="flex items-center justify-center w-8 h-8 rounded-lg 
+                                    bg-blue-50 shadow-sm group-hover:shadow-md transition-all duration-300
+                                    group-hover:scale-105 group-hover:rotate-3 border border-blue-100/50">
+                                    {category.title.startsWith('Camera') ? (
+                                      <FiCamera className="w-4 h-4 text-blue-600" />
+                                    ) : category.title.startsWith('Network') ? (
+                                      <FiGlobe className="w-4 h-4 text-blue-600" />
+                                    ) : category.title.startsWith('Storage') ? (
+                                      <FiHardDrive className="w-4 h-4 text-blue-600" />
+                                    ) : category.title.startsWith('Access') ? (
+                                      <FiLock className="w-4 h-4 text-blue-600" />
+                                    ) : (
+                                      <FiBox className="w-4 h-4 text-blue-600" />
+                                    )}
+                                  </span>
+                                  <span className="ml-3 font-medium text-sm text-gray-900 group-hover:text-blue-700
+                                    transition-colors">
+                                    {category.title}
+                                  </span>
+                                  {category.submenu && category.submenu.length > 0 && (
+                                    <FiChevronRight className="ml-auto w-4 h-4 text-gray-400 
+                                      group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" />
+                                  )}
+                                </Link>
+
+                                {category.submenu && category.submenu.length > 0 && (
+                                  <div className="ml-11 mt-0.5 space-y-0.5 mb-1">
+                                    {category.submenu.map((item, index) => (
+                                      <Link
+                                        key={index}
+                                        href={item.link}
+                                        className="flex items-center py-1.5 px-3 rounded-md text-sm 
+                                          text-gray-600 hover:text-blue-700 hover:bg-blue-50/50
+                                          transition-all duration-200"
+                                        onClick={() => setProductsMegaMenuOpen(false)}
+                                      >
+                                        <div className="w-1 h-1 rounded-full bg-gray-300 mr-2
+                                          group-hover:bg-blue-400 transition-colors" />
+                                        <span className="text-xs font-medium">{item.name}</span>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -378,16 +405,21 @@ const Navbar = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`py-2 px-3 rounded-lg text-sm transition-colors
+                    className={`group relative py-2.5 px-4 rounded-lg text-sm transition-all duration-300
                       ${isActive 
-                        ? 'text-blue-600 bg-blue-50 font-medium' 
+                        ? 'text-blue-600 bg-blue-50/80 font-medium shadow-sm shadow-blue-100/50' 
                         : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                       }`}
                   >
                     <div className="flex items-center">
-                      {link.icon && React.createElement(link.icon, { className: "mr-3 opacity-60" })}
+                      {link.icon && React.createElement(link.icon, { 
+                        className: "mr-3 opacity-60 group-hover:opacity-100 transition-opacity" 
+                      })}
                       {link.label}
                     </div>
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
+                      transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" 
+                    />
                   </Link>
                 );
               })}
@@ -414,70 +446,116 @@ const Navbar = () => {
                   />
                 </button>
                 
-                {/* Solutions Mega Menu */}
+                {/* Solutions Mega Menu - Enhanced Design */}
                 <div 
                   id="solutions-mega-menu"
-                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-5xl bg-white 
-                    shadow-md rounded-md border border-gray-200
+                  className={`absolute left-1/2 -translate-x-1/2 mt-8 w-screen max-w-6xl px-4
                     transform transition-all duration-300 origin-top z-50
                     ${solutionsMegaMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
                 >
-                  {/* Light overlay for rest of the page when mega menu is open */}
-                  {solutionsMegaMenuOpen && (
-                    <div 
-                      className="fixed inset-0 bg-black/5 z-[-1]" 
-                      onClick={() => setSolutionsMegaMenuOpen(false)}
-                      aria-hidden="true"
-                    />
-                  )}
-                  
-                  <div className="max-h-[70vh] overflow-y-auto">
-                    <div className="grid md:grid-cols-2 p-3 md:p-4 gap-3 md:gap-4">
-                      <div className="bg-gray-50 rounded-md p-3">
-                        <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
-                          Solutions by Industry
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 md:gap-2">
-                          {industryLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                  <div className="relative bg-gradient-to-b from-white to-gray-50/95 backdrop-blur-xl 
+                    rounded-2xl shadow-2xl shadow-blue-200/50 border border-gray-100 overflow-hidden">
+                    {/* Decorative Elements */}
+                    <div className="absolute inset-0 bg-grid-gray-100/40 bg-[size:20px_20px]" />
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+                    
+                    <div className="relative max-h-[75vh] overflow-y-auto">
+                      <div className="grid md:grid-cols-2 gap-6 p-6">
+                        {/* Industry Solutions */}
+                        <div className="space-y-4">
+                          <div className="flex items-center space-x-2 mb-4">
+                            <div className="p-1.5 bg-blue-100 rounded-lg">
+                              <FiTool className="w-5 h-5 text-blue-600" />
+                            </div>
+                            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+                              Solutions by Industry
+                            </h3>
+                          </div>
+                          
+                          <div className="grid grid-cols-2 gap-2">
+                            {industryLinks.map((link) => (
+                              <Link
+                                key={link.href}
+                                href={link.href}
+                                className="group flex items-center p-3 rounded-xl hover:bg-blue-50/80 
+                                  border border-transparent hover:border-blue-100 transition-all duration-300"
+                                onClick={() => setSolutionsMegaMenuOpen(false)}
+                              >
+                                <span className="flex items-center justify-center w-10 h-10 rounded-lg 
+                                  bg-white shadow-sm group-hover:shadow-md transition-shadow 
+                                  text-xl group-hover:scale-110 transform duration-300">
+                                  {link.icon}
+                                </span>
+                                <span className="ml-3">
+                                  <span className="block text-sm font-medium text-gray-900 group-hover:text-blue-600">
+                                    {link.label}
+                                  </span>
+                                  <span className="block text-xs text-gray-500 group-hover:text-blue-500">
+                                    View solutions →
+                                  </span>
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Function Solutions */}
+                        <div className="space-y-4">
+                          <div className="flex items-center space-x-2 mb-4">
+                            <div className="p-1.5 bg-purple-100 rounded-lg">
+                              <FiBox className="w-5 h-5 text-purple-600" />
+                            </div>
+                            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+                              Solutions by Function
+                            </h3>
+                          </div>
+
+                          <div className="space-y-2">
+                            {functionLinks.map((link) => (
+                              <Link
+                                key={link.href}
+                                href={link.href}
+                                className="group flex items-center p-3 rounded-xl hover:bg-purple-50/80 
+                                  border border-transparent hover:border-purple-100 transition-all duration-300"
+                                onClick={() => setSolutionsMegaMenuOpen(false)}
+                              >
+                                <span className="flex items-center justify-center w-10 h-10 rounded-lg 
+                                  bg-white shadow-sm group-hover:shadow-md transition-shadow 
+                                  text-xl group-hover:scale-110 transform duration-300">
+                                  {link.icon}
+                                </span>
+                                <span className="ml-3">
+                                  <span className="block text-sm font-medium text-gray-900 group-hover:text-purple-600">
+                                    {link.label}
+                                  </span>
+                                  <span className="block text-xs text-gray-500 group-hover:text-purple-500">
+                                    Explore features →
+                                  </span>
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+
+                          {/* View All Solutions Button */}
+                          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                            <Link 
+                              href="/solutions"
+                              className="group flex items-center justify-between p-3 bg-white rounded-lg 
+                                shadow-sm hover:shadow-md transition-all duration-300"
                               onClick={() => setSolutionsMegaMenuOpen(false)}
                             >
-                              <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
-                              <span className="font-medium text-sm">{link.label}</span>
+                              <div>
+                                <span className="block text-sm font-semibold text-gray-900">
+                                  View All Solutions
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                  Explore our complete solutions catalog
+                                </span>
+                              </div>
+                              <FiChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 
+                                group-hover:translate-x-1 transition-all duration-300" />
                             </Link>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div className="bg-gray-50 rounded-md p-3">
-                        <h3 className="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">
-                          Solutions by Function
-                        </h3>
-                        <div className="grid grid-cols-1 gap-1 md:gap-2">
-                          {functionLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="flex items-center p-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
-                              onClick={() => setSolutionsMegaMenuOpen(false)}
-                            >
-                              <span className="text-lg mr-2 min-w-6 text-center">{link.icon}</span>
-                              <span className="font-medium text-sm">{link.label}</span>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="mt-3 p-2 bg-white rounded-md border border-gray-100">
-                          <Link 
-                            href="/solutions"
-                            className="flex items-center justify-between text-blue-600 hover:text-blue-800 font-medium text-sm"
-                            onClick={() => setSolutionsMegaMenuOpen(false)}
-                          >
-                            View All Solutions
-                            <FiChevronRight />
-                          </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -519,27 +597,23 @@ const Navbar = () => {
                 />
               </Link>
               
-              {/* Enhanced Search Bar with Form */}
+              {/* Enhanced Search Bar */}
               <form onSubmit={handleSearch} className="relative group">
                 <input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 rounded-full border border-gray-200 
-                    focus:outline-none focus:ring-2 focus:ring-blue-300 
-                    bg-gray-100 hover:bg-white transition-all duration-300 
+                  className="pl-12 pr-4 py-2.5 rounded-full border border-gray-200 
+                    focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent
+                    bg-gray-50 hover:bg-white transition-all duration-300 
                     text-sm w-56 lg:w-64 shadow-sm hover:shadow-md"
                   aria-label="Search"
-                  role="searchbox"
                 />
-                <button 
-                  type="submit" 
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 
-                    text-gray-400 hover:text-blue-500 transition-colors"
-                >
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 
+                  text-gray-400 group-hover:text-blue-500 transition-colors">
                   <FiSearch className="w-5 h-5" />
-                </button>
+                </div>
               </form>
             </div>
 
@@ -565,7 +639,7 @@ const Navbar = () => {
               ${isOpen 
                 ? 'max-h-[80vh] opacity-100 visible overflow-y-auto' 
                 : 'max-h-0 opacity-0 invisible overflow-hidden'
-              } bg-white/95 rounded-xl shadow-lg`}
+              } bg-white/95 backdrop-blur-md rounded-xl shadow-xl shadow-blue-100/50 mt-4`}
             aria-hidden={!isOpen}
           >
             <div className="px-2 pt-2 pb-4 space-y-2 sm:px-3">
@@ -743,41 +817,9 @@ const Navbar = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    <Link
-                      href="/products"
-                      className="flex items-center justify-between px-3 py-2 mt-3 text-sm text-blue-600 bg-white/80 backdrop-blur-sm rounded-lg"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="font-medium">View All Products</span>
-                      <FiChevronRight />
-                    </Link>
                   </div>
                 </div>
               </div>
-              
-              {/* Mobile Search */}
-              <form onSubmit={handleSearch} className="relative px-4 py-3">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-200 
-                    focus:outline-none focus:ring-2 focus:ring-blue-300 
-                    bg-gray-100 hover:bg-white transition-all duration-300 text-sm 
-                    shadow-sm hover:shadow-md"
-                  aria-label="Search"
-                  role="searchbox"
-                />
-                <button 
-                  type="submit" 
-                  className="absolute right-6 top-1/2 transform -translate-y-1/2 
-                    text-gray-400 hover:text-blue-500 transition-colors"
-                >
-                  <FiSearch className="w-5 h-5" />
-                </button>
-              </form>
             </div>
           </div>
         </div>
