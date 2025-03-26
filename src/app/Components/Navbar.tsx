@@ -262,12 +262,12 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo with more pronounced hover effect */}
-            <div className="flex-shrink-0 bg-white rounded-lg p-1 -ml-4 md:-ml-8 lg:-ml-12 xl:-ml-16">
+            {/* Logo - Improved styling without white box */}
+            <div className="flex-shrink-0">
               <Link 
                 href="/" 
                 className="flex items-center transform transition-all duration-300 
-                  hover:scale-105 hover:rotate-3 active:scale-95 group"
+                  hover:scale-105 hover:rotate-1 active:scale-95 group"
                 aria-label="Home"
               >
                 <Image 
@@ -275,14 +275,13 @@ const Navbar = () => {
                   alt="Uniview Logo"
                   width={200}
                   height={200}
-                  className="w-auto h-16 group-hover:drop-shadow-md object-contain drop-shadow-sm filter contrast-125"
+                  className="w-auto h-16 group-hover:drop-shadow-md object-contain drop-shadow-sm"
                   priority
                   loading="eager"
                   quality={100}
                   style={{
                     maxWidth: "none",
                     objectFit: "contain",
-                    marginLeft: "-1.5rem",
                   }}
                   unoptimized={true}
                 />
