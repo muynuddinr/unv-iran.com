@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import img1 from '../../../public/school/School banner.webp'
+import img2 from '../../../public/school/K-12 Schools.webp'
 
 const School = () => {
   const fadeInUp = {
@@ -309,9 +310,9 @@ const School = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Special Education Facilities</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Educational Training Centers</h3>
                 <p className="text-gray-600 mb-4">
-                  Tailored security solutions for special education settings with unique requirements and safeguards for vulnerable student populations.
+                  Advanced security solutions for training centers and educational institutes, ensuring safety while maintaining an open and accessible learning environment.
                 </p>
               </div>
             </div>
