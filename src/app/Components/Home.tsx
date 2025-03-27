@@ -297,7 +297,7 @@ const Home = () => {
                 link: "/bank"
               },
               {
-                title: "Education",
+                title: "Schools",
                 color: "green",
                 description: "Protect students and staff with specialized campus security systems.",
                 bgImage: school.src,

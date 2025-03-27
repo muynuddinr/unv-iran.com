@@ -69,7 +69,7 @@ const AdminSidebar = () => {
                       ${collapsed ? 'w-20' : 'w-64'} z-30`}>
       <div className="flex justify-between items-center p-4 border-b border-gray-800">
         {!collapsed && (
-          <div className="text-xl font-semibold">Admin Panel</div>
+          <div className="text-xl font-semibold">Uniview Admin</div>
         )}
         <button 
           onClick={() => setCollapsed(!collapsed)}

@@ -16,6 +16,7 @@ import {
   FiRadio
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/school/School banner.webp'
 
 const School = () => {
   const fadeInUp = {
@@ -57,7 +58,7 @@ const School = () => {
               <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
                 <div className="rounded-lg overflow-hidden">
                   <Image 
-                    src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                    src={img1} 
                     alt="School Security" 
                     width={600} 
                     height={400} 

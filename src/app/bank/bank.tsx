@@ -16,6 +16,10 @@ import {
   FiGlobe
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/bank/Bank banner.webp'
+import img2 from '../../../public/bank/Retail Bank.webp'
+import img3 from '../../../public/bank/Credit Unions.webp'
+import img4 from '../../../public/bank/Corporate Banking.webp'
 
 const Bank = () => {
   const fadeInUp = {
@@ -57,7 +61,7 @@ const Bank = () => {
               <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
                 <div className="rounded-lg overflow-hidden">
                   <Image 
-                    src="https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                    src={img1} 
                     alt="Bank Security" 
                     width={600} 
                     height={400} 
@@ -267,7 +271,7 @@ const Bank = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/retail-banking.jpg" 
+                  src={img2} 
                   alt="Retail Banking" 
                   fill
                   className="object-cover"
@@ -284,7 +288,7 @@ const Bank = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/credit-unions.jpg" 
+                  src={img3} 
                   alt="Credit Unions" 
                   fill
                   className="object-cover"
@@ -301,7 +305,7 @@ const Bank = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/corporate-banking.jpg" 
+                  src={img4} 
                   alt="Corporate Banking" 
                   fill
                   className="object-cover"

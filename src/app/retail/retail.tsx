@@ -17,6 +17,9 @@ import {
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import img1 from '../../../public/retail/Protecting Your Retail Business.webp'
+import img2 from '../../../public/retail/Fashion Retail.webp'
+import img3 from '../../../public/retail/Electronics Stores.webp'
+import img4 from '../../../public/retail/Supermarkets & Groceries.webp'
 
 const Retail = () => {
   const fadeInUp = {
@@ -269,7 +272,7 @@ const Retail = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/fashion-retail.jpg" 
+                  src={img2} 
                   alt="Fashion Retail Security" 
                   fill
                   className="object-cover"
@@ -286,7 +289,7 @@ const Retail = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/electronics-store.jpg" 
+                  src={img3} 
                   alt="Electronics Store Security" 
                   fill
                   className="object-cover"
@@ -303,7 +306,7 @@ const Retail = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/supermarket.jpg" 
+                  src={img4} 
                   alt="Supermarket Security" 
                   fill
                   className="object-cover"
