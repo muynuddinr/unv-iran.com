@@ -39,10 +39,10 @@ const Hospital = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Hospital Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-red-600">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-red-600">Hospital Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security systems designed to protect patients, staff, and medical facilities while ensuring privacy and maintaining a healing environment.
+            Advanced Uniview surveillance systems designed specifically for Iranian healthcare facilities, ensuring patient safety and facility security while maintaining privacy standards.
           </p>
         </div>
       </section>
@@ -66,15 +66,15 @@ const Hospital = () => {
                 </div>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Healthcare Environments</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Iranian Healthcare Environments</h2>
                 <p className="text-gray-700 mb-6">
-                  In today's complex healthcare landscape, hospitals face unique security challenges that require specialized solutions. Uniview offers a comprehensive range of security systems designed specifically for healthcare facilities, balancing safety with a compassionate healing environment.
+                  In Iran's evolving healthcare landscape, hospitals require robust security solutions that meet local requirements. Uniview Iran offers state-of-the-art surveillance systems specifically designed for healthcare facilities, providing the perfect balance between security and patient care.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated hospital security systems combine advanced technology with intuitive management interfaces, providing complete control and visibility across your entire facility. From patient monitoring to medication security, access control to emergency response, our solutions form a cohesive security ecosystem that meets the specific needs of healthcare providers.
+                  Our integrated hospital security cameras combine advanced Uniview technology with user-friendly management interfaces, delivering complete monitoring and control across your facility. From patient areas to medication storage, entrance monitoring to emergency response, our solutions create a comprehensive security ecosystem tailored to Iranian healthcare providers.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's hospital security solutions are developed with input from healthcare security experts, designed to be HIPAA-compliant, and engineered to adapt to the evolving security and privacy needs of modern medical facilities.
+                  Uniview Iran's hospital security solutions are implemented with guidance from local healthcare security experts, designed to meet Iranian healthcare regulations, and engineered to adapt to the specific needs of modern medical facilities in Iran.
                 </p>
               </div>
             </div>
@@ -158,9 +158,9 @@ const Hospital = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Hospital Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran Security Solutions</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to healthcare security delivers multiple advantages for medical facilities.
+              Our specialized approach to healthcare surveillance delivers exceptional advantages for Iranian medical facilities.
             </p>
           </div>
           
@@ -321,9 +321,9 @@ const Hospital = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Healthcare Facility Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Healthcare Facility with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized hospital security solution that addresses your specific challenges and requirements.
+              Let our local security experts design a customized Uniview surveillance solution that addresses your facility's specific requirements and challenges.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

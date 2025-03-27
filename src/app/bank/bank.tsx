@@ -43,10 +43,10 @@ const Bank = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Banking Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Banking Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security solutions for financial institutions designed to protect assets, data, and people while maintaining operational efficiency.
+            Advanced security camera solutions for Iranian financial institutions, providing comprehensive surveillance and protection for assets, staff, and customers.
           </p>
         </div>
       </section>
@@ -72,15 +72,15 @@ const Bank = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Financial Institutions</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Trusted Banking Security Solutions in Iran</h2>
               <p className="text-gray-700 mb-6">
-                In today's world, banking institutions face evolving security challenges from physical threats to sophisticated cyber attacks. Uniview offers a comprehensive range of security solutions designed specifically for the unique needs of financial institutions.
+                As Iran's leading provider of security solutions, Uniview Iran understands the unique challenges faced by local banking institutions. Our advanced surveillance systems are designed to meet the specific security requirements of Iranian banks while ensuring compliance with local regulations.
               </p>
               <p className="text-gray-700 mb-6">
-                Our integrated banking security systems combine advanced technology with intelligent management interfaces, providing complete control and visibility across your entire facility. From ATM surveillance to access control, fraud detection to visitor management, our solutions form a cohesive security ecosystem tailored to banking requirements.
+                Our integrated security camera systems combine cutting-edge Uniview technology with professional installation and support, delivering complete surveillance coverage across your banking facilities. From ATM monitoring to vault security, our solutions provide comprehensive protection tailored to Iranian banking standards.
               </p>
               <p className="text-gray-700">
-                Uniview's banking security solutions are designed to be scalable, allowing them to adapt to regulatory changes while remaining cost-effective and future-proof.
+                Uniview Iran's banking security solutions are scalable and cost-effective, with local technical support and warranty coverage to ensure long-term reliability and peace of mind.
               </p>
             </div>
           </div>
@@ -91,9 +91,9 @@ const Bank = () => {
       <section className="py-12 lg:py-20 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Security Features</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Features of Uniview Iran's Banking Solutions</h2>
             <p className="text-xl text-gray-700">
-              Our banking security solutions include these essential components to ensure comprehensive protection.
+              Our specialized security camera systems include these essential components for Iranian banks.
             </p>
           </div>
           
@@ -163,9 +163,9 @@ const Bank = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Banking Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran Banking Security</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to banking security delivers multiple advantages.
+              Partner with Iran's trusted security solutions provider for comprehensive protection.
             </p>
           </div>
           
@@ -326,9 +326,9 @@ const Bank = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Financial Institution Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Bank with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized banking security solution that addresses your specific challenges and requirements.
+              Contact our local security experts to design a customized surveillance solution for your banking institution, with professional installation and ongoing support.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
@@ -336,13 +336,13 @@ const Bank = () => {
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center justify-center"
               >
                 <FiSend className="mr-2" />
-                Request a Consultation
+                Request a Free Consultation
               </Link>
               <Link 
                 href="/products" 
                 className="bg-transparent text-white border-2 border-white hover:bg-white/10 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg flex items-center justify-center"
               >
-                Explore Our Products
+                View Our Products
                 <FiArrowRight className="ml-2" />
               </Link>
             </div>

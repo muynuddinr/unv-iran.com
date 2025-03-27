@@ -41,10 +41,10 @@ const SmartIntrusionPrevention = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Smart Intrusion <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Prevention</span> Solutions
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Smart Security</span> Solutions
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Advanced AI-powered intrusion detection and prevention systems designed to identify and respond to security threats before they escalate.
+            State-of-the-art security camera systems powered by AI technology, providing comprehensive surveillance and protection for businesses and properties across Iran.
           </p>
         </div>
       </section>
@@ -63,15 +63,15 @@ const SmartIntrusionPrevention = () => {
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Proactive Security Intelligence</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Advanced Security Camera Solutions</h2>
                 <p className="text-gray-700 mb-6">
-                  In today's evolving security landscape, traditional alarm systems are no longer sufficient. Uniview's Smart Intrusion Prevention solutions use advanced AI algorithms to distinguish between real threats and false alarms, dramatically enhancing security effectiveness.
+                  As the official distributor of Uniview products in Iran, we provide cutting-edge security camera systems that go beyond traditional surveillance. Our smart solutions leverage advanced AI algorithms to deliver superior threat detection and prevention capabilities.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated systems combine multiple detection technologies with intelligent analytics to create a predictive security environment that identifies potential breaches before they occur. From perimeter protection to internal monitoring, our solutions provide comprehensive coverage.
+                  Our comprehensive range includes indoor and outdoor cameras, NVRs, and integrated security systems that are specifically configured for the Iranian market, meeting local requirements while maintaining international standards.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's Smart Intrusion Prevention technology is designed to be adaptable, scalable, and future-proof, ensuring your security infrastructure evolves with emerging threats and changing needs.
+                  With nationwide support and installation services, Uniview Iran ensures reliable security solutions backed by expert technical assistance and maintenance support throughout the country.
                 </p>
               </div>
             </div>
@@ -320,25 +320,25 @@ const SmartIntrusionPrevention = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Enterprise Data Center</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Tehran Commercial Complex</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      A Fortune 500 company with a 50,000 square foot data center was experiencing recurring false alarms with their legacy security system, causing unnecessary evacuations and business disruptions.
+                      A major commercial complex in Tehran, spanning over 30,000 square meters, needed to upgrade their outdated surveillance system to address security challenges and monitoring inefficiencies.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's Smart Intrusion Prevention solution with AI-powered analytics and multi-sensor integration, they achieved:
+                      After implementing Uniview Iran's smart security camera solution with AI-powered analytics, they achieved:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>95% reduction</strong> in false alarms within the first month</li>
-                      <li><strong>100% detection rate</strong> for actual security incidents</li>
-                      <li><strong>60% faster</strong> response times to verified threats</li>
-                      <li><strong>40% reduction</strong> in security staffing costs</li>
-                      <li>Return on investment achieved within 8 months</li>
+                      <li><strong>Complete coverage</strong> of all critical areas with HD clarity</li>
+                      <li><strong>90% improvement</strong> in incident response time</li>
+                      <li><strong>24/7 intelligent monitoring</strong> with automated alerts</li>
+                      <li><strong>50% reduction</strong> in security-related incidents</li>
+                      <li>Significant cost savings in security operations</li>
                     </ul>
                     <p className="text-gray-700">
-                      The system's ability to distinguish between routine maintenance work and actual intrusion attempts transformed their security operations, allowing them to allocate resources more efficiently while maintaining the highest levels of protection.
+                      The implementation has transformed their security operations, providing clear evidence for investigations and deterring potential security threats while streamlining their monitoring processes.
                     </p>
                   </div>
                   <div className="relative h-80 md:h-full min-h-[300px]">

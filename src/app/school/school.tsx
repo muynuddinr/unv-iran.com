@@ -40,10 +40,10 @@ const School = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            School Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Solutions</span>
+            Uniview Iran School Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Camera Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security systems designed to protect students, staff, and educational facilities while fostering a safe learning environment.
+            Advanced surveillance and monitoring systems designed specifically for Iranian educational institutions, providing comprehensive security for students, staff, and facilities.
           </p>
         </div>
       </section>
@@ -69,15 +69,15 @@ const School = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Protecting Our Educational Communities</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Protecting Iranian Educational Communities</h2>
               <p className="text-gray-700 mb-6">
-                In today's world, school security has become a critical priority. Uniview offers specialized security solutions designed specifically for educational environments, from K-12 schools to universities and educational campuses.
+                As Iran's leading provider of security solutions, Uniview Iran delivers specialized surveillance systems designed specifically for educational environments, from primary schools to universities across the country.
               </p>
               <p className="text-gray-700 mb-6">
-                Our integrated security systems combine advanced technology with intuitive interfaces, providing comprehensive protection while remaining unobtrusive to the learning environment. From controlled access points to intelligent video surveillance, our solutions create layers of security that help prevent incidents and enable swift response when needed.
+                Our state-of-the-art camera systems combine advanced technology with user-friendly interfaces, providing comprehensive monitoring while remaining discreet within the learning environment. From high-resolution cameras to intelligent video analytics, our solutions create a robust security infrastructure that helps prevent incidents and enables quick response when needed.
               </p>
               <p className="text-gray-700">
-                Uniview's school security solutions are developed with input from education security experts, designed to be scalable, and engineered to adapt to the evolving security needs of educational institutions.
+                Uniview Iran's school security solutions are developed with local expertise, compliant with Iranian regulations, and engineered to meet the specific security needs of educational institutions throughout Iran.
               </p>
             </div>
           </div>
@@ -108,9 +108,9 @@ const School = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                 <FiVideo className="text-blue-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Video Surveillance</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Advanced Surveillance</h3>
               <p className="text-gray-700">
-                High-definition camera systems covering hallways, entrances, common areas, and grounds with intelligent analytics to detect unusual activities.
+                High-definition Uniview cameras with night vision capabilities, covering all critical areas including entrances, corridors, classrooms, and outdoor spaces.
               </p>
             </motion.div>
             
@@ -160,9 +160,9 @@ const School = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview School Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran School Security</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to school security delivers multiple advantages for educational institutions.
+              Our specialized camera solutions provide comprehensive security advantages for Iranian educational institutions.
             </p>
           </div>
           
@@ -323,9 +323,9 @@ const School = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Educational Institution Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Educational Institution with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized school security solution that addresses your specific challenges and requirements.
+              Connect with our local security experts to design a customized camera solution that meets your school's specific requirements and budget.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

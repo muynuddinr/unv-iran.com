@@ -39,10 +39,10 @@ const ShoppingMall = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Shopping Mall Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">Solutions</span>
+            Uniview Iran Shopping Mall <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security management systems designed to protect your retail space, enhance customer experience, and streamline operations.
+            Advanced Uniview security camera systems designed specifically for Iranian shopping malls, providing comprehensive protection and monitoring solutions.
           </p>
         </div>
       </section>
@@ -61,15 +61,15 @@ const ShoppingMall = () => {
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Complex Retail Environments</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Expert Security Solutions for Iranian Retail Spaces</h2>
                 <p className="text-gray-700 mb-6">
-                  Shopping malls present unique security challenges with their large, open spaces, multiple entrances, diverse tenant mix, and high visitor volume. Uniview offers comprehensive security solutions designed specifically for these complex environments.
+                  As Iran's leading provider of Uniview security systems, we understand the unique security challenges faced by shopping malls across the country. Our solutions are tailored to meet local requirements while maintaining international standards.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated shopping mall security systems combine advanced surveillance technology with intelligent analytics, providing complete visibility across your entire property. From common areas to parking structures, food courts to loading docks, our solutions ensure comprehensive protection.
+                  We offer state-of-the-art Uniview surveillance systems with advanced analytics capabilities, providing comprehensive coverage for all areas of your mall. Our solutions are backed by local technical support and expertise.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's mall security solutions are designed to balance robust security with a positive customer experience, helping you create a safe, welcoming environment for shoppers, staff, and vendors.
+                  Uniview Iran's mall security solutions create a perfect balance between robust security and customer comfort, helping you maintain a safe and welcoming environment for visitors and staff alike.
                 </p>
               </div>
             </div>
@@ -318,25 +318,25 @@ const ShoppingMall = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Metropolitan Shopping Center</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Tehran Grand Bazaar Modern Shopping Complex</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      A major shopping center with over 200 stores and 2 million square feet of retail space was experiencing challenges with security coverage, theft incidents, and inefficient use of security personnel.
+                      One of Tehran's largest shopping complexes, featuring over 100 stores across multiple floors, faced challenges with security monitoring and theft prevention.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's integrated mall security solution, including AI-powered video analytics, centralized monitoring, and crowd management tools, they achieved:
+                      After implementing Uniview Iran's comprehensive security solution, including high-resolution cameras and intelligent video analytics, they achieved:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>35% reduction</strong> in reported security incidents within six months</li>
-                      <li><strong>22% decrease</strong> in retail theft across tenant stores</li>
-                      <li><strong>40% improvement</strong> in security response times</li>
-                      <li><strong>15% increase</strong> in customer satisfaction scores related to safety</li>
-                      <li>Return on investment achieved within the first year</li>
+                      <li><strong>40% reduction</strong> in security incidents</li>
+                      <li><strong>30% decrease</strong> in shoplifting cases</li>
+                      <li><strong>50% improvement</strong> in incident response time</li>
+                      <li><strong>Significant enhancement</strong> in visitor safety perception</li>
+                      <li>24/7 professional technical support</li>
                     </ul>
                     <p className="text-gray-700">
-                      The mall management team was able to optimize security staffing based on traffic data, significantly reducing costs while improving overall security coverage and effectiveness.
+                      The installation has become a benchmark for modern retail security solutions in Iran, demonstrating the effectiveness of Uniview's technology in local market conditions.
                     </p>
                   </div>
                   

@@ -39,10 +39,10 @@ const Hotel = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Hotel Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600">Hotel Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security systems designed to protect guests, staff, and property while enhancing the hospitality experience.
+            Advanced security camera systems and surveillance solutions tailored for Iranian hotels, ensuring guest safety and property protection.
           </p>
         </div>
       </section>
@@ -61,15 +61,15 @@ const Hotel = () => {
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Safeguarding the Hospitality Experience</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Leading Hotel Security Solutions in Iran</h2>
                 <p className="text-gray-700 mb-6">
-                  In today's hospitality industry, security is a cornerstone of guest satisfaction. Uniview offers specialized security solutions designed specifically for hotels, resorts, and hospitality venues of all sizes.
+                  As the official distributor of Uniview products in Iran, we provide cutting-edge security camera solutions specifically designed for the hospitality industry. Our systems cater to hotels, resorts, and accommodation venues across Iran.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated hotel security systems combine advanced technology with discreet implementation, providing comprehensive protection while maintaining the welcoming atmosphere guests expect. From lobby monitoring to room access control, perimeter protection to staff management, our solutions create a secure environment without compromising the hospitality experience.
+                  Our comprehensive security solutions combine Uniview's advanced technology with local expertise, offering seamless integration and support. From lobby surveillance to perimeter monitoring, we ensure complete coverage while maintaining the welcoming atmosphere guests expect.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's hotel security solutions are developed with input from hospitality security experts, designed to be scalable, and engineered to adapt to the evolving security needs of modern hotels.
+                  Backed by Uniview's global expertise and our local support team, we deliver reliable, scalable, and future-proof security solutions that meet the unique requirements of Iranian hotels.
                 </p>
               </div>
             </div>
@@ -153,9 +153,9 @@ const Hotel = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Hotel Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran Hotel Security</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to hotel security delivers multiple advantages for hospitality venues.
+              Partner with Iran's leading provider of Uniview security solutions for your hospitality venue.
             </p>
           </div>
           
@@ -253,9 +253,9 @@ const Hotel = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Advanced Security Technologies</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uniview Iran</h2>
                 <p className="text-gray-700 mb-6">
-                  Uniview integrates cutting-edge technologies into our hotel security solutions to address the unique challenges of hospitality environments:
+                  As the authorized Uniview distributor in Iran, we offer distinct advantages for your hotel security needs:
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
@@ -265,8 +265,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">AI-Powered Video Analytics</h4>
-                      <p className="text-gray-600">Intelligent monitoring that can identify suspicious behavior, unauthorized access attempts, and left objects while respecting guest privacy.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">Local Expertise & Support</h4>
+                      <p className="text-gray-600">Direct access to trained technicians and support staff in Iran, ensuring quick response times and efficient system maintenance.</p>
                     </div>
                   </li>
                   
@@ -277,8 +277,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">Mobile Security Management</h4>
-                      <p className="text-gray-600">Remote system control allowing security personnel and management to monitor and respond to situations from anywhere on property using smartphones or tablets.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">Genuine Uniview Products</h4>
+                      <p className="text-gray-600">Access to authentic Uniview security cameras and equipment with full warranty and after-sales support within Iran.</p>
                     </div>
                   </li>
                   
@@ -289,8 +289,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">Integrated Emergency Response</h4>
-                      <p className="text-gray-600">Systems that automatically coordinate with local emergency services, featuring pre-programmed protocols for different types of incidents.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">Customized Solutions</h4>
+                      <p className="text-gray-600">Tailored security systems designed specifically for Iranian hotel properties, with consideration for local requirements and regulations.</p>
                     </div>
                   </li>
                 </ul>
@@ -378,9 +378,9 @@ const Hotel = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-amber-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Hospitality Venue Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Hotel with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized hotel security solution that enhances guest experience while providing comprehensive protection.
+              Connect with our security experts to design a customized Uniview camera solution for your hotel property in Iran.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

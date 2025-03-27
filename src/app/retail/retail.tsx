@@ -43,10 +43,10 @@ const Retail = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Retail Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Retail Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive loss prevention and operational intelligence solutions designed to protect your merchandise, optimize store operations, and enhance customer experience.
+            Advanced surveillance and security solutions from Uniview Iran, designed to protect your retail business, prevent losses, and optimize store operations across Iran.
           </p>
         </div>
       </section>
@@ -72,15 +72,15 @@ const Retail = () => {
                 </div>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Protecting Your Retail Business</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Protecting Your Retail Business in Iran</h2>
                 <p className="text-gray-700 mb-6">
-                  In today's retail environment, security challenges extend beyond traditional theft prevention. Uniview offers a comprehensive range of security solutions designed specifically for retail businesses, helping you reduce shrinkage, optimize operations, and enhance the customer experience.
+                  As Iran's leading provider of Uniview security solutions, we understand the unique challenges faced by retail businesses across the country. Our comprehensive security systems help protect your assets, reduce theft, and improve operational efficiency.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated retail security systems combine advanced surveillance technology with intelligent analytics, providing actionable insights into customer behavior, store performance, and potential security threats. From small boutiques to large retail chains, our solutions scale to meet your specific needs.
+                  Uniview Iran offers state-of-the-art surveillance technology combined with intelligent analytics, providing valuable insights into store operations while ensuring maximum security. Our solutions are perfect for businesses of all sizes, from local shops to major retail chains throughout Iran.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's retail security solutions are designed to be unobtrusive yet effective, allowing you to create a welcoming shopping environment while maintaining robust protection for your merchandise, staff, and customers.
+                  As the official distributor of Uniview products in Iran, we provide full technical support, warranty services, and professional installation to ensure your security system performs optimally.
                 </p>
               </div>
             </div>
@@ -329,24 +329,24 @@ const Retail = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: National Retail Chain</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Major Iranian Retail Chain</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      A nationwide retail chain with over 200 locations was facing significant inventory shrinkage and challenges in optimizing their store layouts for maximum sales performance.
+                      A leading Iranian retail chain with stores across multiple provinces was experiencing significant security challenges and needed a reliable surveillance solution.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's comprehensive retail security solution, including integrated POS monitoring, customer flow analysis, and advanced theft prevention systems, they achieved:
+                      After implementing Uniview Iran's comprehensive security solution, including HD cameras, NVRs, and intelligent video analytics, they achieved:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>42% reduction</strong> in inventory shrinkage within the first year</li>
-                      <li><strong>18% increase</strong> in sales per square foot after optimizing store layouts</li>
-                      <li><strong>65% improvement</strong> in case resolution for security incidents</li>
-                      <li>Return on investment achieved in less than 9 months</li>
+                      <li><strong>40% reduction</strong> in shoplifting incidents</li>
+                      <li><strong>25% improvement</strong> in staff productivity through better monitoring</li>
+                      <li><strong>Significant decrease</strong> in false insurance claims</li>
+                      <li>Complete return on investment within 12 months</li>
                     </ul>
                     <p className="text-gray-700">
-                      The integration of security with business intelligence transformed their loss prevention department from a cost center to a strategic asset contributing directly to profitability.
+                      Our local support team provided seamless installation and ongoing maintenance, ensuring maximum system uptime and performance.
                     </p>
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg">
@@ -369,9 +369,9 @@ const Retail = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Protect Your Retail Business Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Retail Business with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized retail security solution that addresses your specific challenges and requirements.
+              Contact our local experts today for a personalized security solution tailored to your retail business needs in Iran.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

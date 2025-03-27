@@ -43,10 +43,10 @@ const Building = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Building Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Building Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security solutions for commercial and residential complexes designed to protect your property, assets, and people.
+            Leading provider of advanced Uniview security camera systems and solutions for buildings across Iran, ensuring comprehensive protection for your property.
           </p>
         </div>
       </section>
@@ -72,15 +72,15 @@ const Building = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing What Matters Most</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Trusted Uniview Partner in Iran</h2>
               <p className="text-gray-700 mb-6">
-                In today's world, building security is more important than ever. Uniview offers a comprehensive range of security solutions designed specifically for commercial and residential buildings, providing peace of mind for property managers, business owners, and residents alike.
+                As the authorized distributor of Uniview products in Iran, we provide state-of-the-art security camera solutions that meet the unique requirements of Iranian buildings and businesses. Our expertise in Uniview technology ensures you receive the most reliable and advanced security systems available.
               </p>
               <p className="text-gray-700 mb-6">
-                Our integrated building security systems combine cutting-edge technology with intuitive management interfaces, allowing for complete control and visibility across your entire property. From perimeter protection to access control, video surveillance to visitor management, our solutions form a cohesive security ecosystem tailored to your specific needs.
+                We offer complete Uniview surveillance solutions, from high-resolution cameras to sophisticated NVRs and management software, all backed by local technical support and warranty services. Our systems are designed to provide exceptional clarity, reliability, and ease of use.
               </p>
               <p className="text-gray-700">
-                Uniview's building security solutions are designed to be scalable, allowing them to grow with your needs while remaining cost-effective and future-proof.
+                With Uniview Iran, you get access to the latest innovations in security technology, professional installation services, and ongoing support to ensure your building security system performs optimally at all times.
               </p>
             </div>
           </div>
@@ -163,9 +163,9 @@ const Building = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Building Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran Security Solutions</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to building security delivers multiple advantages.
+              Experience the advantages of partnering with Iran's leading Uniview security provider.
             </p>
           </div>
           
@@ -253,6 +253,20 @@ const Building = () => {
                 </p>
               </div>
             </div>
+
+            <div className="flex p-6 bg-white rounded-xl shadow-md">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FiGlobe className="text-blue-600 text-xl" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Local Support</h3>
+                <p className="text-gray-600">
+                  Dedicated technical support team in Iran providing rapid response times and expert assistance in your local language.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -326,9 +340,9 @@ const Building = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Building Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Building with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized building security solution that addresses your specific challenges and requirements.
+              Contact our team of Uniview security experts to design a customized surveillance solution for your building's specific needs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

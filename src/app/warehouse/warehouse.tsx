@@ -39,10 +39,10 @@ const Warehouse = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Warehouse & Logistics <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">Solutions</span>
+            Uniview Iran Warehouse & Logistics <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security systems designed to protect inventory, monitor operations, and optimize logistics in warehouse and distribution environments.
+            Advanced Uniview security camera systems and solutions for warehouses and logistics centers across Iran, designed to protect inventory and optimize operations.
           </p>
         </div>
       </section>
@@ -70,13 +70,13 @@ const Warehouse = () => {
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Warehouse Operations</h2>
                 <p className="text-gray-700 mb-6">
-                  Modern warehouses and logistics centers face unique security challenges with high-value inventory, complex operations, and multiple access points. Uniview provides specialized security solutions tailored to meet these challenges head-on.
+                  Iranian warehouses and logistics centers require robust security solutions to protect valuable inventory and ensure smooth operations. As the official distributor of Uniview in Iran, we provide specialized security camera systems tailored to meet these unique challenges.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated warehouse security systems combine advanced surveillance technology with intelligent monitoring tools, providing comprehensive visibility across your entire facility. From loading docks to storage areas, entry points to shipping zones, our solutions create a complete security ecosystem.
+                  Our integrated warehouse security solutions combine Uniview's advanced surveillance technology with local expertise and support, providing comprehensive coverage across your entire facility. From loading docks to storage areas, we ensure complete security monitoring.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's warehouse security solutions are designed to not only protect assets but also enhance operational efficiency, reduce losses, and provide valuable business intelligence for logistics optimization.
+                  Uniview Iran's warehouse security solutions are designed to protect assets, enhance operational efficiency, and provide valuable business intelligence while meeting local regulations and requirements.
                 </p>
               </div>
             </div>
@@ -160,7 +160,7 @@ const Warehouse = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Warehouse Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran's Security Solutions</h2>
             <p className="text-xl text-gray-700">
               Our integrated approach to warehouse security delivers multiple advantages.
             </p>
@@ -398,25 +398,25 @@ const Warehouse = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Global Logistics Provider</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Iranian Logistics Provider</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      A leading logistics company operating 15 distribution centers across North America was facing challenges with inventory shrinkage, operational inefficiencies, and security compliance.
+                      A major Iranian logistics company operating multiple distribution centers across the country faced challenges with inventory security, operational visibility, and monitoring efficiency.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's integrated warehouse security solution with AI-powered video analytics, access control, and vehicle monitoring systems, they achieved:
+                      After implementing Uniview's comprehensive security camera solution with advanced analytics and monitoring systems, they achieved:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>37% reduction</strong> in inventory shrinkage within the first year</li>
-                      <li><strong>22% improvement</strong> in loading dock efficiency</li>
-                      <li><strong>45% decrease</strong> in security-related incidents</li>
-                      <li><strong>15% reduction</strong> in insurance premiums due to enhanced security measures</li>
-                      <li>Complete ROI achieved within 14 months of implementation</li>
+                      <li><strong>35% reduction</strong> in security incidents within the first year</li>
+                      <li><strong>25% improvement</strong> in operational efficiency</li>
+                      <li><strong>40% decrease</strong> in inventory losses</li>
+                      <li><strong>Complete monitoring coverage</strong> across all critical areas</li>
+                      <li>Return on investment achieved within 18 months</li>
                     </ul>
                     <p className="text-gray-700">
-                      The company was particularly impressed with how our security solutions provided valuable business intelligence that helped optimize their operations beyond just security benefits.
+                      The company particularly valued our local support and expertise in implementing Uniview's advanced security solutions to meet their specific requirements.
                     </p>
                   </div>
                   <div className="relative">
@@ -441,9 +441,9 @@ const Warehouse = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Warehouse Today</h2>
+            <h2 className="text-3xl font-bold mb-6">Secure Your Warehouse with Uniview Iran</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let our security experts design a customized warehouse security solution that addresses your specific challenges and requirements.
+              Connect with our local security experts to design a customized Uniview surveillance solution for your warehouse or logistics facility.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 

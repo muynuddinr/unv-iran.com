@@ -39,10 +39,10 @@ const Stadium = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Stadium Security <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700">Solutions</span>
+            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700">Stadium Security Solutions</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Comprehensive security systems designed to protect large venues, manage crowds, and ensure the safety of events and spectators.
+            Advanced Uniview security camera systems tailored for Iranian stadiums, providing comprehensive surveillance and crowd management solutions.
           </p>
         </div>
       </section>
@@ -61,15 +61,15 @@ const Stadium = () => {
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Securing Large-Scale Events</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Stadium Security Excellence in Iran</h2>
                 <p className="text-gray-700 mb-6">
-                  Modern stadiums and large venues present unique security challenges with thousands of attendees, multiple entry points, and high-profile events. Uniview offers specialized security solutions designed specifically for these demanding environments.
+                  As the official distributor of Uniview products in Iran, we specialize in implementing cutting-edge security camera solutions for stadiums across the country, addressing the unique requirements of Iranian sports venues.
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated stadium security systems combine advanced surveillance technology with intelligent crowd management tools, providing comprehensive protection and monitoring across your entire venue. From perimeter security to real-time threat detection, our solutions create layers of protection that help prevent incidents and enable swift response when needed.
+                  Our integrated stadium security systems feature Uniview's latest surveillance technology, providing crystal-clear monitoring capabilities and intelligent crowd management tools that meet local regulations and international standards.
                 </p>
                 <p className="text-gray-700">
-                  Uniview's stadium security solutions are developed with input from venue security experts, designed to be scalable for events of any size, and engineered to adapt to the evolving security needs of modern entertainment and sports facilities.
+                  With extensive experience in the Iranian market, our solutions are specifically designed to handle the demands of major sporting events, from local league matches to international tournaments hosted in Iran's premier venues.
                 </p>
               </div>
             </div>
@@ -318,25 +318,25 @@ const Stadium = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Metropolitan Sports Arena</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Azadi Stadium Implementation</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      A 65,000-seat sports stadium hosting major league games and concerts was experiencing challenges with entrance congestion, security incident response times, and staff coordination during large events.
+                      One of Iran's largest sports venues faced challenges with monitoring large crowds during international matches and maintaining security standards required by AFC.
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's integrated stadium security solution, including AI-powered video analytics, crowd management tools, and centralized command center, they achieved:
+                      After implementing Uniview's comprehensive security camera solution, including high-resolution cameras and advanced monitoring systems, the stadium achieved:
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>40% reduction</strong> in entrance waiting times during peak arrival periods</li>
-                      <li><strong>62% improvement</strong> in security incident response times</li>
-                      <li><strong>30% decrease</strong> in reported security incidents</li>
-                      <li><strong>25% increase</strong> in visitor satisfaction scores related to venue safety</li>
-                      <li>Return on investment achieved within 18 months of implementation</li>
+                      <li><strong>Complete coverage</strong> of all stadium areas with HD surveillance</li>
+                      <li><strong>Real-time monitoring</strong> of crowd movements and behavior</li>
+                      <li><strong>Enhanced compliance</strong> with international football security standards</li>
+                      <li><strong>Improved coordination</strong> with security personnel during major events</li>
+                      <li>Successful integration with existing security infrastructure</li>
                     </ul>
                     <p className="text-gray-700">
-                      The venue management team was particularly impressed with how the system integrated with existing infrastructure and provided unexpected operational benefits beyond security.
+                      The implementation has become a benchmark for stadium security solutions in Iran, demonstrating Uniview's capability to meet international standards while addressing local requirements.
                     </p>
                   </div>
                   <div className="relative h-80 md:h-96">
@@ -358,9 +358,9 @@ const Stadium = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Ready to enhance your venue security?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Upgrade Your Stadium's Security with Uniview Iran</h2>
             <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-              Contact our stadium security specialists to discuss how Uniview can create a customized solution for your venue.
+              Contact our local experts to discuss how Uniview's security solutions can be customized for your Iranian venue.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-medium flex items-center justify-center transition-colors">
