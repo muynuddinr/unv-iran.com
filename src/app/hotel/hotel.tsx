@@ -16,6 +16,11 @@ import {
   FiKey
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/hotel/Leading Hotel Security banner.webp'
+import img2 from '../../../public/hotel/Why Choose Uniview Iran banner.webp'
+import img3 from '../../../public/hotel/Luxury Hotels.webp'
+import img4 from '../../../public/hotel/Resort Properties.webp'
+import img5 from '../../../public/hotel/Business Hotels.webp'
 
 
 const Hotel = () => {
@@ -55,7 +60,7 @@ const Hotel = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-80 md:h-96">
                 <Image 
-                  src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  src={img1}
                   alt="Hotel Security"
                   fill
                   className="object-cover rounded-xl shadow-xl"
@@ -299,7 +304,7 @@ const Hotel = () => {
               
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-xl">
                 <Image 
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  src={img2}
                   alt="Advanced Hotel Security Technologies"
                   fill
                   className="object-cover"
@@ -324,7 +329,7 @@ const Hotel = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/luxury-hotel.jpg" 
+                  src={img3} 
                   alt="Luxury Hotels"
                   fill
                   className="object-cover"
@@ -341,7 +346,7 @@ const Hotel = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/resort-property.jpg" 
+                  src={img4} 
                   alt="Resort Properties"
                   fill
                   className="object-cover"
@@ -358,7 +363,7 @@ const Hotel = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/business-hotel.jpg" 
+                  src={img5} 
                   alt="Business Hotels"
                   fill
                   className="object-cover"

@@ -19,6 +19,7 @@ import { motion } from 'framer-motion';
 import img1 from '../../../public/stadium/Stadium Security Banner.webp'
 import img2 from '../../../public/stadium/Sports Stadiums.webp'
 import img3 from '../../../public/stadium/Concert Venues.webp'
+import img4 from '../../../public/stadium/multi purpose .webp'
 
 const Stadium = () => {
   const fadeInUp = {
@@ -298,7 +299,7 @@ const Stadium = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/multi-purpose-arena.jpg" 
+                  src={img4} 
                   alt="Multi-Purpose Arenas"
                   fill
                   className="object-cover"
