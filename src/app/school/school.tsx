@@ -18,6 +18,8 @@ import {
 import { motion } from 'framer-motion';
 import img1 from '../../../public/school/School banner.webp'
 import img2 from '../../../public/school/K-12 Schools.webp'
+import img3 from '../../../public/school/College Campuses.webp'
+import img4 from '../../../public/school/trining.webp'
 
 const School = () => {
   const fadeInUp = {
@@ -269,7 +271,7 @@ const School = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/k12-schools-security.jpg" 
+                  src={img2}
                   alt="K-12 Schools Security" 
                   fill 
                   className="object-cover"
@@ -286,7 +288,7 @@ const School = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/college-campus-security.jpg" 
+                  src={img3}
                   alt="College Campus Security" 
                   fill 
                   className="object-cover"
@@ -303,7 +305,7 @@ const School = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/special-education-security.jpg" 
+                  src={img4}
                   alt="Special Education Facilities Security" 
                   fill 
                   className="object-cover"
