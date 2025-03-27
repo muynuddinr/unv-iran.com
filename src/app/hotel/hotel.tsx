@@ -17,6 +17,7 @@ import {
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
+
 const Hotel = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },

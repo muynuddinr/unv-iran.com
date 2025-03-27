@@ -16,6 +16,10 @@ import {
   FiLayers
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/shopping mall/Shopping mall.webp'
+import img2 from '../../../public/shopping mall/Traditional Enclosed Malls.webp'
+import img3 from '../../../public/shopping mall/Open-Air Shopping Centers.webp'
+import img4 from '../../../public/shopping mall/Mixed-Use Developments.webp'
 
 const ShoppingMall = () => {
   const fadeInUp = {
@@ -54,7 +58,7 @@ const ShoppingMall = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-80 md:h-96">
                 <Image 
-                  src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  src={img1}
                   alt="Shopping Mall Security"
                   fill
                   className="object-cover rounded-xl shadow-xl"
@@ -261,7 +265,7 @@ const ShoppingMall = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/traditional-mall.jpg"
+                  src={img2}
                   alt="Traditional Enclosed Malls"
                   fill
                   className="object-cover"
@@ -278,7 +282,7 @@ const ShoppingMall = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/open-air-mall.jpg"
+                  src={img3}
                   alt="Open-Air Shopping Centers"
                   fill
                   className="object-cover"
@@ -295,7 +299,7 @@ const ShoppingMall = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/mixed-use.jpg"
+                  src={img4}
                   alt="Mixed-Use Developments"
                   fill
                   className="object-cover"

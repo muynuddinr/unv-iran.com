@@ -16,6 +16,10 @@ import {
   FiMap
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/warehouse/Warehouse banner.webp'
+import img2 from '../../../public/warehouse/Distribution Centers.webp'
+import img3 from '../../../public/warehouse/Logistics Facilities.webp'
+import img4 from '../../../public/warehouse/Cold Storage Facilities.webp'
 
 const Warehouse = () => {
   const fadeInUp = {
@@ -58,7 +62,7 @@ const Warehouse = () => {
                 <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
                   <div className="rounded-lg overflow-hidden">
                     <Image 
-                      src="https://images.unsplash.com/photo-1586528116311-c6ff7f1c4e94" 
+                      src={img1} 
                       alt="Warehouse Security" 
                       width={600} 
                       height={400} 
@@ -341,7 +345,7 @@ const Warehouse = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/distribution-center.jpg" 
+                  src={img2} 
                   alt="Distribution Centers"
                   fill
                   className="object-cover"
@@ -358,7 +362,7 @@ const Warehouse = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/logistics-facility.jpg" 
+                  src={img3} 
                   alt="Logistics Facilities"
                   fill
                   className="object-cover"
@@ -375,7 +379,7 @@ const Warehouse = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/cold-storage.jpg" 
+                  src={img4} 
                   alt="Cold Storage Facilities"
                   fill
                   className="object-cover"

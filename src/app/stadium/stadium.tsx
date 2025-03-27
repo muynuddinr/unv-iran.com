@@ -16,6 +16,9 @@ import {
   FiLayers
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/stadium/Stadium Security Banner.webp'
+import img2 from '../../../public/stadium/Sports Stadiums.webp'
+import img3 from '../../../public/stadium/Concert Venues.webp'
 
 const Stadium = () => {
   const fadeInUp = {
@@ -54,7 +57,7 @@ const Stadium = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-80 md:h-96">
                 <Image 
-                  src="https://images.unsplash.com/photo-1508098682722-4b6a4d3d9827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  src={img1} 
                   alt="Stadium security systems by Uniview" 
                   fill
                   className="object-cover rounded-xl shadow-xl"
@@ -261,7 +264,7 @@ const Stadium = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/sports-stadium.jpg" 
+                  src={img2} 
                   alt="Sports Stadiums"
                   fill
                   className="object-cover"
@@ -278,7 +281,7 @@ const Stadium = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/concert-venue.jpg" 
+                  src={img3} 
                   alt="Concert Venues"
                   fill
                   className="object-cover"

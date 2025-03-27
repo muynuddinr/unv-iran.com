@@ -16,6 +16,10 @@ import {
   FiActivity
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import img1 from '../../../public/hospital/Hospital banner.webp'
+import img2 from '../../../public/hospital/Major Hospitals.webp'
+import img3 from '../../../public/hospital/Emergency Departments.webp'
+import img4 from '../../../public/hospital/Specialty Clinics.webp'
 
 const Hospital = () => {
   const fadeInUp = {
@@ -57,7 +61,7 @@ const Hospital = () => {
                 <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-100 rounded-full opacity-50 filter blur-3xl"></div>
                 <div className="relative z-10">
                   <Image 
-                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" 
+                    src={img1} 
                     alt="Hospital Security Solutions" 
                     width={600} 
                     height={400} 
@@ -266,7 +270,7 @@ const Hospital = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/major-hospitals.jpg" 
+                  src={img2} 
                   alt="Major Hospitals Security" 
                   fill
                   className="object-cover"
@@ -283,7 +287,7 @@ const Hospital = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/emergency-departments.jpg" 
+                  src={img3} 
                   alt="Emergency Departments Security" 
                   fill
                   className="object-cover"
@@ -300,7 +304,7 @@ const Hospital = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/specialty-clinics.jpg" 
+                  src={img4} 
                   alt="Specialty Clinics Security" 
                   fill
                   className="object-cover"
