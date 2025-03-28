@@ -9,8 +9,11 @@ import homebanner from '../../../public/Homebanner.jpg'
 import retail from '../../../public/solutions/retail.webp'
 import bank from '../../../public/solutions/bank.webp'
 import school from '../../../public/solutions/school.webp'
+import { useLanguage } from '../../context/LanguageContext';
 
 const Home = () => {
+  const { t, dir } = useLanguage();
+
   useEffect(() => {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -52,7 +55,7 @@ const Home = () => {
                 className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium text-sm mb-10 shadow-md mt-8"
               >
                 <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
-                Advanced Security Solutions
+                {t('hero.subtitle')}
               </motion.div>
               
               <motion.h1 
@@ -61,7 +64,7 @@ const Home = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight"
               >
-                Protect What <span className="text-blue-600">Matters Most</span> with Uniview
+                {t('hero.title')}
               </motion.h1>
               
               <motion.p 
@@ -70,7 +73,7 @@ const Home = () => {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed"
               >
-                Enterprise-grade surveillance systems designed for businesses that demand reliability, performance, and intelligent security insights.
+                {t('hero.description')}
               </motion.p>
               
               <motion.div 
@@ -78,18 +81,19 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+                dir={dir}
               >
                 <Link 
                   href="/products" 
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Explore Products
+                  {t('home.exploreProducts')}
                 </Link>
                 <Link 
                   href="/demo" 
                   className="bg-white text-blue-600 border border-blue-200 hover:border-blue-300 px-8 py-4 rounded-lg font-medium transition-all duration-300 shadow hover:shadow-md transform hover:-translate-y-1"
                 >
-                  Request Demo
+                  {t('home.requestDemo')}
                 </Link>
               </motion.div>
             </div>
@@ -130,8 +134,8 @@ const Home = () => {
                           <FiShield className="text-blue-600 text-xl" />
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-900">24/7 Protection</p>
-                          <p className="text-sm text-gray-500">Continuous monitoring</p>
+                          <p className="font-semibold text-gray-900">{t('home.features.protection.title')}</p>
+                          <p className="text-sm text-gray-500">{t('home.features.protection.subtitle')}</p>
                         </div>
                       </div>
                       <div className="flex items-center p-4 sm:p-6">
@@ -172,11 +176,13 @@ const Home = () => {
             className="text-center mb-8 md:mb-10"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Our Offerings
+              {t('home.offeringsTitle')}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Comprehensive Security Solutions</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {t('home.comprehensiveSolutions')}
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our integrated systems provide complete protection for your property, assets, and people with cutting-edge technology.
+              {t('home.solutionsDescription')}
             </p>
           </motion.div>
           
@@ -199,26 +205,26 @@ const Home = () => {
               {
                 icon: FiCamera,
                 color: "blue",
-                title: "Surveillance Cameras",
-                description: "High-definition cameras with advanced features for indoor and outdoor monitoring."
+                title: t('home.offerings.surveillance.title'),
+                description: t('home.offerings.surveillance.description')
               },
               {
                 icon: FiShield,
                 color: "purple",
-                title: "Access Control",
-                description: "Secure entry systems with keycard, biometric, and mobile access options."
+                title: t('home.offerings.access.title'),
+                description: t('home.offerings.access.description')
               },
               {
                 icon: FiVideo,
                 color: "green",
-                title: "Video Management",
-                description: "Intuitive software for monitoring, recording and managing your security footage."
+                title: t('home.offerings.videoManagement.title'),
+                description: t('home.offerings.videoManagement.description')
               },
               {
                 icon: FiBarChart,
                 color: "orange",
-                title: "Analytics",
-                description: "AI-powered video analytics for threat detection and business intelligence."
+                title: t('home.offerings.analytics.title'),
+                description: t('home.offerings.analytics.description')
               }
             ].map((feature, index) => (
               <motion.div 
@@ -258,11 +264,13 @@ const Home = () => {
             className="text-center mb-16"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Industry Expertise
+              {t('home.industryExpertise')}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Solutions For Every Industry</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {t('home.solutionsForIndustry')}
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Tailored security approaches for different business environments and requirements.
+              {t('home.tailoredApproaches')}
             </p>
           </motion.div>
           
@@ -283,23 +291,23 @@ const Home = () => {
           >
             {[
               {
-                title: "Retail",
+                title: t('home.industries.retail.title'),
                 color: "blue",
-                description: "Prevent theft, monitor customer flow, and improve store operations.",
+                description: t('home.industries.retail.description'),
                 bgImage: retail.src,
                 link: "/retail"
               },
               {
-                title: "Banking",
+                title: t('home.industries.banking.title'),
                 color: "purple",
-                description: "Comprehensive security for financial institutions, ATMs, and vaults.",
+                description: t('home.industries.banking.description'),
                 bgImage: bank.src,
                 link: "/bank"
               },
               {
-                title: "Schools",
+                title: t('home.industries.schools.title'),
                 color: "green",
-                description: "Protect students and staff with specialized campus security systems.",
+                description: t('home.industries.schools.description'),
                 bgImage: school.src,
                 link: "/school"
               }
@@ -360,10 +368,10 @@ const Home = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
           >
             {[
-              { number: "5,000+", label: "Installations", icon: FiCheckCircle },
-              { number: "98%", label: "Client Satisfaction", icon: FiUsers },
-              { number: "24/7", label: "Support Available", icon: FiGlobe },
-              { number: "15+", label: "Years Experience", icon: FiAward }
+              { number: "5,000+", label: t('home.stats.installations'), icon: FiCheckCircle },
+              { number: "98%", label: t('home.stats.satisfaction'), icon: FiUsers },
+              { number: "24/7", label: t('home.stats.support'), icon: FiGlobe },
+              { number: "15+", label: t('home.stats.experience'), icon: FiAward }
             ].map((stat, index) => (
               <div key={index} className="p-6">
                 <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -388,11 +396,13 @@ const Home = () => {
             className="text-center mb-16"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Our Advantages
+              {t('home.ourAdvantages')}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Why Choose Uniview</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {t('home.whyChooseUniview')}
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver exceptional security solutions backed by innovation and reliability.
+              {t('home.reliabilityText')}
             </p>
           </motion.div>
           
@@ -413,28 +423,28 @@ const Home = () => {
           >
             {[
               {
-                title: "Industry-Leading Technology",
-                description: "Cutting-edge hardware and software solutions that stay ahead of security challenges."
+                title: t('home.advantages.technology.title'),
+                description: t('home.advantages.technology.description')
               },
               {
-                title: "Seamless Integration",
-                description: "Our systems work together perfectly and integrate with your existing infrastructure."
+                title: t('home.advantages.integration.title'),
+                description: t('home.advantages.integration.description')
               },
               {
-                title: "Exceptional Support",
-                description: "24/7 technical support and maintenance services to keep your systems running smoothly."
+                title: t('home.advantages.support.title'),
+                description: t('home.advantages.support.description')
               },
               {
-                title: "Scalable Solutions",
-                description: "Systems that grow with your business, from small installations to enterprise-scale deployments."
+                title: t('home.advantages.scalable.title'),
+                description: t('home.advantages.scalable.description')
               },
               {
-                title: "Easy Management",
-                description: "User-friendly interfaces that simplify security administration for your team."
+                title: t('home.advantages.management.title'),
+                description: t('home.advantages.management.description')
               },
               {
-                title: "Cost-Effective",
-                description: "Optimal balance of performance and value, with solutions for every budget."
+                title: t('home.advantages.costEffective.title'),
+                description: t('home.advantages.costEffective.description')
               }
             ].map((item, index) => (
               <motion.div key={index} variants={fadeIn} className="flex p-6 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
@@ -466,11 +476,13 @@ const Home = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Get Started Today
+              {t('home.getStarted')}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Ready to enhance your security?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">
+              {t('home.readyToEnhance')}
+            </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss how Uniview&apos;s solutions can address your security challenges and protect what matters most.
+              {t('home.discussSolutions')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
@@ -478,14 +490,14 @@ const Home = () => {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg group"
               >
                 <span className="flex items-center justify-center">
-                  Contact Our Team <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  {t('home.contactTeam')} <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
               <Link 
                 href="/products" 
                 className="bg-transparent text-blue-600 border-2 border-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg"
               >
-                Browse Products
+                {t('home.browseProducts')}
               </Link>
             </div>
           </motion.div>
@@ -503,11 +515,11 @@ const Home = () => {
             className="text-center mb-16"
           >
             <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-medium text-sm mb-5">
-              Common Questions
+              {t('home.faq.subtitle')}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{t('home.faq.title')}</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Find answers to the most common questions about our security solutions and services.
+              {t('home.faq.description')}
             </p>
           </motion.div>
           
@@ -528,24 +540,24 @@ const Home = () => {
           >
             {[
               {
-                question: "What types of businesses can benefit from Uniview security systems?",
-                answer: "Uniview security systems are designed to serve a wide range of industries including retail, banking, education, healthcare, manufacturing, hospitality, and more. Our solutions are scalable and can be customized to meet the specific needs of businesses of all sizes, from small shops to large enterprise facilities."
+                question: t('home.faq.questions.business.question'),
+                answer: t('home.faq.questions.business.answer')
               },
               {
-                question: "How difficult is it to integrate your systems with our existing infrastructure?",
-                answer: "Our systems are designed for seamless integration with most existing security and IT infrastructure. Our experienced technicians will assess your current setup and ensure a smooth integration process with minimal disruption to your operations. We support standard protocols and interfaces to connect with third-party systems and devices."
+                question: t('home.faq.questions.integration.question'),
+                answer: t('home.faq.questions.integration.answer')
               },
               {
-                question: "What kind of customer support do you offer after installation?",
-                answer: "We provide comprehensive 24/7 technical support for all our products and solutions. Our support includes phone and email assistance, remote troubleshooting, regular maintenance, firmware updates, and on-site service when needed. We also offer various support plans to match your specific requirements and budget."
+                question: t('home.faq.questions.support.question'),
+                answer: t('home.faq.questions.support.answer')
               },
               {
-                question: "Can I access my security system remotely?",
-                answer: "Yes, all our modern security solutions include secure remote access capabilities. You can monitor your security feeds, manage access control, and receive alerts from anywhere using our mobile apps or web interfaces. Our remote access features use enterprise-grade encryption to ensure your security data remains protected."
+                question: t('home.faq.questions.remoteAccess.question'),
+                answer: t('home.faq.questions.remoteAccess.answer')
               },
               {
-                question: "What makes Uniview different from other security providers?",
-                answer: "Uniview stands out through our combination of cutting-edge technology, reliability, and customer-focused approach. We develop our own hardware and software solutions to ensure optimal performance and compatibility. Additionally, our extensive industry experience, dedicated support team, and commitment to innovation make us a trusted partner for your security needs."
+                question: t('home.faq.questions.difference.question'),
+                answer: t('home.faq.questions.difference.answer')
               }
             ].map((faq, index) => (
               <motion.div 
@@ -577,12 +589,12 @@ const Home = () => {
             variants={fadeIn}
             className="text-center mt-12"
           >
-            <p className="text-gray-600 mb-6">Still have questions? We're here to help.</p>
+            <p className="text-gray-600 mb-6">{t('home.stillQuestions')}</p>
             <Link 
               href="/support" 
               className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors"
             >
-              Contact our support team <FiArrowRight className="ml-2" />
+              {t('home.contactSupport')} <FiArrowRight className="ml-2" />
             </Link>
           </motion.div>
         </div>

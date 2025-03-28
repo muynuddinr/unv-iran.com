@@ -11,6 +11,9 @@ import {
 } from 'react-icons/fi';
 import logo from '../../../public/UNV-IRAN.png'
 import { IconType } from 'react-icons';
+import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
+import TopBar from './TopBar';
 
 interface NavbarCategory {
   _id: string;
@@ -52,6 +55,8 @@ const Navbar = () => {
 
   // Add state for mobile products submenu
   const [mobileProductsSubMenuOpen, setMobileProductsSubMenuOpen] = useState(false);
+
+  const { t, dir } = useLanguage();
 
   // Fetch navbar categories from the API
   useEffect(() => {
@@ -221,48 +226,10 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      {/* Enhanced Top Contact Bar - Now with white background and no shadow */}
-      <div 
-        className={`fixed top-0 left-0 right-0 z-50 bg-white
-          text-gray-800 py-2.5 transition-all duration-300
-          ${isScrolled ? 'opacity-95 backdrop-blur-sm' : 'opacity-100'}`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-8">
-          <div className="flex items-center space-x-2 hover:text-blue-800 transition-all group">
-            <div className="p-1.5 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
-              <FiMail className="text-blue-600 group-hover:scale-110 transition-transform w-4 h-4" />
-            </div>
-            <a 
-              href="mailto:info@uniview.com" 
-              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm font-medium"
-            >
-              info@uniview.com
-            </a>
-          </div>
-          <div className="flex items-center space-x-2 hover:text-blue-800 transition-all group">
-            <div className="p-1.5 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
-              <FiPhone className="text-blue-600 group-hover:scale-110 transition-transform w-4 h-4" />
-            </div>
-            <a 
-              href="tel:+1-555-123-4567" 
-              className="text-gray-700 hover:text-blue-900 text-xs sm:text-sm font-medium"
-            >
-              +1 (555) 123-4567
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation - Now with white background to match top navbar */}
-      <nav 
-        className={`fixed w-full z-40 top-10 transition-all duration-300 
-          ${isScrolled 
-            ? 'bg-white/95 backdrop-blur-md' 
-            : 'bg-white'
-          }`}
-        role="navigation"
-        aria-label="Main navigation"
+    <header className="fixed w-full z-40 top-0">
+      <TopBar />
+      <nav dir={dir} className={`w-full transition-all duration-300 
+        ${isScrolled ? 'bg-white/95 backdrop-blur-md' : 'bg-white'}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -294,6 +261,9 @@ const Navbar = () => {
 
             {/* Desktop Navigation with Enhanced Interactivity */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
+              {/* Add LanguageSwitcher before the search bar */}
+              <LanguageSwitcher />
+              
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 
@@ -306,8 +276,8 @@ const Navbar = () => {
                       id="products-link"
                       className={`flex items-center py-2 px-3 rounded-lg text-sm transition-colors
                         ${pathname === link.href 
-                          ? 'text-blue-600 bg-blue-50 font-medium' 
-                          : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                          ? 'text-blue-800 bg-blue-50 font-medium' 
+                          : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                         }`}
                       onClick={toggleProductsMegaMenu}
                       aria-expanded={productsMegaMenuOpen}
@@ -338,7 +308,7 @@ const Navbar = () => {
                               <FiBox className="w-5 h-5 text-blue-600" />
                             </div>
                             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                              Product Categories
+                              {t('common.productCategories')}
                             </h3>
                           </div>
 
@@ -407,8 +377,8 @@ const Navbar = () => {
                     href={link.href}
                     className={`group relative py-2.5 px-4 rounded-lg text-sm transition-all duration-300
                       ${isActive 
-                        ? 'text-blue-600 bg-blue-50/80 font-medium shadow-sm shadow-blue-100/50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        ? 'text-blue-800 bg-blue-50/80 font-medium shadow-sm shadow-blue-100/50' 
+                        : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                       }`}
                   >
                     <div className="flex items-center">
@@ -428,16 +398,16 @@ const Navbar = () => {
               <div className="relative group" id="solutions-nav-item">
                 <button
                   id="solutions-link"
-                  className={`relative group flex items-center text-gray-700 
-                    hover:text-blue-600 transition-all duration-300 
+                  className={`relative group flex items-center text-gray-900 
+                    hover:text-blue-800 transition-all duration-300 
                     font-medium text-sm uppercase tracking-wider
-                    ${pathname.startsWith('/solutions') ? 'text-blue-600 font-semibold' : ''}`}
+                    ${pathname.startsWith('/solutions') ? 'text-blue-800 font-semibold' : ''}`}
                   onClick={toggleSolutionsMegaMenu}
                   aria-expanded={solutionsMegaMenuOpen}
                   aria-haspopup="true"
                 >
                   <FiTool className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-                  Solutions
+                  {t('common.solutions')}
                   <FiChevronDown className={`ml-1 transition-transform duration-300 ${solutionsMegaMenuOpen ? 'rotate-180' : ''}`} />
                   <span 
                     className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
@@ -565,14 +535,14 @@ const Navbar = () => {
               
               <Link
                 href="/about"
-                className={`relative group flex items-center text-gray-700 
-                  hover:text-blue-600 transition-all duration-300 
+                className={`relative group flex items-center text-gray-900 
+                  hover:text-blue-800 transition-all duration-300 
                   font-medium text-sm uppercase tracking-wider
-                  ${pathname === '/about' ? 'text-blue-600 font-semibold' : ''}`}
+                  ${pathname === '/about' ? 'text-blue-800 font-semibold' : ''}`}
                 aria-current={pathname === '/about' ? 'page' : undefined}
               >
                 <FiInfo className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-                About
+                {t('common.about')}
                 <span 
                   className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
                     transform transition-transform duration-300 origin-left
@@ -582,14 +552,14 @@ const Navbar = () => {
               
               <Link
                 href="/contact"
-                className={`relative group flex items-center text-gray-700 
-                  hover:text-blue-600 transition-all duration-300 
+                className={`relative group flex items-center text-gray-900 
+                  hover:text-blue-800 transition-all duration-300 
                   font-medium text-sm uppercase tracking-wider
-                  ${pathname === '/contact' ? 'text-blue-600 font-semibold' : ''}`}
+                  ${pathname === '/contact' ? 'text-blue-800 font-semibold' : ''}`}
                 aria-current={pathname === '/contact' ? 'page' : undefined}
               >
                 <FiSend className="mr-2 opacity-60 group-hover:opacity-100 transition-opacity" />
-                Contact
+                {t('common.contact')}
                 <span 
                   className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 
                     transform transition-transform duration-300 origin-left
@@ -620,7 +590,7 @@ const Navbar = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-gray-700 hover:text-blue-600 
+              className="md:hidden text-gray-900 hover:text-blue-800 
                 transition-all duration-300 focus:outline-none 
                 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
                 rounded-md p-2 hover:bg-blue-50"
@@ -651,8 +621,8 @@ const Navbar = () => {
                     href={link.href}
                     className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
                       ${pathname === link.href 
-                        ? 'text-blue-600 bg-blue-50 font-semibold' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                        ? 'text-blue-800 bg-blue-50 font-semibold' 
+                        : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                       }`}
                     onClick={() => setIsOpen(false)}
                     aria-current={pathname === link.href ? 'page' : undefined}
@@ -670,14 +640,14 @@ const Navbar = () => {
                   onClick={toggleMobileSubMenu}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-300 text-sm 
                     ${pathname.startsWith('/solutions') 
-                      ? 'text-blue-600 bg-blue-50 font-semibold' 
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-blue-800 bg-blue-50 font-semibold' 
+                      : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                     }`}
                   aria-expanded={mobileSubMenuOpen}
                 >
                   <div className="flex items-center">
                     <FiTool className="mr-3 opacity-60" />
-                    Solutions
+                    {t('common.solutions')}
                   </div>
                   <FiChevronDown className={`transition-transform duration-300 ${mobileSubMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -687,7 +657,7 @@ const Navbar = () => {
                 >
                   <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg p-3 mx-2">
                     <h3 className="px-3 py-2 text-xs font-bold text-blue-800 uppercase tracking-wider">
-                      By Industry
+                      {t('common.byIndustry')}
                     </h3>
                     <div className="grid grid-cols-2 gap-1">
                       {industryLinks.map((link) => (
@@ -706,7 +676,7 @@ const Navbar = () => {
                   
                   <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg p-3 mx-2">
                     <h3 className="px-3 py-2 text-xs font-bold text-purple-800 uppercase tracking-wider">
-                      By Function
+                      {t('common.byFunction')}
                     </h3>
                     <div className="space-y-1">
                       {functionLinks.map((link) => (
@@ -727,7 +697,7 @@ const Navbar = () => {
                       className="flex items-center justify-between px-3 py-2 mt-2 text-sm text-purple-600 bg-white/80 backdrop-blur-sm rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
-                      <span className="font-medium">View All Solutions</span>
+                      <span className="font-medium">{t('common.viewAllSolutions')}</span>
                       <FiChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 
                         group-hover:translate-x-1 transition-all duration-300" />
                     </Link>
@@ -739,28 +709,28 @@ const Navbar = () => {
                 href="/about"
                 className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
                   ${pathname === '/about' 
-                    ? 'text-blue-600 bg-blue-50 font-semibold' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? 'text-blue-800 bg-blue-50 font-semibold' 
+                    : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                   }`}
                 onClick={() => setIsOpen(false)}
                 aria-current={pathname === '/about' ? 'page' : undefined}
               >
                 <FiInfo className="mr-3 opacity-60" />
-                About
+                {t('common.about')}
               </Link>
               
               <Link
                 href="/contact"
                 className={`flex items-center px-4 py-3 rounded-lg transition-all duration-300 text-sm 
                   ${pathname === '/contact' 
-                    ? 'text-blue-600 bg-blue-50 font-semibold' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? 'text-blue-800 bg-blue-50 font-semibold' 
+                    : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                   }`}
                 onClick={() => setIsOpen(false)}
                 aria-current={pathname === '/contact' ? 'page' : undefined}
               >
                 <FiSend className="mr-3 opacity-60" />
-                Contact
+                {t('common.contact')}
               </Link>
               
               {/* Products Menu Item with Expandable Categories */}
@@ -769,14 +739,14 @@ const Navbar = () => {
                   onClick={toggleMobileProductsSubMenu}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-300 text-sm 
                     ${pathname.startsWith('/products') 
-                      ? 'text-blue-600 bg-blue-50 font-semibold' 
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-blue-800 bg-blue-50 font-semibold' 
+                      : 'text-gray-900 hover:text-blue-800 hover:bg-gray-50'
                     }`}
                   aria-expanded={mobileProductsSubMenuOpen}
                 >
                   <div className="flex items-center">
                     <FiBox className="mr-3 opacity-60" />
-                    Products
+                    {t('common.products')}
                   </div>
                   <FiChevronDown className={`transition-transform duration-300 ${mobileProductsSubMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -786,7 +756,7 @@ const Navbar = () => {
                 >
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 mx-2">
                     <h3 className="px-3 py-2 text-xs font-bold text-blue-800 uppercase tracking-wider">
-                      Categories
+                      {t('common.categories')}
                     </h3>
                     <div className="space-y-1">
                       {navbarCategories.map((category) => (
@@ -825,7 +795,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </header>
   );
 };
 
