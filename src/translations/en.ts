@@ -223,6 +223,83 @@ export default {
         ctaDescription: "Contact our team of Uniview security experts to design a customized surveillance solution for your building's specific needs.",
         ctaButton1: "Request a Consultation",
         ctaButton2: "Explore Our Products"
+      },
+      retail: {
+        heroTitle: "Uniview Iran",
+        heroTitleHighlight: "Retail Security Solutions",
+        heroDescription: "Advanced surveillance and security solutions from Uniview Iran, designed to protect your retail business, prevent losses, and optimize store operations across Iran.",
+        
+        overviewImageAlt: "Retail Security",
+        overviewTitle: "Protecting Your Retail Business in Iran",
+        overviewParagraph1: "As Iran's leading provider of Uniview security solutions, we understand the unique challenges faced by retail businesses across the country. Our comprehensive security systems help protect your assets, reduce theft, and improve operational efficiency.",
+        overviewParagraph2: "Uniview Iran offers state-of-the-art surveillance technology combined with intelligent analytics, providing valuable insights into store operations while ensuring maximum security. Our solutions are perfect for businesses of all sizes, from local shops to major retail chains throughout Iran.",
+        overviewParagraph3: "As the official distributor of Uniview products in Iran, we provide full technical support, warranty services, and professional installation to ensure your security system performs optimally.",
+        
+        featuresTitle: "Key Security Features",
+        featuresSubtitle: "Our retail security solutions include these essential components to ensure comprehensive protection.",
+        
+        feature1Title: "Theft Prevention",
+        feature1Description: "Advanced surveillance systems and anti-theft solutions that help detect and deter shoplifting, employee theft, and organized retail crime before they impact your bottom line.",
+        
+        feature2Title: "Customer Flow Analysis",
+        feature2Description: "Leverage AI-powered analytics to understand customer movement patterns, identify high-traffic areas, optimize store layouts, and improve the overall shopping experience.",
+        
+        feature3Title: "POS Integration",
+        feature3Description: "Seamlessly integrate security cameras with your point-of-sale systems to correlate transaction data with video footage, helping identify suspicious transactions and prevent fraud.",
+        
+        feature4Title: "Inventory Tracking",
+        feature4Description: "Monitor merchandise movement, automate inventory checks, and receive alerts for potential stockouts or irregularities, reducing losses and improving inventory management.",
+        
+        benefitsTitle: "Benefits of Uniview Retail Security",
+        benefitsSubtitle: "Our integrated approach to retail security delivers multiple advantages.",
+        
+        benefit1Title: "Reduced Shrinkage",
+        benefit1Description: "Minimize losses from theft, fraud, and administrative errors with comprehensive monitoring and prevention systems.",
+        
+        benefit2Title: "Business Intelligence",
+        benefit2Description: "Gain valuable insights into customer behavior, store performance, and operational efficiency to make data-driven decisions.",
+        
+        benefit3Title: "Staff Optimization",
+        benefit3Description: "Deploy your team more effectively based on customer traffic patterns and peak shopping times.",
+        
+        benefit4Title: "Enhanced Customer Experience",
+        benefit4Description: "Create a safer shopping environment while gathering insights to improve store layouts and customer service.",
+        
+        benefit5Title: "Remote Management",
+        benefit5Description: "Monitor multiple store locations from anywhere with cloud-based solutions offering mobile access and real-time alerts.",
+        
+        benefit6Title: "Liability Protection",
+        benefit6Description: "Maintain video evidence of incidents to protect against false claims and support insurance requirements.",
+        
+        applicationsTitle: "Applications",
+        applicationsSubtitle: "Our retail security solutions are perfect for a wide range of retail environments.",
+        
+        application1ImageAlt: "Fashion Retail Security",
+        application1Title: "Fashion Retail",
+        application1Description: "Specialized solutions for clothing stores to prevent theft, monitor fitting rooms, and analyze shopper behavior while maintaining a premium shopping experience.",
+        
+        application2ImageAlt: "Electronics Store Security",
+        application2Title: "Electronics Stores",
+        application2Description: "High-value merchandise protection with advanced surveillance, secure product displays, and customer service optimization for technology retailers.",
+        
+        application3ImageAlt: "Supermarket Security",
+        application3Title: "Supermarkets & Groceries",
+        application3Description: "Comprehensive solutions for grocery chains with checkout monitoring, cold storage supervision, and crowd management during peak shopping periods.",
+        
+        caseStudyTitle: "Success Story: Major Iranian Retail Chain",
+        caseStudyImageAlt: "Retail Security Implementation",
+        caseStudyParagraph1: "A leading Iranian retail chain with stores across multiple provinces was experiencing significant security challenges and needed a reliable surveillance solution.",
+        caseStudyParagraph2: "After implementing Uniview Iran's comprehensive security solution, including HD cameras, NVRs, and intelligent video analytics, they achieved:",
+        caseStudyBullet1: "<strong>40% reduction</strong> in shoplifting incidents",
+        caseStudyBullet2: "<strong>25% improvement</strong> in staff productivity through better monitoring",
+        caseStudyBullet3: "<strong>Significant decrease</strong> in false insurance claims",
+        caseStudyBullet4: "Complete return on investment within 12 months",
+        caseStudyParagraph3: "Our local support team provided seamless installation and ongoing maintenance, ensuring maximum system uptime and performance.",
+        
+        ctaTitle: "Secure Your Retail Business with Uniview Iran",
+        ctaDescription: "Contact our local experts today for a personalized security solution tailored to your retail business needs in Iran.",
+        ctaButton1: "Request a Consultation",
+        ctaButton2: "Explore Our Products"
       }
     },
     // Add more translations as needed
