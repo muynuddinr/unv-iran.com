@@ -17,10 +17,12 @@ import {
 } from 'react-icons/fi';
 import logo from '../../../public/logo.svg';
 import { toast, Toaster } from 'react-hot-toast';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t, dir } = useLanguage();
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,42 +30,42 @@ const Footer = () => {
     
     // Email validation
     if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
-      toast.error('Please enter a valid email address');
+      toast.error(t('home.footer.invalidEmail') || 'Please enter a valid email address');
       setIsSubmitting(false);
       return;
     }
     
     // Simulate API call
     setTimeout(() => {
-      toast.success('Thanks for subscribing to our newsletter!');
+      toast.success(t('home.footer.subscribeSuccess') || 'Thanks for subscribing to our newsletter!');
       setEmail('');
       setIsSubmitting(false);
     }, 1000);
   };
 
   const companyLinks = [
-    { href: '/about', label: 'About Us' },
-    { href: '/products', label: 'Products' },
-    { href: '/solutions', label: 'Solutions' },
-    { href: '/contact', label: 'Contact Us' },
+    { href: '/about', label: t('home.footer.aboutUs') || 'About Us' },
+    { href: '/products', label: t('home.footer.products') || 'Products' },
+    { href: '/solutions', label: t('home.footer.solutions') || 'Solutions' },
+    { href: '/contact', label: t('home.footer.contactUs') || 'Contact Us' },
   ];
 
   const supportLinks = [
-    { href: '/support', label: 'Technical Support' },
-    { href: '/faq', label: 'FAQ' },
-    { href: '/downloads', label: 'Downloads & Resources' },
-    { href: '/warranty', label: 'Warranty Information' },
+    { href: '/support', label: t('home.footer.technicalSupport') || 'Technical Support' },
+    { href: '/faq', label: t('home.footer.faq') || 'FAQ' },
+    { href: '/downloads', label: t('home.footer.downloads') || 'Downloads & Resources' },
+    { href: '/warranty', label: t('home.footer.warranty') || 'Warranty Information' },
   ];
 
   const legalLinks = [
-    { href: '/privacy', label: 'Privacy Policy' },
-    { href: '/terms', label: 'Terms of Service' },
-    { href: '/cookies', label: 'Cookie Policy' },
-    { href: '/sitemap', label: 'Sitemap' },
+    { href: '/privacy', label: t('home.footer.privacyPolicy') || 'Privacy Policy' },
+    { href: '/terms', label: t('home.footer.termsOfService') || 'Terms of Service' },
+    { href: '/cookies', label: t('home.footer.cookiePolicy') || 'Cookie Policy' },
+    { href: '/sitemap', label: t('home.footer.sitemap') || 'Sitemap' },
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-blue-100 to-purple-100 text-gray-800 pt-16 pb-8">
+    <footer className="bg-gradient-to-r from-blue-100 to-purple-100 text-gray-800 pt-16 pb-8" dir={dir}>
       <Toaster position="bottom-center" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
@@ -72,10 +74,11 @@ const Footer = () => {
           <div className="relative bg-white rounded-2xl shadow-lg py-8 px-6 md:py-12 md:px-12">
             <div className="md:flex md:items-center md:justify-between">
               <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">Subscribe to Our Newsletter</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                  {t('home.footer.newsletterTitle') || 'Subscribe to Our Newsletter'}
+                </h3>
                 <p className="text-gray-600">
-                  Stay updated with our latest products, solutions, and security tips. 
-                  No spam, we promise!
+                  {t('home.footer.newsletterDescription') || 'Stay updated with our latest products, solutions, and security tips. No spam, we promise!'}
                 </p>
               </div>
               <div className="md:w-1/2">
@@ -84,7 +87,7 @@ const Footer = () => {
                     <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
                       type="email"
-                      placeholder="Your email address"
+                      placeholder={t('home.footer.emailPlaceholder') || "Your email address"}
                       className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-gray-50"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -103,7 +106,7 @@ const Footer = () => {
                     ) : (
                       <>
                         <FiSend className="mr-2" />
-                        Subscribe
+                        {t('home.footer.subscribeButton') || 'Subscribe'}
                       </>
                     )}
                   </button>
@@ -128,7 +131,7 @@ const Footer = () => {
               {/* <span className="ml-3 text-xl font-bold">Uniview</span> */}
             </div>
             <p className="text-gray-700 mb-6">
-              Leading provider of professional video surveillance solutions with cutting-edge technology and exceptional customer service.
+              {t('home.footer.companyDescription') || 'Leading provider of professional video surveillance solutions with cutting-edge technology and exceptional customer service.'}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
@@ -151,7 +154,9 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-gray-800">Company</h4>
+            <h4 className="text-lg font-semibold mb-6 text-gray-800">
+              {t('home.footer.companyTitle') || 'Company'}
+            </h4>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
@@ -169,7 +174,9 @@ const Footer = () => {
 
           {/* Support Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-gray-800">Support</h4>
+            <h4 className="text-lg font-semibold mb-6 text-gray-800">
+              {t('home.footer.supportTitle') || 'Support'}
+            </h4>
             <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.href}>
@@ -187,13 +194,15 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-gray-800">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-6 text-gray-800">
+              {t('home.footer.contactTitle') || 'Contact Us'}
+            </h4>
             <div className="space-y-4">
               <div className="flex items-start">
                 <FiMapPin className="text-blue-600 mt-1 mr-3 flex-shrink-0" />
                 <span className="text-gray-600">
-                  123 Security Avenue, Suite 101<br />
-                  San Francisco, CA 94103
+                  {t('home.footer.address') || '123 Security Avenue, Suite 101'}<br />
+                  {t('home.footer.city') || 'San Francisco, CA 94103'}
                 </span>
               </div>
               <div className="flex items-center">
@@ -215,7 +224,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-600 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Uniview Technologies. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('home.footer.copyright') || 'Uniview Technologies. All rights reserved.'}
           </div>
           <div className="flex space-x-6">
             {legalLinks.map((link) => (

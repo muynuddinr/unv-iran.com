@@ -3,8 +3,11 @@
 import React, { useState, FormEvent } from 'react';
 import { FiSend, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 import { toast, Toaster } from 'react-hot-toast';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ContactPage = () => {
+  const { t, dir } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -95,16 +98,16 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-white pt-24" dir={dir}>
       <Toaster position="top-right" />
       
       <div className="container mx-auto px-4 py-16 lg:py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-gradient">
-            Get in Touch
+            {t('home.contact.title') || 'Get in Touch'}
           </h1>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            {t('home.contact.subtitle') || 'Have questions? We\'d love to hear from you. Send us a message and we\'ll respond as soon as possible.'}
           </p>
         </div>
 
@@ -114,7 +117,7 @@ const ContactPage = () => {
               before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 
               before:bg-gradient-to-r before:from-blue-600 before:via-purple-600 before:to-indigo-600">
             <h2 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
-              <FiSend className="mr-3 text-blue-600" /> Contact Us
+              <FiSend className="mr-3 text-blue-600" /> {t('home.contact.contactUsTitle') || 'Contact Us'}
             </h2>
             
             <div className="space-y-8">
@@ -123,7 +126,7 @@ const ContactPage = () => {
                   <FiMail className="text-blue-600 text-2xl" />
                 </div>
                 <div>
-                  <p className="text-gray-600 text-sm">Email</p>
+                  <p className="text-gray-600 text-sm">{t('home.contact.emailLabel') || 'Email'}</p>
                   <a 
                     href="mailto:info@uniview.com" 
                     className="text-blue-800 hover:text-blue-600 font-medium"
@@ -138,7 +141,7 @@ const ContactPage = () => {
                   <FiPhone className="text-blue-600 text-2xl" />
                 </div>
                 <div>
-                  <p className="text-gray-600 text-sm">Phone</p>
+                  <p className="text-gray-600 text-sm">{t('home.contact.phoneLabel') || 'Phone'}</p>
                   <a 
                     href="tel:+1-555-123-4567" 
                     className="text-blue-800 hover:text-blue-600 font-medium"
@@ -153,9 +156,9 @@ const ContactPage = () => {
                   <FiMapPin className="text-blue-600 text-2xl" />
                 </div>
                 <div>
-                  <p className="text-gray-600 text-sm">Address</p>
+                  <p className="text-gray-600 text-sm">{t('home.contact.addressLabel') || 'Address'}</p>
                   <p className="text-gray-800 font-medium">
-                    123 Tech Lane, Innovation Park, CA 94000
+                    {t('home.contact.address') || '123 Tech Lane, Innovation Park, CA 94000'}
                   </p>
                 </div>
               </div>
@@ -166,17 +169,17 @@ const ContactPage = () => {
               hover:transform hover:scale-105 transition-all duration-300 relative overflow-hidden
               before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-1 
               before:bg-gradient-to-r before:from-purple-600 before:via-indigo-600 before:to-blue-600">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">Send us a Message</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">{t('home.contact.formTitle') || 'Send us a Message'}</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">{t('home.contact.nameLabel') || 'Your Name'}</label>
                   <input
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder={t('home.contact.namePlaceholder') || "John Doe"}
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border 
@@ -188,12 +191,12 @@ const ContactPage = () => {
                   {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">{t('home.contact.emailInputLabel') || 'Email Address'}</label>
                   <input
                     id="email"
                     type="email"
                     name="email"
-                    placeholder="john@example.com"
+                    placeholder={t('home.contact.emailPlaceholder') || "john@example.com"}
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg border 
@@ -207,12 +210,12 @@ const ContactPage = () => {
               </div>
               
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number (Optional)</label>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">{t('home.contact.phoneInputLabel') || 'Phone Number (Optional)'}</label>
                 <input
                   id="phone"
                   type="tel"
                   name="phone"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder={t('home.contact.phonePlaceholder') || "+1 (555) 123-4567"}
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300
@@ -223,11 +226,11 @@ const ContactPage = () => {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">{t('home.contact.messageLabel') || 'Your Message'}</label>
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="How can we help you?"
+                  placeholder={t('home.contact.messagePlaceholder') || "How can we help you?"}
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
@@ -248,7 +251,7 @@ const ContactPage = () => {
                   group shadow-lg hover:shadow-xl transform hover:-translate-y-1
                   relative overflow-hidden animate-gradient bg-[length:200%_auto]"
               >
-                <span className="font-medium relative z-10">Send Message</span>
+                <span className="font-medium relative z-10">{t('home.contact.submitButton') || 'Send Message'}</span>
                 <FiSend className="ml-2 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
             </form>
