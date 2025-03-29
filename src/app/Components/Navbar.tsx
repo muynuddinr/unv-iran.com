@@ -261,9 +261,6 @@ const Navbar = () => {
 
             {/* Desktop Navigation with Enhanced Interactivity */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
-              {/* Add LanguageSwitcher before the search bar */}
-              <LanguageSwitcher />
-              
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 
