@@ -61,7 +61,6 @@ const Footer = () => {
     { href: '/privacy', label: t('home.footer.privacyPolicy') || 'Privacy Policy' },
     { href: '/terms', label: t('home.footer.termsOfService') || 'Terms of Service' },
     { href: '/cookies', label: t('home.footer.cookiePolicy') || 'Cookie Policy' },
-    { href: '/sitemap', label: t('home.footer.sitemap') || 'Sitemap' },
   ];
 
   return (
