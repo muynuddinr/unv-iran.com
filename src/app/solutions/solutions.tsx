@@ -15,6 +15,7 @@ import {
 } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useLanguage } from '../../context/LanguageContext';
 import bank from '../../../public/solutions/bank.webp'
 import hospital from '../../../public/solutions/hospital.webp';
 import building from '../../../public/solutions/Buildings .webp'
@@ -236,10 +237,11 @@ const gradientOverlay = "after:absolute after:inset-0 after:bg-gradient-to-t aft
 const glassEffect = "backdrop-blur-md bg-white/10 border border-white/20";
 
 // Enhanced MobileSolutionCard with interactive features
-const MobileSolutionCard = ({ category, onSelect, isSelected }: {
+const MobileSolutionCard = ({ category, onSelect, isSelected, t }: {
   category: SolutionCategory;
   onSelect: () => void;
   isSelected: boolean;
+  t: (key: string) => string;
 }) => (
   <motion.div 
     className={`relative backdrop-blur-lg rounded-xl shadow-lg overflow-hidden 
@@ -259,7 +261,7 @@ const MobileSolutionCard = ({ category, onSelect, isSelected }: {
     >
       <Image 
         src={category.image}
-        alt={category.name}
+        alt={t(`home.solutions.categories.${category.id}.name`) || category.name}
         fill
         className={`object-cover transition-transform duration-300 ${
           isSelected ? 'scale-105' : 'scale-100'
@@ -269,7 +271,7 @@ const MobileSolutionCard = ({ category, onSelect, isSelected }: {
       <div className="absolute inset-0 p-3 flex flex-col justify-between z-20">
         <div className="flex items-start justify-between">
           <h3 className="text-lg font-bold text-white drop-shadow-lg">
-            {category.name}
+            {t(`home.solutions.categories.${category.id}.name`) || category.name}
           </h3>
           <motion.div
             initial={{ scale: 0 }}
@@ -283,7 +285,7 @@ const MobileSolutionCard = ({ category, onSelect, isSelected }: {
     </div>
     <div className="p-3">
       <p className="text-xs text-gray-600 line-clamp-2 mb-2 h-8">
-        {category.description}
+        {t(`home.solutions.categories.${category.id}.description`) || category.description}
       </p>
       <div className="flex flex-wrap gap-1.5 mb-2">
         {category.features.slice(0, 2).map((feature) => (
@@ -295,7 +297,7 @@ const MobileSolutionCard = ({ category, onSelect, isSelected }: {
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
-            {feature}
+            {t(`home.solutions.categories.${category.id}.features.${category.features.indexOf(feature)}`) || feature}
           </span>
         ))}
       </div>
@@ -308,7 +310,7 @@ const MobileSolutionCard = ({ category, onSelect, isSelected }: {
                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                    }`}
       >
-        <span>{isSelected ? 'Selected' : 'View Details'}</span>
+        <span>{isSelected ? t('home.solutions.selected') || 'Selected' : t('home.solutions.viewDetails') || 'View Details'}</span>
         <FiArrowRight className={`text-xs transition-transform duration-300 ${
           isSelected ? 'translate-x-0.5' : ''
         }`} />
@@ -323,6 +325,7 @@ const SolutionsPage: React.FC = () => {
     threshold: 0.1,
     triggerOnce: true
   });
+  const { t, dir } = useLanguage();
 
   // Memoized category list component
   const CategoryList = useMemo(() => (
@@ -351,7 +354,7 @@ const SolutionsPage: React.FC = () => {
                   ? 'bg-blue-600' 
                   : 'bg-gray-300 group-hover:bg-blue-400'
               }`} />
-              <span className="font-semibold">{category.name}</span>
+              <span className="font-semibold">{t(`home.solutions.categories.${category.id}.name`) || category.name}</span>
             </div>
             <FiArrowRight className={`transform transition-all duration-300 ${
               selectedCategory.id === category.id 
@@ -360,15 +363,15 @@ const SolutionsPage: React.FC = () => {
             }`} />
           </div>
           <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-700 transition-colors pl-5">
-            {category.description.slice(0, 80)}...
+            {t(`home.solutions.categories.${category.id}.description`) || category.description.slice(0, 80)}...
           </p>
         </motion.button>
       ))}
     </motion.div>
-  ), [selectedCategory]);
+  ), [selectedCategory, t]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-blue-50/30" dir={dir}>
       <div className="container mx-auto px-4 py-12 lg:py-20">
         {/* Refined Hero Section - added mt-12 to increase top margin */}
         <motion.section 
@@ -400,10 +403,10 @@ const SolutionsPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Intelligent Security for{' '}
+              {t('home.solutions.title') || 'Intelligent Security for'}{' '}
               <span className="relative inline-block">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
-                  Every Industry
+                  {t('home.solutions.titleHighlight') || 'Every Industry'}
                 </span>
                 <motion.div
                   className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"
@@ -421,8 +424,7 @@ const SolutionsPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Experience next-generation security solutions powered by AI and advanced analytics, 
-            tailored for your industry's unique challenges.
+            {t('home.solutions.description') || 'Experience next-generation security solutions powered by AI and advanced analytics, tailored for your industry\'s unique challenges.'}
           </motion.p>
 
           {/* Refined action buttons */}
@@ -438,7 +440,7 @@ const SolutionsPage: React.FC = () => {
                         hover:shadow-md hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5"
             >
               <span className="flex items-center space-x-2">
-                <span className="text-sm">Get Started</span>
+                <span className="text-sm">{t('home.solutions.getStartedButton') || 'Get Started'}</span>
                 <FiArrowRight className="transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
@@ -448,7 +450,7 @@ const SolutionsPage: React.FC = () => {
                         hover:border-blue-500 hover:text-blue-600 transition-all duration-300 hover:-translate-y-0.5"
             >
               <span className="flex items-center space-x-2">
-                <span className="text-sm">Watch Demo</span>
+                <span className="text-sm">{t('home.solutions.watchDemoButton') || 'Watch Demo'}</span>
                 <FiVideo className="transition-transform group-hover:scale-110" />
               </span>
             </Link>
@@ -489,6 +491,7 @@ const SolutionsPage: React.FC = () => {
                       inline: 'nearest'
                     });
                   }}
+                  t={t}
                 />
               ))}
             </div>
@@ -512,7 +515,7 @@ const SolutionsPage: React.FC = () => {
                   <div className="relative h-48">
                     <Image 
                       src={selectedCategory.image}
-                      alt={`${selectedCategory.name} Security Solutions`}
+                      alt={`${t(`home.solutions.categories.${selectedCategory.id}.name`) || selectedCategory.name} Security Solutions`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw"
@@ -531,10 +534,10 @@ const SolutionsPage: React.FC = () => {
                         </span>
                       </motion.div>
                       <h3 className="text-2xl font-bold text-white mb-1">
-                        {selectedCategory.name}
+                        {t(`home.solutions.categories.${selectedCategory.id}.name`) || selectedCategory.name}
                       </h3>
                       <p className="text-white/90 text-sm">
-                        {selectedCategory.description}
+                        {t(`home.solutions.categories.${selectedCategory.id}.description`) || selectedCategory.description}
                       </p>
                     </div>
                   </div>
@@ -556,7 +559,7 @@ const SolutionsPage: React.FC = () => {
                                    bg-gradient-to-r ${selectedCategory.color} text-white`}
                       >
                         <FiArrowUp className="mr-1" />
-                        <span>Back to solutions</span>
+                        <span>{t('home.solutions.backToSolutions') || 'Back to solutions'}</span>
                       </motion.button>
                     </div>
                     
@@ -574,7 +577,9 @@ const SolutionsPage: React.FC = () => {
                                           bg-gradient-to-r ${selectedCategory.color} text-white`}>
                             <FiCheckCircle />
                           </div>
-                          <span className="text-sm text-gray-800 font-medium">{feature}</span>
+                          <span className="text-sm text-gray-800 font-medium">
+                            {t(`home.solutions.categories.${selectedCategory.id}.features.${index}`) || feature}
+                          </span>
                         </motion.div>
                       ))}
                     </div>
@@ -585,7 +590,7 @@ const SolutionsPage: React.FC = () => {
                                 bg-gradient-to-r ${selectedCategory.color} 
                                 text-white px-4 py-3.5 rounded-lg shadow-lg text-sm font-medium`}
                     >
-                      <span>Explore {selectedCategory.name} Solutions</span>
+                      <span>{t('home.solutions.exploreSolutions') || 'Explore'}{' '}{t(`home.solutions.categories.${selectedCategory.id}.name`) || selectedCategory.name}{' '}{t('home.solutions.solutions') || 'Solutions'}</span>
                       <FiArrowRight />
                     </Link>
                   </div>
@@ -608,7 +613,7 @@ const SolutionsPage: React.FC = () => {
                 <div className="relative h-64 group">
                   <Image 
                     src={selectedCategory.image}
-                    alt={`${selectedCategory.name} Security Solutions`}
+                    alt={`${t(`home.solutions.categories.${selectedCategory.id}.name`) || selectedCategory.name} Security Solutions`}
                     fill
                     sizes="(max-width: 768px) 100vw, 66vw"
                     className="object-cover transition duration-500 ease-in-out group-hover:scale-105"
@@ -622,7 +627,7 @@ const SolutionsPage: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                       >
-                        {selectedCategory.name}
+                        {t(`home.solutions.categories.${selectedCategory.id}.name`) || selectedCategory.name}
                       </motion.h2>
                       <motion.p 
                         className="text-base text-white/90 drop-shadow max-w-xl"
@@ -630,7 +635,7 @@ const SolutionsPage: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                       >
-                        {selectedCategory.description}
+                        {t(`home.solutions.categories.${selectedCategory.id}.description`) || selectedCategory.description}
                       </motion.p>
                     </div>
                   </div>
@@ -657,7 +662,7 @@ const SolutionsPage: React.FC = () => {
                           <FiCheckCircle className="text-base" />
                         </div>
                         <span className="text-base text-gray-700 group-hover:text-blue-700 transition font-medium">
-                          {feature}
+                          {t(`home.solutions.categories.${selectedCategory.id}.features.${index}`) || feature}
                         </span>
                       </motion.li>
                     ))}
@@ -675,7 +680,7 @@ const SolutionsPage: React.FC = () => {
                         selectedCategory.color ? `bg-gradient-to-r ${selectedCategory.color}` : 'bg-blue-600'
                       } text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-1`}
                     >
-                      <span>Learn more</span>
+                      <span>{t('home.solutions.learnMore') || 'Learn more'}</span>
                       <FiArrowRight />
                     </Link>
                   </motion.div>
@@ -696,10 +701,10 @@ const SolutionsPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-transparent -z-10 rounded-3xl" />
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Core Security Technologies
+              {t('home.solutions.coreSolutionsTitle') || 'Our Core Security Technologies'}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Advanced security solutions that adapt to your evolving needs.
+              {t('home.solutions.coreSolutionsDescription') || 'Advanced security solutions that adapt to your evolving needs.'}
             </p>
           </div>
 
@@ -721,9 +726,11 @@ const SolutionsPage: React.FC = () => {
                   <solution.icon className="text-white text-2xl group-hover:scale-110 transition-transform" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-blue-700 transition-colors">
-                  {solution.title}
+                  {t(`home.solutions.coreSolution${index + 1}Title`) || solution.title}
                 </h3>
-                <p className="text-gray-600 text-lg leading-relaxed">{solution.description}</p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {t(`home.solutions.coreSolution${index + 1}Description`) || solution.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -746,10 +753,10 @@ const SolutionsPage: React.FC = () => {
           
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-lg">
-              Elevate Your Security Posture Today
+              {t('home.solutions.ctaTitle') || 'Elevate Your Security Posture Today'}
             </h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Partner with Uniview to design a customized security solution that meets your unique requirements.
+              {t('home.solutions.ctaDescription') || 'Partner with Uniview to design a customized security solution that meets your unique requirements.'}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-6">
               <Link 
@@ -757,7 +764,7 @@ const SolutionsPage: React.FC = () => {
                 className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 group"
               >
                 <span className="flex items-center justify-center">
-                  Request a Consultation
+                  {t('home.solutions.ctaButton1') || 'Request a Consultation'}
                   <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
@@ -765,7 +772,7 @@ const SolutionsPage: React.FC = () => {
                 href="/products" 
                 className="bg-transparent border-2 border-white text-white hover:bg-white/20 px-8 py-4 rounded-full font-medium transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white"
               >
-                Explore Our Products
+                {t('home.solutions.ctaButton2') || 'Explore Our Products'}
               </Link>
             </div>
           </div>

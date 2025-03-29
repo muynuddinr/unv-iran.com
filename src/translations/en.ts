@@ -846,6 +846,42 @@ export default {
       messageLabel: 'Your Message',
       messagePlaceholder: 'How can we help you?',
       submitButton: 'Send Message'
+    },
+    solutions: {
+      title: 'Intelligent Security for',
+      titleHighlight: 'Every Industry',
+      description: 'Experience next-generation security solutions powered by AI and advanced analytics, tailored for your industry\'s unique challenges.',
+      getStartedButton: 'Get Started',
+      watchDemoButton: 'Watch Demo',
+      viewDetails: 'View Details',
+      selected: 'Selected',
+      coreSolutionsTitle: 'Our Core Security Technologies',
+      coreSolutionsDescription: 'Advanced security solutions that adapt to your evolving needs.',
+      coreSolution1Title: 'Intelligent Video Surveillance',
+      coreSolution1Description: 'High-definition cameras with advanced analytics capabilities for real-time monitoring.',
+      coreSolution2Title: 'Secure Access Control',
+      coreSolution2Description: 'Multi-factor authentication and biometric solutions for enhanced entry management.',
+      coreSolution3Title: 'Unified Video Management',
+      coreSolution3Description: 'Centralized platform for recording, analyzing, and managing video data across all your facilities.',
+      coreSolution4Title: 'AI-Powered Video Analytics',
+      coreSolution4Description: 'Proactive insights and anomaly detection for enhanced security and operational intelligence.',
+      ctaTitle: 'Elevate Your Security Posture Today',
+      ctaDescription: 'Partner with Uniview to design a customized security solution that meets your unique requirements.',
+      ctaButton1: 'Request a Consultation',
+      ctaButton2: 'Explore Our Products',
+      categories: {
+        building: {
+          name: 'Building',
+          description: 'Comprehensive security solutions for commercial and residential complexes.',
+          features: [
+            'Perimeter Protection',
+            'Access Control Systems',
+            'Video Surveillance',
+            'Visitor Management'
+          ]
+        },
+        // Add other categories following the same pattern
+      }
     }
   },
   // Add more translations as needed
