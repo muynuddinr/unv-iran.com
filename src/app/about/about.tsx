@@ -4,18 +4,37 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiAward, FiGlobe, FiTarget, FiCheck, FiArrowRight, FiSend } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 
 const About = () => {
+  const { t, dir } = useLanguage();
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-white pt-24" dir={dir}>
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Uniview</span>
+            {t('home.about.heroTitle') || 'About'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{t('home.about.heroTitleHighlight') || 'Uniview Iran'}</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            A global leader in security and surveillance solutions, committed to making the world safer through innovative technology.
+            {t('home.about.heroDescription') || 'The authorized distributor of Uniview security and surveillance solutions in Iran, committed to providing cutting-edge technology with local expertise and support.'}
           </p>
         </div>
       </section>
@@ -30,7 +49,7 @@ const About = () => {
               <div className="rounded-lg overflow-hidden">
                 <Image 
                   src="https://images.unsplash.com/photo-1517048676732-d65bc9a6a25f" 
-                  alt="Uniview Headquarters" 
+                  alt={t('home.about.companyImageAlt') || "Uniview Iran Headquarters"} 
                   width={600} 
                   height={400} 
                   className="w-full h-auto object-cover"
@@ -39,15 +58,15 @@ const About = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.about.storyTitle') || "Our Story"}</h2>
             <p className="text-gray-700 mb-6">
-              Founded in 2011, Uniview has rapidly grown to become one of the leading global providers of video surveillance products and solutions. With a strong commitment to quality, innovation, and customer satisfaction, we&apos;ve established ourselves as a trusted partner for businesses and organizations worldwide.
+              {t('home.about.storyParagraph1') || "Established as the exclusive authorized distributor of Uniview products in Iran, we bring world-class security technology to the Iranian market. We combine Uniview's global expertise with deep local knowledge to deliver security solutions perfectly tailored to the unique requirements of businesses across Iran."}
             </p>
             <p className="text-gray-700 mb-6">
-              Our journey began with a simple vision: to create cutting-edge security technology that helps protect people and assets. Today, we proudly serve customers across various industries in over 145 countries and regions, with a comprehensive portfolio of IP cameras, network video recorders, and integrated security solutions.
+              {t('home.about.storyParagraph2') || "Our mission is to provide Iranian businesses and organizations with access to cutting-edge Uniview security systems, supported by comprehensive local technical expertise, installation services, and ongoing maintenance. We're committed to ensuring our clients receive the highest standard of protection with solutions specifically configured for the Iranian market."}
             </p>
             <p className="text-gray-700">
-              At Uniview, we believe that security is not just about technology—it&apos;s about creating peace of mind for our customers. This philosophy drives everything we do, from product development to customer support.
+              {t('home.about.storyParagraph3') || "At Uniview Iran, we believe that security is not just about technology—it's about creating peace of mind through reliable solutions backed by responsive local support. This philosophy guides our approach to every project we undertake across Iran."}
             </p>
           </div>
         </div>
@@ -57,50 +76,65 @@ const About = () => {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission & Values</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.about.mvTitle') || "Our Mission & Values"}</h2>
             <p className="text-xl text-gray-700">
-              Guided by our commitment to excellence, we strive to create a safer world through innovative security solutions.
+              {t('home.about.mvDescription') || "Guided by our commitment to excellence, we strive to elevate security standards across Iran through innovative Uniview solutions and exceptional service."}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
               <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 text-white">
                 <FiTarget className="text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Our Mission</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.missionTitle') || "Our Mission"}</h3>
               <p className="text-gray-700">
-                To provide innovative, reliable, and user-friendly security solutions that help our customers protect what matters most to them, while setting new standards for the industry.
+                {t('home.about.missionDescription') || "To provide businesses and organizations across Iran with access to Uniview's world-class security technology, complemented by exceptional local support, ensuring optimal protection tailored to regional requirements."}
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105">
+            <motion.div 
+              className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
               <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6 text-white">
                 <FiGlobe className="text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Our Vision</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.visionTitle') || "Our Vision"}</h3>
               <p className="text-gray-700">
-                To be the global leader in security technology, recognized for our innovation, quality, and commitment to making the world a safer place through advanced surveillance solutions.
+                {t('home.about.visionDescription') || "To be Iran's leading provider of security technology, recognized for our technical expertise, superior customer service, and commitment to bringing the most advanced Uniview surveillance solutions to the Iranian market."}
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-gradient-to-br from-blue-50 to-purple-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105">
+            <motion.div 
+              className="bg-gradient-to-br from-blue-50 to-purple-100 rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105"
+              variants={fadeInUp}
+            >
               <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mb-6 text-white">
                 <FiAward className="text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Our Values</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.valuesTitle') || "Our Values"}</h3>
               <p className="text-gray-700">
-                Integrity, innovation, excellence, and customer focus form the foundation of everything we do. We believe in building lasting relationships based on trust and delivering exceptional value.
+                {t('home.about.valuesDescription') || "Integrity, customer focus, technical excellence, and local expertise form the foundation of everything we do. We believe in building lasting relationships with our Iranian clients through trust, reliability, and exceptional service."}
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Key Values */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">The Principles That Guide Us</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">{t('home.about.principlesTitle') || "The Principles That Guide Us"}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex p-6">
@@ -110,9 +144,9 @@ const About = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Customer-Focused Innovation</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.about.principle1Title') || "Local Expertise, Global Technology"}</h3>
                 <p className="text-gray-600">
-                  We develop our products with customer needs at the forefront, constantly pushing the boundaries of what&apos;s possible in security technology.
+                  {t('home.about.principle1Description') || "We combine deep understanding of Iran's security landscape with Uniview's cutting-edge global technology to deliver solutions perfectly adapted to local requirements."}
                 </p>
               </div>
             </div>
@@ -124,9 +158,9 @@ const About = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Quality Without Compromise</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.about.principle2Title') || "Comprehensive Support"}</h3>
                 <p className="text-gray-600">
-                  We maintain rigorous quality standards throughout our production process, ensuring our products deliver exceptional reliability and performance.
+                  {t('home.about.principle2Description') || "We provide end-to-end service including consultation, system design, professional installation, training, and ongoing technical support throughout Iran, ensuring optimal system performance."}
                 </p>
               </div>
             </div>
@@ -138,9 +172,9 @@ const About = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Global Responsibility</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.about.principle3Title') || "Industry-Specific Solutions"}</h3>
                 <p className="text-gray-600">
-                  We believe in contributing positively to the communities we serve, promoting sustainability, and maintaining the highest ethical standards.
+                  {t('home.about.principle3Description') || "We develop tailored security solutions for various sectors across Iran, including retail, banking, education, hospitality, warehousing, and stadiums, addressing each industry's unique security challenges."}
                 </p>
               </div>
             </div>
@@ -152,9 +186,9 @@ const About = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Collaborative Excellence</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.about.principle4Title') || "Customer Satisfaction"}</h3>
                 <p className="text-gray-600">
-                  We foster a culture of teamwork and continuous improvement, where diverse perspectives come together to create extraordinary solutions.
+                  {t('home.about.principle4Description') || "We measure our success by the satisfaction of our clients across Iran, focusing on building long-term relationships through responsive service, quality products, and reliable support."}
                 </p>
               </div>
             </div>
@@ -162,28 +196,28 @@ const About = () => {
         </div>
       </section>
 
-      {/* Global Presence */}
+      {/* Regional Presence */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Global Presence</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.about.globalTitle') || "Our Coverage in Iran"}</h2>
                 <p className="text-gray-700 mb-6">
-                  With headquarters in Asia and operations spanning across the Americas, Europe, Middle East, and Africa, Uniview has established a truly global footprint in the security industry.
+                  {t('home.about.globalParagraph1') || "As the authorized distributor of Uniview products in Iran, we've established a comprehensive network to provide exceptional service throughout the country."}
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our international network includes:
+                  {t('home.about.globalParagraph2') || "Our nationwide infrastructure includes:"}
                 </p>
                 <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                  <li>Research and development centers in multiple countries</li>
-                  <li>Manufacturing facilities with advanced production capabilities</li>
-                  <li>Local sales and support teams providing personalized service</li>
-                  <li>A network of over 1,000 trusted distribution partners</li>
-                  <li>Solutions deployed across 145+ countries and regions</li>
+                  <li>{t('home.about.globalBullet1') || "Headquarters in Tehran with showroom and training facilities"}</li>
+                  <li>{t('home.about.globalBullet2') || "Regional offices in major cities including Isfahan, Shiraz, Mashhad, and Tabriz"}</li>
+                  <li>{t('home.about.globalBullet3') || "Technical support teams providing rapid response throughout Iran"}</li>
+                  <li>{t('home.about.globalBullet4') || "A network of certified installation partners across the country"}</li>
+                  <li>{t('home.about.globalBullet5') || "Warehousing facilities ensuring prompt product availability"}</li>
                 </ul>
                 <p className="text-gray-700">
-                  This global presence allows us to combine international expertise with local knowledge, ensuring our customers receive solutions tailored to their specific regional needs.
+                  {t('home.about.globalParagraph3') || "This extensive presence allows us to provide timely, localized support to customers throughout Iran while maintaining consistent service quality and technical expertise."}
                 </p>
               </div>
               <div className="relative">
@@ -193,7 +227,7 @@ const About = () => {
                   <div className="rounded-lg overflow-hidden">
                     <Image 
                       src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-                      alt="Uniview Global Presence" 
+                      alt={t('home.about.globalImageAlt') || "Uniview Iran Regional Presence"} 
                       width={600} 
                       height={400} 
                       className="w-full h-auto object-cover"
@@ -209,44 +243,44 @@ const About = () => {
       {/* Innovation & Technology */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Innovation & Technology</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.about.innovationTitle') || "Uniview Technology & Innovation"}</h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            At the heart of our success is our relentless commitment to technological advancement and innovation.
+            {t('home.about.innovationDescription') || "As the authorized distributor of Uniview in Iran, we provide access to the brand's cutting-edge security technology, backed by our local expertise."}
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-blue-600">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">Research & Development</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.rdTitle') || "Advanced Product Range"}</h3>
             <p className="text-gray-700 mb-4">
-              Our R&D team comprises over 1,500 engineers dedicated to pushing the boundaries of security technology. We invest more than 15% of our annual revenue into research and development.
+              {t('home.about.rdParagraph1') || "We offer Uniview's complete portfolio of security products, including high-definition IP cameras, network video recorders, video management software, and integrated security solutions specifically configured for the Iranian market."}
             </p>
             <p className="text-gray-700">
-              This commitment has resulted in numerous patents and groundbreaking advancements in areas such as AI-powered video analytics, high-definition imaging, and smart security integration.
+              {t('home.about.rdParagraph2') || "Our team stays continuously updated on Uniview's latest innovations, ensuring Iranian customers have access to the most advanced security technologies available globally."}
             </p>
           </div>
           
           <div className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-purple-600">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">Manufacturing Excellence</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.manufacturingTitle') || "Technical Expertise"}</h3>
             <p className="text-gray-700 mb-4">
-              Our state-of-the-art manufacturing facilities combine automated production lines with rigorous quality control processes, ensuring every product meets our exacting standards.
+              {t('home.about.manufacturingParagraph1') || "Our team of security specialists receives comprehensive training directly from Uniview, making them experts in system design, configuration, troubleshooting, and optimization for Iranian environments."}
             </p>
             <p className="text-gray-700">
-              We have implemented Industry 4.0 practices throughout our production ecosystem, enabling greater efficiency, consistency, and customization capabilities.
+              {t('home.about.manufacturingParagraph2') || "We provide professional system design services, creating customized security solutions that address the specific requirements and challenges of different locations and industries across Iran."}
             </p>
           </div>
           
           <div className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-green-600">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">Future-Ready Solutions</h3>
+            <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.about.futureTitle') || "Complete Solutions"}</h3>
             <p className="text-gray-700 mb-4">
-              We&apos;re committed to developing solutions that anticipate tomorrow&apos;s security challenges, with significant investments in emerging technologies like:
+              {t('home.about.futureParagraph') || "Our comprehensive service approach includes:"}
             </p>
             <ul className="list-disc pl-6 text-gray-700">
-              <li>Advanced artificial intelligence</li>
-              <li>Machine learning algorithms</li>
-              <li>IoT integration</li>
-              <li>Cloud-based security platforms</li>
-              <li>Edge computing capabilities</li>
+              <li>{t('home.about.futureBullet1') || "Professional system design and consultation"}</li>
+              <li>{t('home.about.futureBullet2') || "Expert installation and configuration"}</li>
+              <li>{t('home.about.futureBullet3') || "Technical training for system operators"}</li>
+              <li>{t('home.about.futureBullet4') || "Maintenance and support services"}</li>
+              <li>{t('home.about.futureBullet5') || "System upgrades and expansions"}</li>
             </ul>
           </div>
         </div>
@@ -256,9 +290,9 @@ const About = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Join Us in Building a Safer World</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('home.about.ctaTitle') || "Partner with Uniview Iran for Your Security Needs"}</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Whether you&apos;re looking for advanced security solutions or interested in career opportunities, we&apos;d love to connect with you.
+              {t('home.about.ctaDescription') || "Connect with our team of local experts to discuss how Uniview's advanced security solutions can be tailored to your specific requirements in Iran."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
@@ -266,13 +300,13 @@ const About = () => {
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center justify-center"
               >
                 <FiSend className="mr-2" />
-                Contact Us
+                {t('home.about.ctaButton1') || "Contact Us"}
               </Link>
               <Link 
                 href="/products" 
                 className="bg-transparent text-white border-2 border-white hover:bg-white/10 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg flex items-center justify-center"
               >
-                Explore Our Solutions
+                {t('home.about.ctaButton2') || "Explore Our Solutions"}
                 <FiArrowRight className="ml-2" />
               </Link>
             </div>

@@ -882,6 +882,68 @@ export default {
         },
         // Add other categories following the same pattern
       }
+    },
+    about: {
+      heroTitle: "About",
+      heroTitleHighlight: "Uniview",
+      heroDescription: "A global leader in security and surveillance solutions, committed to making the world safer through innovative technology.",
+      
+      companyImageAlt: "Uniview Headquarters",
+      storyTitle: "Our Story",
+      storyParagraph1: "Founded in 2011, Uniview has rapidly grown to become one of the leading global providers of video surveillance products and solutions. With a strong commitment to quality, innovation, and customer satisfaction, we've established ourselves as a trusted partner for businesses and organizations worldwide.",
+      storyParagraph2: "Our journey began with a simple vision: to create cutting-edge security technology that helps protect people and assets. Today, we proudly serve customers across various industries in over 145 countries and regions, with a comprehensive portfolio of IP cameras, network video recorders, and integrated security solutions.",
+      storyParagraph3: "At Uniview, we believe that security is not just about technology—it's about creating peace of mind for our customers. This philosophy drives everything we do, from product development to customer support.",
+      
+      mvTitle: "Our Mission & Values",
+      mvDescription: "Guided by our commitment to excellence, we strive to create a safer world through innovative security solutions.",
+      missionTitle: "Our Mission",
+      missionDescription: "To provide innovative, reliable, and user-friendly security solutions that help our customers protect what matters most to them, while setting new standards for the industry.",
+      visionTitle: "Our Vision",
+      visionDescription: "To be the global leader in security technology, recognized for our innovation, quality, and commitment to making the world a safer place through advanced surveillance solutions.",
+      valuesTitle: "Our Values",
+      valuesDescription: "Integrity, innovation, excellence, and customer focus form the foundation of everything we do. We believe in building lasting relationships based on trust and delivering exceptional value.",
+      
+      principlesTitle: "The Principles That Guide Us",
+      principle1Title: "Customer-Focused Innovation",
+      principle1Description: "We develop our products with customer needs at the forefront, constantly pushing the boundaries of what's possible in security technology.",
+      principle2Title: "Quality Without Compromise",
+      principle2Description: "We maintain rigorous quality standards throughout our production process, ensuring our products deliver exceptional reliability and performance.",
+      principle3Title: "Global Responsibility",
+      principle3Description: "We believe in contributing positively to the communities we serve, promoting sustainability, and maintaining the highest ethical standards.",
+      principle4Title: "Collaborative Excellence",
+      principle4Description: "We foster a culture of teamwork and continuous improvement, where diverse perspectives come together to create extraordinary solutions.",
+      
+      globalTitle: "Global Presence",
+      globalParagraph1: "With headquarters in Asia and operations spanning across the Americas, Europe, Middle East, and Africa, Uniview has established a truly global footprint in the security industry.",
+      globalParagraph2: "Our international network includes:",
+      globalBullet1: "Research and development centers in multiple countries",
+      globalBullet2: "Manufacturing facilities with advanced production capabilities",
+      globalBullet3: "Local sales and support teams providing personalized service",
+      globalBullet4: "A network of over 1,000 trusted distribution partners",
+      globalBullet5: "Solutions deployed across 145+ countries and regions",
+      globalParagraph3: "This global presence allows us to combine international expertise with local knowledge, ensuring our customers receive solutions tailored to their specific regional needs.",
+      globalImageAlt: "Uniview Global Presence",
+      
+      innovationTitle: "Innovation & Technology",
+      innovationDescription: "At the heart of our success is our relentless commitment to technological advancement and innovation.",
+      rdTitle: "Research & Development",
+      rdParagraph1: "Our R&D team comprises over 1,500 engineers dedicated to pushing the boundaries of security technology. We invest more than 15% of our annual revenue into research and development.",
+      rdParagraph2: "This commitment has resulted in numerous patents and groundbreaking advancements in areas such as AI-powered video analytics, high-definition imaging, and smart security integration.",
+      manufacturingTitle: "Manufacturing Excellence",
+      manufacturingParagraph1: "Our state-of-the-art manufacturing facilities combine automated production lines with rigorous quality control processes, ensuring every product meets our exacting standards.",
+      manufacturingParagraph2: "We have implemented Industry 4.0 practices throughout our production ecosystem, enabling greater efficiency, consistency, and customization capabilities.",
+      futureTitle: "Future-Ready Solutions",
+      futureParagraph: "We're committed to developing solutions that anticipate tomorrow's security challenges, with significant investments in emerging technologies like:",
+      futureBullet1: "Advanced artificial intelligence",
+      futureBullet2: "Machine learning algorithms",
+      futureBullet3: "IoT integration",
+      futureBullet4: "Cloud-based security platforms",
+      futureBullet5: "Edge computing capabilities",
+      
+      ctaTitle: "Join Us in Building a Safer World",
+      ctaDescription: "Whether you're looking for advanced security solutions or interested in career opportunities, we'd love to connect with you.",
+      ctaButton1: "Contact Us",
+      ctaButton2: "Explore Our Solutions"
     }
   },
   // Add more translations as needed
