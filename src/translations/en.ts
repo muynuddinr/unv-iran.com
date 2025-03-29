@@ -720,6 +720,84 @@ export default {
         ctaDescription: "Contact our local experts to discuss how Uniview's security solutions can be customized for your Iranian venue.",
         ctaButton1: "Schedule a Consultation",
         ctaButton2: "Explore More Solutions"
+      },
+      intrusion: {
+        heroTitle: "Uniview Iran",
+        heroTitleHighlight: "Smart Security",
+        heroDescription: "State-of-the-art security camera systems powered by AI technology, providing comprehensive surveillance and protection for businesses and properties across Iran.",
+        
+        overviewImageAlt: "Smart Intrusion Prevention",
+        overviewTitle: "Advanced Security Camera Solutions",
+        overviewParagraph1: "As the official distributor of Uniview products in Iran, we provide cutting-edge security camera systems that go beyond traditional surveillance. Our smart solutions leverage advanced AI algorithms to deliver superior threat detection and prevention capabilities.",
+        overviewParagraph2: "Our comprehensive range includes indoor and outdoor cameras, NVRs, and integrated security systems that are specifically configured for the Iranian market, meeting local requirements while maintaining international standards.",
+        overviewParagraph3: "With nationwide support and installation services, Uniview Iran ensures reliable security solutions backed by expert technical assistance and maintenance support throughout the country.",
+        
+        featuresTitle: "Advanced Detection Features",
+        featuresSubtitle: "Our smart intrusion prevention solutions include these essential technologies to ensure comprehensive protection.",
+        
+        feature1Title: "AI-Powered Analytics",
+        feature1Description: "Machine learning algorithms that continuously improve threat detection accuracy, reducing false alarms while ensuring genuine threats are identified.",
+        
+        feature2Title: "Multi-Sensor Integration",
+        feature2Description: "Seamless integration of motion sensors, glass-break detectors, door/window contacts, and environmental monitors for comprehensive protection.",
+        
+        feature3Title: "Video Verification",
+        feature3Description: "Automatic video recording and analysis when alarms are triggered, providing visual confirmation of intrusions and valuable evidence for investigations.",
+        
+        feature4Title: "Edge Computing",
+        feature4Description: "On-device processing that enables real-time threat assessment and response, even when network connectivity is compromised or bandwidth is limited.",
+        
+        benefitsTitle: "Benefits of Uniview Smart Intrusion Prevention",
+        benefitsSubtitle: "Our integrated approach to intrusion prevention delivers multiple advantages.",
+        
+        benefit1Title: "Minimized False Alarms",
+        benefit1Description: "Advanced filtering technology dramatically reduces false positives, ensuring security resources are focused on genuine threats.",
+        
+        benefit2Title: "Early Threat Detection",
+        benefit2Description: "Identify potential intrusions at the earliest stages, allowing for preventive actions before physical breaches occur.",
+        
+        benefit3Title: "Automated Response",
+        benefit3Description: "Trigger automatic security measures when threats are detected, from locking down specific areas to alerting security personnel.",
+        
+        benefit4Title: "24/7 Monitoring",
+        benefit4Description: "Continuous surveillance with consistent attention to detail that never fatigues, ensuring round-the-clock protection.",
+        
+        benefit5Title: "Remote Management",
+        benefit5Description: "Monitor and manage your intrusion prevention system from anywhere via secure mobile apps and web interfaces.",
+        
+        benefit6Title: "Detailed Analytics",
+        benefit6Description: "Comprehensive reporting and analysis of security events to identify patterns and improve future protection strategies.",
+        
+        applicationsTitle: "Applications",
+        applicationsSubtitle: "Our smart intrusion prevention solutions are ideal for various environments and applications.",
+        
+        application1ImageAlt: "Commercial Buildings",
+        application1Title: "Commercial Buildings",
+        application1Description: "Protect office buildings, retail spaces, and commercial properties with intelligent systems that distinguish between routine activity and security threats.",
+        
+        application2ImageAlt: "Critical Infrastructure",
+        application2Title: "Critical Infrastructure",
+        application2Description: "Safeguard utilities, data centers, and essential facilities with advanced perimeter protection and multi-layer security measures.",
+        
+        application3ImageAlt: "Residential Properties",
+        application3Title: "Residential Properties",
+        application3Description: "Protect homes and residential complexes with intelligent systems that differentiate between residents, guests, and potential intruders.",
+        
+        successStoryTitle: "Success Story: Tehran Commercial Complex",
+        successStoryImageAlt: "Data Center Security",
+        successStoryParagraph1: "A major commercial complex in Tehran, spanning over 30,000 square meters, needed to upgrade their outdated surveillance system to address security challenges and monitoring inefficiencies.",
+        successStoryParagraph2: "After implementing Uniview Iran's smart security camera solution with AI-powered analytics, they achieved:",
+        successStoryBullet1: "<strong>Complete coverage</strong> of all critical areas with HD clarity",
+        successStoryBullet2: "<strong>90% improvement</strong> in incident response time",
+        successStoryBullet3: "<strong>24/7 intelligent monitoring</strong> with automated alerts",
+        successStoryBullet4: "<strong>50% reduction</strong> in security-related incidents",
+        successStoryBullet5: "Significant cost savings in security operations",
+        successStoryConclusion: "The implementation has transformed their security operations, providing clear evidence for investigations and deterring potential security threats while streamlining their monitoring processes.",
+        
+        ctaTitle: "Enhance Your Security Posture Today",
+        ctaDescription: "Let our security experts design a customized smart intrusion prevention solution that addresses your specific challenges and requirements.",
+        ctaButton1: "Request a Consultation",
+        ctaButton2: "Explore Our Products"
       }
     },
     // Add more translations as needed
