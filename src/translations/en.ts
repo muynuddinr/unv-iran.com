@@ -653,6 +653,49 @@ export default {
       benefit6Title: "Remote Management",
       benefit6Description: "Monitor multiple facilities from a central location with cloud-based surveillance and management tools for improved oversight.",
       
+      advancedTitle: "Advanced Security Technologies",
+      advancedDescription: "Uniview integrates cutting-edge technologies into our warehouse security solutions to address the evolving challenges of logistics environments:",
+      
+      advancedFeature1Title: "AI-Powered Video Analytics",
+      advancedFeature1Description: "Intelligent algorithms that detect unusual patterns, identify potential security breaches, and provide real-time alerts.",
+      
+      advancedFeature2Title: "RFID Integration",
+      advancedFeature2Description: "Synchronize security footage with RFID tracking to create a comprehensive inventory monitoring system with enhanced accountability.",
+      
+      advancedFeature3Title: "Vehicle Management",
+      advancedFeature3Description: "Automated license plate recognition, driver identification, and vehicle tracking to enhance logistics security and efficiency.",
+      
+      advancedFeature4Title: "Environmental Monitoring",
+      advancedFeature4Description: "Temperature, humidity, and environmental sensors integrated with security systems to protect sensitive inventory and detect potential hazards.",
+      
+      advancedImageAlt: "Advanced Warehouse Security",
+      
+      applicationsTitle: "Applications",
+      applicationsSubtitle: "Our warehouse security solutions are tailored for various logistics environments.",
+      
+      application1ImageAlt: "Distribution Centers",
+      application1Title: "Distribution Centers",
+      application1Description: "Comprehensive security for large-scale distribution hubs with high-volume shipping operations and complex inventory management requirements.",
+      
+      application2ImageAlt: "Logistics Facilities",
+      application2Title: "Logistics Facilities",
+      application2Description: "Integrated security for 3PL and 4PL providers managing complex supply chains with multiple entry points and diverse inventory types.",
+      
+      application3ImageAlt: "Cold Storage Facilities",
+      application3Title: "Cold Storage Facilities",
+      application3Description: "Specialized security solutions for temperature-controlled environments with monitoring for both security threats and environmental conditions.",
+      
+      caseStudyTitle: "Success Story: Iranian Logistics Provider",
+      caseStudyParagraph1: "A major Iranian logistics company operating multiple distribution centers across the country faced challenges with inventory security, operational visibility, and monitoring efficiency.",
+      caseStudyParagraph2: "After implementing Uniview's comprehensive security camera solution with advanced analytics and monitoring systems, they achieved:",
+      caseStudyBullet1: "<strong>35% reduction</strong> in security incidents within the first year",
+      caseStudyBullet2: "<strong>25% improvement</strong> in operational efficiency",
+      caseStudyBullet3: "<strong>40% decrease</strong> in inventory losses",
+      caseStudyBullet4: "<strong>Complete monitoring coverage</strong> across all critical areas",
+      caseStudyBullet5: "Return on investment achieved within 18 months",
+      caseStudyParagraph3: "The company particularly valued our local support and expertise in implementing Uniview's advanced security solutions to meet their specific requirements.",
+      caseStudyImageAlt: "Warehouse Success Story",
+      
       ctaTitle: "Secure Your Warehouse with Uniview Iran",
       ctaDescription: "Connect with our local security experts to design a customized Uniview surveillance solution for your warehouse or logistics facility.",
       ctaButton1: "Request a Consultation",
@@ -871,8 +914,14 @@ export default {
       description: 'Experience next-generation security solutions powered by AI and advanced analytics, tailored for your industry\'s unique challenges.',
       getStartedButton: 'Get Started',
       watchDemoButton: 'Watch Demo',
-      viewDetails: 'View Details',
+      
       selected: 'Selected',
+      viewDetails: 'View Details',
+      backToSolutions: 'Back to solutions',
+      exploreSolutions: 'Explore',
+      solutions: 'Solutions',
+      learnMore: 'Learn more',
+      
       coreSolutionsTitle: 'Our Core Security Technologies',
       coreSolutionsDescription: 'Advanced security solutions that adapt to your evolving needs.',
       coreSolution1Title: 'Intelligent Video Surveillance',
@@ -883,10 +932,12 @@ export default {
       coreSolution3Description: 'Centralized platform for recording, analyzing, and managing video data across all your facilities.',
       coreSolution4Title: 'AI-Powered Video Analytics',
       coreSolution4Description: 'Proactive insights and anomaly detection for enhanced security and operational intelligence.',
+      
       ctaTitle: 'Elevate Your Security Posture Today',
       ctaDescription: 'Partner with Uniview to design a customized security solution that meets your unique requirements.',
       ctaButton1: 'Request a Consultation',
       ctaButton2: 'Explore Our Products',
+      
       categories: {
         building: {
           name: 'Building',
@@ -898,70 +949,216 @@ export default {
             'Visitor Management'
           ]
         },
-        // Add other categories following the same pattern
+        school: {
+          name: 'School',
+          description: 'Advanced safety and security systems for educational institutions.',
+          features: [
+            'Campus-wide Monitoring',
+            'Emergency Response Integration',
+            'Student Safety Tracking',
+            'Restricted Area Control'
+          ]
+        },
+        hotel: {
+          name: 'Hotel',
+          description: 'Tailored security solutions for hospitality environments.',
+          features: [
+            'Guest Room Security',
+            'Lobby and Common Area Surveillance',
+            'Staff Monitoring',
+            'Asset Protection'
+          ]
+        },
+        retail: {
+          name: 'Retail',
+          description: 'Loss prevention and operational intelligence for retail spaces.',
+          features: [
+            'Theft Prevention',
+            'Customer Flow Analysis',
+            'POS Integration',
+            'Inventory Tracking'
+          ]
+        },
+        'shopping-mall': {
+          name: 'Shopping Mall',
+          description: 'Comprehensive security management for large commercial spaces.',
+          features: [
+            'Multi-zone Monitoring',
+            'Crowd Management',
+            'Emergency Exit Tracking',
+            'Parking Area Security'
+          ]
+        },
+        stadium: {
+          name: 'Stadium',
+          description: 'High-performance security for large event venues.',
+          features: [
+            'Crowd Control',
+            'VIP Area Protection',
+            'Real-time Threat Detection',
+            'Incident Response'
+          ]
+        },
+        bank: {
+          name: 'Bank',
+          description: 'Mission-critical security for financial institutions.',
+          features: [
+            'Vault Monitoring',
+            'ATM Surveillance',
+            'Transaction Area Security',
+            'Compliance Tracking'
+          ]
+        },
+        hospital: {
+          name: 'Hospital',
+          description: 'Specialized security solutions for healthcare environments.',
+          features: [
+            'Patient Safety',
+            'Restricted Area Control',
+            'Medication Storage Monitoring',
+            'Staff Safety'
+          ]
+        },
+        warehouse: {
+          name: 'Warehouse & Logistics',
+          description: 'Comprehensive security for storage and distribution centers.',
+          features: [
+            'Inventory Protection',
+            'Perimeter Security',
+            'Vehicle Tracking',
+            'Loading Dock Monitoring'
+          ]
+        }
       }
     },
     about: {
-      heroTitle: "About",
-      heroTitleHighlight: "Uniview",
-      heroDescription: "A global leader in security and surveillance solutions, committed to making the world safer through innovative technology.",
+      heroTitle: 'About',
+      heroTitleHighlight: 'Uniview Iran',
+      heroDescription: 'The authorized distributor of Uniview security and surveillance solutions in Iran, committed to providing cutting-edge technology with local expertise and support.',
       
-      companyImageAlt: "Uniview Headquarters",
-      storyTitle: "Our Story",
-      storyParagraph1: "Founded in 2011, Uniview has rapidly grown to become one of the leading global providers of video surveillance products and solutions. With a strong commitment to quality, innovation, and customer satisfaction, we've established ourselves as a trusted partner for businesses and organizations worldwide.",
-      storyParagraph2: "Our journey began with a simple vision: to create cutting-edge security technology that helps protect people and assets. Today, we proudly serve customers across various industries in over 145 countries and regions, with a comprehensive portfolio of IP cameras, network video recorders, and integrated security solutions.",
-      storyParagraph3: "At Uniview, we believe that security is not just about technology—it's about creating peace of mind for our customers. This philosophy drives everything we do, from product development to customer support.",
+      companyImageAlt: 'Uniview Iran Headquarters',
+      storyTitle: 'Our Story',
+      storyParagraph1: 'Established as the exclusive authorized distributor of Uniview products in Iran, we bring world-class security technology to the Iranian market. We combine Uniview\'s global expertise with deep local knowledge to deliver security solutions perfectly tailored to the unique requirements of businesses across Iran.',
+      storyParagraph2: 'Our mission is to provide Iranian businesses and organizations with access to cutting-edge Uniview security systems, supported by comprehensive local technical expertise, installation services, and ongoing maintenance. We\'re committed to ensuring our clients receive the highest standard of protection with solutions specifically configured for the Iranian market.',
+      storyParagraph3: 'At Uniview Iran, we believe that security is not just about technology—it\'s about creating peace of mind through reliable solutions backed by responsive local support. This philosophy guides our approach to every project we undertake across Iran.',
       
-      mvTitle: "Our Mission & Values",
-      mvDescription: "Guided by our commitment to excellence, we strive to create a safer world through innovative security solutions.",
-      missionTitle: "Our Mission",
-      missionDescription: "To provide innovative, reliable, and user-friendly security solutions that help our customers protect what matters most to them, while setting new standards for the industry.",
-      visionTitle: "Our Vision",
-      visionDescription: "To be the global leader in security technology, recognized for our innovation, quality, and commitment to making the world a safer place through advanced surveillance solutions.",
-      valuesTitle: "Our Values",
-      valuesDescription: "Integrity, innovation, excellence, and customer focus form the foundation of everything we do. We believe in building lasting relationships based on trust and delivering exceptional value.",
+      mvTitle: 'Our Mission & Values',
+      mvDescription: 'Guided by our commitment to excellence, we strive to create a safer world through innovative security solutions.',
+      missionTitle: 'Our Mission',
+      missionDescription: 'To provide innovative, reliable, and user-friendly security solutions that help our customers protect what matters most to them, while setting new standards for the industry.',
+      visionTitle: 'Our Vision',
+      visionDescription: 'To be the global leader in security technology, recognized for our innovation, quality, and commitment to making the world a safer place through advanced surveillance solutions.',
+      valuesTitle: 'Our Values',
+      valuesDescription: 'Integrity, innovation, excellence, and customer focus form the foundation of everything we do. We believe in building lasting relationships based on trust and delivering exceptional value.',
       
-      principlesTitle: "The Principles That Guide Us",
-      principle1Title: "Customer-Focused Innovation",
-      principle1Description: "We develop our products with customer needs at the forefront, constantly pushing the boundaries of what's possible in security technology.",
-      principle2Title: "Quality Without Compromise",
-      principle2Description: "We maintain rigorous quality standards throughout our production process, ensuring our products deliver exceptional reliability and performance.",
-      principle3Title: "Global Responsibility",
-      principle3Description: "We believe in contributing positively to the communities we serve, promoting sustainability, and maintaining the highest ethical standards.",
-      principle4Title: "Collaborative Excellence",
-      principle4Description: "We foster a culture of teamwork and continuous improvement, where diverse perspectives come together to create extraordinary solutions.",
+      principlesTitle: 'The Principles That Guide Us',
+      principle1Title: 'Customer-Focused Innovation',
+      principle1Description: 'We develop our products with customer needs at the forefront, constantly pushing the boundaries of what\'s possible in security technology.',
+      principle2Title: 'Quality Without Compromise',
+      principle2Description: 'We maintain rigorous quality standards throughout our production process, ensuring our products deliver exceptional reliability and performance.',
+      principle3Title: 'Global Responsibility',
+      principle3Description: 'We believe in contributing positively to the communities we serve, promoting sustainability, and maintaining the highest ethical standards.',
+      principle4Title: 'Collaborative Excellence',
+      principle4Description: 'We foster a culture of teamwork and continuous improvement, where diverse perspectives come together to create extraordinary solutions.',
       
-      globalTitle: "Global Presence",
-      globalParagraph1: "With headquarters in Asia and operations spanning across the Americas, Europe, Middle East, and Africa, Uniview has established a truly global footprint in the security industry.",
-      globalParagraph2: "Our international network includes:",
-      globalBullet1: "Research and development centers in multiple countries",
-      globalBullet2: "Manufacturing facilities with advanced production capabilities",
-      globalBullet3: "Local sales and support teams providing personalized service",
-      globalBullet4: "A network of over 1,000 trusted distribution partners",
-      globalBullet5: "Solutions deployed across 145+ countries and regions",
-      globalParagraph3: "This global presence allows us to combine international expertise with local knowledge, ensuring our customers receive solutions tailored to their specific regional needs.",
-      globalImageAlt: "Uniview Global Presence",
+      globalTitle: 'Global Presence',
+      globalParagraph1: 'With headquarters in Asia and operations spanning across the Americas, Europe, Middle East, and Africa, Uniview has established a truly global footprint in the security industry.',
+      globalParagraph2: 'Our international network includes:',
+      globalBullet1: 'Research and development centers in multiple countries',
+      globalBullet2: 'Manufacturing facilities with advanced production capabilities',
+      globalBullet3: 'Local sales and support teams providing personalized service',
+      globalBullet4: 'A network of over 1,000 trusted distribution partners',
+      globalBullet5: 'Solutions deployed across 145+ countries and regions',
+      globalParagraph3: 'This global presence allows us to combine international expertise with local knowledge, ensuring our customers receive solutions tailored to their specific regional needs.',
+      globalImageAlt: 'Uniview Global Presence',
       
-      innovationTitle: "Innovation & Technology",
-      innovationDescription: "At the heart of our success is our relentless commitment to technological advancement and innovation.",
-      rdTitle: "Research & Development",
-      rdParagraph1: "Our R&D team comprises over 1,500 engineers dedicated to pushing the boundaries of security technology. We invest more than 15% of our annual revenue into research and development.",
-      rdParagraph2: "This commitment has resulted in numerous patents and groundbreaking advancements in areas such as AI-powered video analytics, high-definition imaging, and smart security integration.",
-      manufacturingTitle: "Manufacturing Excellence",
-      manufacturingParagraph1: "Our state-of-the-art manufacturing facilities combine automated production lines with rigorous quality control processes, ensuring every product meets our exacting standards.",
-      manufacturingParagraph2: "We have implemented Industry 4.0 practices throughout our production ecosystem, enabling greater efficiency, consistency, and customization capabilities.",
-      futureTitle: "Future-Ready Solutions",
-      futureParagraph: "We're committed to developing solutions that anticipate tomorrow's security challenges, with significant investments in emerging technologies like:",
-      futureBullet1: "Advanced artificial intelligence",
-      futureBullet2: "Machine learning algorithms",
-      futureBullet3: "IoT integration",
-      futureBullet4: "Cloud-based security platforms",
-      futureBullet5: "Edge computing capabilities",
+      innovationTitle: 'Innovation & Technology',
+      innovationDescription: 'At the heart of our success is our relentless commitment to technological advancement and innovation.',
+      rdTitle: 'Research & Development',
+      rdParagraph1: 'Our R&D team comprises over 1,500 engineers dedicated to pushing the boundaries of security technology. We invest more than 15% of our annual revenue into research and development.',
+      rdParagraph2: 'This commitment has resulted in numerous patents and groundbreaking advancements in areas such as AI-powered video analytics, high-definition imaging, and smart security integration.',
+      manufacturingTitle: 'Manufacturing Excellence',
+      manufacturingParagraph1: 'Our state-of-the-art manufacturing facilities combine automated production lines with rigorous quality control processes, ensuring every product meets our exacting standards.',
+      manufacturingParagraph2: 'We have implemented Industry 4.0 practices throughout our production ecosystem, enabling greater efficiency, consistency, and customization capabilities.',
+      futureTitle: 'Future-Ready Solutions',
+      futureParagraph: 'We\'re committed to developing solutions that anticipate tomorrow\'s security challenges, with significant investments in emerging technologies like:',
+      futureBullet1: 'Advanced artificial intelligence',
+      futureBullet2: 'Machine learning algorithms',
+      futureBullet3: 'IoT integration',
+      futureBullet4: 'Cloud-based security platforms',
+      futureBullet5: 'Edge computing capabilities',
       
-      ctaTitle: "Join Us in Building a Safer World",
-      ctaDescription: "Whether you're looking for advanced security solutions or interested in career opportunities, we'd love to connect with you.",
-      ctaButton1: "Contact Us",
-      ctaButton2: "Explore Our Solutions"
+      ctaTitle: 'Partner with Uniview Iran for Your Security Needs',
+      ctaDescription: 'Connect with our team of local experts to discuss how Uniview\'s advanced security solutions can be tailored to your specific requirements in Iran.',
+      ctaButton1: 'Contact Us',
+      ctaButton2: 'Explore Our Solutions'
+    },
+    hospital: {
+      heroTitle: 'Uniview Iran',
+      heroTitleHighlight: 'Hospital Security Solutions',
+      heroDescription: 'Advanced Uniview surveillance systems designed specifically for Iranian healthcare facilities, ensuring patient safety and facility security while maintaining privacy standards.',
+      
+      overviewTitle: 'Securing Iranian Healthcare Environments',
+      overviewImageAlt: 'Hospital Security Solutions',
+      overviewParagraph1: 'In Iran\'s evolving healthcare landscape, hospitals require robust security solutions that meet local requirements. Uniview Iran offers state-of-the-art surveillance systems specifically designed for healthcare facilities, providing the perfect balance between security and patient care.',
+      overviewParagraph2: 'Our integrated hospital security cameras combine advanced Uniview technology with user-friendly management interfaces, delivering complete monitoring and control across your facility. From patient areas to medication storage, entrance monitoring to emergency response, our solutions create a comprehensive security ecosystem tailored to Iranian healthcare providers.',
+      overviewParagraph3: 'Uniview Iran\'s hospital security solutions are implemented with guidance from local healthcare security experts, designed to meet Iranian healthcare regulations, and engineered to adapt to the specific needs of modern medical facilities in Iran.',
+      
+      featuresTitle: 'Essential Security Features',
+      featuresSubtitle: 'Our comprehensive hospital security solutions include these vital components to ensure patient and staff safety.',
+      
+      feature1Title: 'Advanced Surveillance',
+      feature1Description: 'High-definition cameras with intelligent analytics to monitor patient areas, medication rooms, entrances, and high-risk locations while ensuring privacy compliance.',
+      
+      feature2Title: 'Access Control',
+      feature2Description: 'Multi-factor authentication systems that restrict access to sensitive areas like pharmacies, nurseries, and patient record storage while enabling rapid access during emergencies.',
+      
+      feature3Title: 'Emergency Response',
+      feature3Description: 'Integrated alert systems for duress situations, infant security, patient wandering prevention, and coordination with first responders during critical incidents.',
+      
+      feature4Title: 'Patient Monitoring',
+      feature4Description: 'Specialized systems for monitoring high-risk patients, detecting falls, and tracking patient movement while maintaining dignity and privacy.',
+      
+      benefitsTitle: 'Benefits of Uniview Iran Security Solutions',
+      benefitsSubtitle: 'Our specialized approach to healthcare surveillance delivers exceptional advantages for Iranian medical facilities.',
+      
+      benefit1Title: 'Enhanced Patient Safety',
+      benefit1Description: 'Create a secure healing environment where patients can focus on recovery without safety concerns.',
+      
+      benefit2Title: 'HIPAA Compliance',
+      benefit2Description: 'Security solutions designed to help maintain patient privacy and comply with healthcare regulations.',
+      
+      benefit3Title: 'Medication Protection',
+      benefit3Description: 'Secure pharmaceutical storage and monitoring to prevent theft and ensure proper administration.',
+      
+      benefit4Title: 'Staff Safety',
+      benefit4Description: 'Protect healthcare workers from workplace violence with rapid response systems and preventative monitoring.',
+      
+      benefit5Title: 'Asset Protection',
+      benefit5Description: 'Safeguard valuable medical equipment and supplies from theft, misplacement, or unauthorized use.',
+      
+      benefit6Title: 'Centralized Management',
+      benefit6Description: 'Unified security dashboard that integrates with hospital management systems for streamlined operations.',
+      
+      applicationsTitle: 'Healthcare Security Applications',
+      applicationsSubtitle: 'Our hospital security solutions are tailored for various healthcare environments.',
+      
+      application1Title: 'Major Hospitals',
+      application1ImageAlt: 'Major Hospitals Security',
+      application1Description: 'Comprehensive security solutions for large medical centers with multiple departments, high patient volume, and complex security needs.',
+      
+      application2Title: 'Emergency Departments',
+      application2ImageAlt: 'Emergency Departments Security',
+      application2Description: 'Specialized security for high-stress areas with 24/7 operations, unpredictable situations, and potential security threats.',
+      
+      application3Title: 'Specialty Clinics',
+      application3ImageAlt: 'Specialty Clinics Security',
+      application3Description: 'Tailored security solutions for outpatient facilities, mental health centers, and specialty practice environments.',
+      
+      ctaTitle: 'Secure Your Healthcare Facility with Uniview Iran',
+      ctaDescription: 'Let our local security experts design a customized Uniview surveillance solution that addresses your facility\'s specific requirements and challenges.',
+      ctaButton1: 'Request a Consultation',
+      ctaButton2: 'Explore Our Products'
     }
   },
   // Add more translations as needed
