@@ -96,11 +96,11 @@ const Navbar = () => {
 
   // Default nav links that will always be present
   const defaultNavLinks = [
-    { href: '/', label: 'Home', icon: FiHome },
+    { href: '/', label: t('common.home'), icon: FiHome },
     // Add Products link with mega menu for desktop only
     { 
       href: '/products', 
-      label: 'Products', 
+      label: t('common.products'),
       icon: FiBox,
       hasMegaMenu: true,
       mobileHidden: true

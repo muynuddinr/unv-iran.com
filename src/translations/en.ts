@@ -18,7 +18,8 @@ export default {
     viewAll: "View All",
     searchPlaceholder: "Search products...",
     exploreFeatures: "Explore features →",
-    exploreSolutionsCatalog: "Explore our complete solutions catalog"
+    exploreSolutionsCatalog: "Explore our complete solutions catalog",
+    byIndustry: "By Industry"
   },
   header: {
     email: "info@uniview.com",
