@@ -16,6 +16,7 @@ import {
   FiKey
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import img1 from '../../../public/hotel/Leading Hotel Security banner.webp'
 import img2 from '../../../public/hotel/Why Choose Uniview Iran banner.webp'
 import img3 from '../../../public/hotel/Luxury Hotels.webp'
@@ -24,6 +25,8 @@ import img5 from '../../../public/hotel/Business Hotels.webp'
 
 
 const Hotel = () => {
+  const { t, dir } = useLanguage();
+  
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -40,15 +43,15 @@ const Hotel = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-white pt-24" dir={dir}>
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600">Hotel Security Solutions</span>
+            {t('home.hotel.heroTitle') || 'Uniview Iran'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600">{t('home.hotel.heroTitleHighlight') || 'Hotel Security Solutions'}</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Advanced security camera systems and surveillance solutions tailored for Iranian hotels, ensuring guest safety and property protection.
+            {t('home.hotel.heroDescription') || 'Advanced security camera systems and surveillance solutions tailored for Iranian hotels, ensuring guest safety and property protection.'}
           </p>
         </div>
       </section>
@@ -61,21 +64,21 @@ const Hotel = () => {
               <div className="relative h-80 md:h-96">
                 <Image 
                   src={img1}
-                  alt="Hotel Security"
+                  alt={t('home.hotel.overviewImageAlt') || "Hotel Security"}
                   fill
                   className="object-cover rounded-xl shadow-xl"
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Leading Hotel Security Solutions in Iran</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.hotel.overviewTitle') || 'Leading Hotel Security Solutions in Iran'}</h2>
                 <p className="text-gray-700 mb-6">
-                  As the official distributor of Uniview products in Iran, we provide cutting-edge security camera solutions specifically designed for the hospitality industry. Our systems cater to hotels, resorts, and accommodation venues across Iran.
+                  {t('home.hotel.overviewParagraph1') || 'As the official distributor of Uniview products in Iran, we provide cutting-edge security camera solutions specifically designed for the hospitality industry. Our systems cater to hotels, resorts, and accommodation venues across Iran.'}
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our comprehensive security solutions combine Uniview's advanced technology with local expertise, offering seamless integration and support. From lobby surveillance to perimeter monitoring, we ensure complete coverage while maintaining the welcoming atmosphere guests expect.
+                  {t('home.hotel.overviewParagraph2') || 'Our comprehensive security solutions combine Uniview\'s advanced technology with local expertise, offering seamless integration and support. From lobby surveillance to perimeter monitoring, we ensure complete coverage while maintaining the welcoming atmosphere guests expect.'}
                 </p>
                 <p className="text-gray-700">
-                  Backed by Uniview's global expertise and our local support team, we deliver reliable, scalable, and future-proof security solutions that meet the unique requirements of Iranian hotels.
+                  {t('home.hotel.overviewParagraph3') || 'Backed by Uniview\'s global expertise and our local support team, we deliver reliable, scalable, and future-proof security solutions that meet the unique requirements of Iranian hotels.'}
                 </p>
               </div>
             </div>
@@ -87,9 +90,9 @@ const Hotel = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Essential Security Features</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.hotel.featuresTitle') || 'Essential Security Features'}</h2>
             <p className="text-xl text-gray-700">
-              Our comprehensive hotel security solutions include these vital components to ensure property and guest safety.
+              {t('home.hotel.featuresSubtitle') || 'Our comprehensive hotel security solutions include these vital components to ensure property and guest safety.'}
             </p>
           </div>
           
@@ -107,9 +110,9 @@ const Hotel = () => {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
                 <FiVideo className="text-amber-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Surveillance Systems</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.hotel.feature1Title') || 'Surveillance Systems'}</h3>
               <p className="text-gray-700">
-                High-definition cameras with discreet placement throughout public areas, entrances, corridors, and exterior spaces with intelligent analytics to detect unusual activities.
+                {t('home.hotel.feature1Description') || 'High-definition cameras with discreet placement throughout public areas, entrances, corridors, and exterior spaces with intelligent analytics to detect unusual activities.'}
               </p>
             </motion.div>
             
@@ -120,9 +123,9 @@ const Hotel = () => {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
                 <FiKey className="text-amber-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Access Control</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.hotel.feature2Title') || 'Access Control'}</h3>
               <p className="text-gray-700">
-                Advanced electronic key systems, RFID technology, and mobile credentials that enhance guest convenience while maintaining strict security protocols for guest rooms and restricted areas.
+                {t('home.hotel.feature2Description') || 'Advanced electronic key systems, RFID technology, and mobile credentials that enhance guest convenience while maintaining strict security protocols for guest rooms and restricted areas.'}
               </p>
             </motion.div>
             
@@ -133,9 +136,9 @@ const Hotel = () => {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
                 <FiLock className="text-amber-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Perimeter Security</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.hotel.feature3Title') || 'Perimeter Security'}</h3>
               <p className="text-gray-700">
-                Comprehensive protection for property boundaries with automated lighting, motion detection, and integrated alarm systems that prevent unauthorized access while maintaining aesthetic appeal.
+                {t('home.hotel.feature3Description') || 'Comprehensive protection for property boundaries with automated lighting, motion detection, and integrated alarm systems that prevent unauthorized access while maintaining aesthetic appeal.'}
               </p>
             </motion.div>
             
@@ -146,9 +149,9 @@ const Hotel = () => {
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
                 <FiUsers className="text-amber-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Visitor Management</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.hotel.feature4Title') || 'Visitor Management'}</h3>
               <p className="text-gray-700">
-                Digital visitor tracking and verification systems that streamline check-in processes while screening for potential security concerns and managing high-traffic periods efficiently.
+                {t('home.hotel.feature4Description') || 'Digital visitor tracking and verification systems that streamline check-in processes while screening for potential security concerns and managing high-traffic periods efficiently.'}
               </p>
             </motion.div>
           </motion.div>
@@ -159,9 +162,9 @@ const Hotel = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Iran Hotel Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.hotel.benefitsTitle') || 'Benefits of Uniview Iran Hotel Security'}</h2>
             <p className="text-xl text-gray-700">
-              Partner with Iran's leading provider of Uniview security solutions for your hospitality venue.
+              {t('home.hotel.benefitsSubtitle') || 'Partner with Iran\'s leading provider of Uniview security solutions for your hospitality venue.'}
             </p>
           </div>
           
@@ -173,9 +176,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Enhanced Guest Experience</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit1Title') || 'Enhanced Guest Experience'}</h3>
                 <p className="text-gray-600">
-                  Create a secure environment where guests feel protected without intrusive security measures, improving satisfaction and loyalty.
+                  {t('home.hotel.benefit1Description') || 'Create a secure environment where guests feel protected without intrusive security measures, improving satisfaction and loyalty.'}
                 </p>
               </div>
             </div>
@@ -187,9 +190,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Asset Protection</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit2Title') || 'Asset Protection'}</h3>
                 <p className="text-gray-600">
-                  Safeguard valuable property assets, including furnishings, artwork, and equipment against theft, vandalism, and unauthorized use.
+                  {t('home.hotel.benefit2Description') || 'Safeguard valuable property assets, including furnishings, artwork, and equipment against theft, vandalism, and unauthorized use.'}
                 </p>
               </div>
             </div>
@@ -201,9 +204,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Staff Safety</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit3Title') || 'Staff Safety'}</h3>
                 <p className="text-gray-600">
-                  Protect employees with panic buttons, monitored areas, and safety protocols, particularly for those working night shifts or in isolated areas.
+                  {t('home.hotel.benefit3Description') || 'Protect employees with panic buttons, monitored areas, and safety protocols, particularly for those working night shifts or in isolated areas.'}
                 </p>
               </div>
             </div>
@@ -215,9 +218,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Operational Efficiency</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit4Title') || 'Operational Efficiency'}</h3>
                 <p className="text-gray-600">
-                  Streamline check-in/check-out procedures, key management, and room access, reducing administrative overhead and improving service delivery.
+                  {t('home.hotel.benefit4Description') || 'Streamline check-in/check-out procedures, key management, and room access, reducing administrative overhead and improving service delivery.'}
                 </p>
               </div>
             </div>
@@ -229,9 +232,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Liability Reduction</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit5Title') || 'Liability Reduction'}</h3>
                 <p className="text-gray-600">
-                  Minimize legal and financial risks with comprehensive monitoring, incident documentation, and proactive threat detection.
+                  {t('home.hotel.benefit5Description') || 'Minimize legal and financial risks with comprehensive monitoring, incident documentation, and proactive threat detection.'}
                 </p>
               </div>
             </div>
@@ -243,9 +246,9 @@ const Hotel = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Brand Protection</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.hotel.benefit6Title') || 'Brand Protection'}</h3>
                 <p className="text-gray-600">
-                  Maintain and enhance your hotel's reputation by demonstrating commitment to guest safety and security.
+                  {t('home.hotel.benefit6Description') || 'Maintain and enhance your hotel\'s reputation by demonstrating commitment to guest safety and security.'}
                 </p>
               </div>
             </div>
@@ -259,9 +262,9 @@ const Hotel = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uniview Iran</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.hotel.whyChooseTitle') || 'Why Choose Uniview Iran'}</h2>
                 <p className="text-gray-700 mb-6">
-                  As the authorized Uniview distributor in Iran, we offer distinct advantages for your hotel security needs:
+                  {t('home.hotel.whyChooseDescription') || 'As the authorized Uniview distributor in Iran, we offer distinct advantages for your hotel security needs:'}
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
@@ -271,8 +274,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">Local Expertise & Support</h4>
-                      <p className="text-gray-600">Direct access to trained technicians and support staff in Iran, ensuring quick response times and efficient system maintenance.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">{t('home.hotel.advantage1Title') || 'Local Expertise & Support'}</h4>
+                      <p className="text-gray-600">{t('home.hotel.advantage1Description') || 'Direct access to trained technicians and support staff in Iran, ensuring quick response times and efficient system maintenance.'}</p>
                     </div>
                   </li>
                   
@@ -283,8 +286,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">Genuine Uniview Products</h4>
-                      <p className="text-gray-600">Access to authentic Uniview security cameras and equipment with full warranty and after-sales support within Iran.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">{t('home.hotel.advantage2Title') || 'Genuine Uniview Products'}</h4>
+                      <p className="text-gray-600">{t('home.hotel.advantage2Description') || 'Access to authentic Uniview security cameras and equipment with full warranty and after-sales support within Iran.'}</p>
                     </div>
                   </li>
                   
@@ -295,8 +298,8 @@ const Hotel = () => {
                       </div>
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-lg font-semibold text-gray-800">Customized Solutions</h4>
-                      <p className="text-gray-600">Tailored security systems designed specifically for Iranian hotel properties, with consideration for local requirements and regulations.</p>
+                      <h4 className="text-lg font-semibold text-gray-800">{t('home.hotel.advantage3Title') || 'Customized Solutions'}</h4>
+                      <p className="text-gray-600">{t('home.hotel.advantage3Description') || 'Tailored security systems designed specifically for Iranian hotel properties, with consideration for local requirements and regulations.'}</p>
                     </div>
                   </li>
                 </ul>
@@ -305,7 +308,7 @@ const Hotel = () => {
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-xl">
                 <Image 
                   src={img2}
-                  alt="Advanced Hotel Security Technologies"
+                  alt={t('home.hotel.advancedFeaturesImageAlt') || "Advanced Hotel Security Technologies"}
                   fill
                   className="object-cover"
                 />
@@ -319,9 +322,9 @@ const Hotel = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Hospitality Security Applications</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.hotel.applicationsTitle') || 'Hospitality Security Applications'}</h2>
             <p className="text-xl text-gray-700">
-              Our hotel security solutions are tailored for various hospitality environments.
+              {t('home.hotel.applicationsSubtitle') || 'Our hotel security solutions are tailored for various hospitality environments.'}
             </p>
           </div>
           
@@ -330,15 +333,15 @@ const Hotel = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img3} 
-                  alt="Luxury Hotels"
+                  alt={t('home.hotel.application1ImageAlt') || "Luxury Hotels"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Luxury Hotels</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.hotel.application1Title') || 'Luxury Hotels'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Premium security solutions with discreet implementation for high-end properties, including VIP protection features and integration with concierge services.
+                  {t('home.hotel.application1Description') || 'Premium security solutions with discreet implementation for high-end properties, including VIP protection features and integration with concierge services.'}
                 </p>
               </div>
             </div>
@@ -347,15 +350,15 @@ const Hotel = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img4} 
-                  alt="Resort Properties"
+                  alt={t('home.hotel.application2ImageAlt') || "Resort Properties"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Resort Properties</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.hotel.application2Title') || 'Resort Properties'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Wide-area coverage solutions for sprawling resort complexes with multiple buildings, outdoor spaces, and amenities like pools, beaches, and golf courses.
+                  {t('home.hotel.application2Description') || 'Wide-area coverage solutions for sprawling resort complexes with multiple buildings, outdoor spaces, and amenities like pools, beaches, and golf courses.'}
                 </p>
               </div>
             </div>
@@ -364,15 +367,15 @@ const Hotel = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img5} 
-                  alt="Business Hotels"
+                  alt={t('home.hotel.application3ImageAlt') || "Business Hotels"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Business Hotels</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.hotel.application3Title') || 'Business Hotels'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Specialized security focused on conference facilities, business centers, and technology infrastructure for properties catering to corporate travelers.
+                  {t('home.hotel.application3Description') || 'Specialized security focused on conference facilities, business centers, and technology infrastructure for properties catering to corporate travelers.'}
                 </p>
               </div>
             </div>
@@ -384,9 +387,9 @@ const Hotel = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-amber-600 rounded-2xl shadow-xl overflow-hidden">
           <div className="p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-6">Secure Your Hotel with Uniview Iran</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('home.hotel.ctaTitle') || 'Secure Your Hotel with Uniview Iran'}</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Connect with our security experts to design a customized Uniview camera solution for your hotel property in Iran.
+              {t('home.hotel.ctaDescription') || 'Connect with our security experts to design a customized Uniview camera solution for your hotel property in Iran.'}
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
@@ -394,13 +397,13 @@ const Hotel = () => {
                 className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center justify-center"
               >
                 <FiSend className="mr-2" />
-                Request a Consultation
+                {t('home.hotel.ctaButton1') || 'Request a Consultation'}
               </Link>
               <Link 
                 href="/products" 
                 className="bg-transparent text-white border-2 border-white hover:bg-white/10 px-8 py-4 rounded-full font-medium transition-all duration-300 text-lg flex items-center justify-center"
               >
-                Explore Our Products
+                {t('home.hotel.ctaButton2') || 'Explore Our Products'}
                 <FiArrowRight className="ml-2" />
               </Link>
             </div>

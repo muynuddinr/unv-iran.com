@@ -16,12 +16,15 @@ import {
   FiLayers
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import img1 from '../../../public/stadium/Stadium Security Banner.webp'
 import img2 from '../../../public/stadium/Sports Stadiums.webp'
 import img3 from '../../../public/stadium/Concert Venues.webp'
 import img4 from '../../../public/stadium/multi purpose .webp'
 
 const Stadium = () => {
+  const { t, dir } = useLanguage();
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -38,15 +41,15 @@ const Stadium = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-white pt-24" dir={dir}>
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 lg:py-20">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Uniview Iran <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700">Stadium Security Solutions</span>
+            {t('home.stadium.heroTitle') || 'Uniview Iran'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-700">{t('home.stadium.heroTitleHighlight') || 'Stadium Security Solutions'}</span>
           </h1>
           <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-            Advanced Uniview security camera systems tailored for Iranian stadiums, providing comprehensive surveillance and crowd management solutions.
+            {t('home.stadium.heroDescription') || 'Advanced Uniview security camera systems tailored for Iranian stadiums, providing comprehensive surveillance and crowd management solutions.'}
           </p>
         </div>
       </section>
@@ -59,21 +62,21 @@ const Stadium = () => {
               <div className="relative h-80 md:h-96">
                 <Image 
                   src={img1} 
-                  alt="Stadium security systems by Uniview" 
+                  alt={t('home.stadium.overviewImageAlt') || "Stadium security systems by Uniview"} 
                   fill
                   className="object-cover rounded-xl shadow-xl"
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Stadium Security Excellence in Iran</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.overviewTitle') || 'Stadium Security Excellence in Iran'}</h2>
                 <p className="text-gray-700 mb-6">
-                  As the official distributor of Uniview products in Iran, we specialize in implementing cutting-edge security camera solutions for stadiums across the country, addressing the unique requirements of Iranian sports venues.
+                  {t('home.stadium.overviewParagraph1') || "As the official distributor of Uniview products in Iran, we specialize in implementing cutting-edge security camera solutions for stadiums across the country, addressing the unique requirements of Iranian sports venues."}
                 </p>
                 <p className="text-gray-700 mb-6">
-                  Our integrated stadium security systems feature Uniview's latest surveillance technology, providing crystal-clear monitoring capabilities and intelligent crowd management tools that meet local regulations and international standards.
+                  {t('home.stadium.overviewParagraph2') || "Our integrated stadium security systems feature Uniview's latest surveillance technology, providing crystal-clear monitoring capabilities and intelligent crowd management tools that meet local regulations and international standards."}
                 </p>
                 <p className="text-gray-700">
-                  With extensive experience in the Iranian market, our solutions are specifically designed to handle the demands of major sporting events, from local league matches to international tournaments hosted in Iran's premier venues.
+                  {t('home.stadium.overviewParagraph3') || "With extensive experience in the Iranian market, our solutions are specifically designed to handle the demands of major sporting events, from local league matches to international tournaments hosted in Iran's premier venues."}
                 </p>
               </div>
             </div>
@@ -85,9 +88,9 @@ const Stadium = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Essential Security Features</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.featuresTitle') || 'Essential Security Features'}</h2>
             <p className="text-xl text-gray-700">
-              Our comprehensive stadium security solutions include these vital components to ensure venue safety.
+              {t('home.stadium.featuresSubtitle') || 'Our comprehensive stadium security solutions include these vital components to ensure venue safety.'}
             </p>
           </div>
           
@@ -105,9 +108,9 @@ const Stadium = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                 <FiUsers className="text-orange-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Crowd Management</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.stadium.feature1Title') || 'Crowd Management'}</h3>
               <p className="text-gray-700">
-                Advanced analytics for crowd density monitoring, flow optimization, and automatic alerts when overcrowding is detected in specific sections or entry points.
+                {t('home.stadium.feature1Description') || 'Advanced analytics for crowd density monitoring, flow optimization, and automatic alerts when overcrowding is detected in specific sections or entry points.'}
               </p>
             </motion.div>
             
@@ -118,9 +121,9 @@ const Stadium = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                 <FiVideo className="text-orange-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">High-Definition Surveillance</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.stadium.feature2Title') || 'High-Definition Surveillance'}</h3>
               <p className="text-gray-700">
-                Ultra-HD cameras with wide viewing angles, powerful zoom capabilities, and low-light performance to monitor all areas of the venue with exceptional clarity.
+                {t('home.stadium.feature2Description') || 'Ultra-HD cameras with wide viewing angles, powerful zoom capabilities, and low-light performance to monitor all areas of the venue with exceptional clarity.'}
               </p>
             </motion.div>
             
@@ -131,9 +134,9 @@ const Stadium = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                 <FiShield className="text-orange-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Access Control</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.stadium.feature3Title') || 'Access Control'}</h3>
               <p className="text-gray-700">
-                Multi-level access systems for different stadium zones, including ticketing integration, staff credentials, and VIP area restrictions with real-time validation.
+                {t('home.stadium.feature3Description') || 'Multi-level access systems for different stadium zones, including ticketing integration, staff credentials, and VIP area restrictions with real-time validation.'}
               </p>
             </motion.div>
             
@@ -144,9 +147,9 @@ const Stadium = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                 <FiAlertTriangle className="text-orange-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Incident Detection</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">{t('home.stadium.feature4Title') || 'Incident Detection'}</h3>
               <p className="text-gray-700">
-                AI-powered analytics that identify potential security threats, unauthorized access attempts, unusual behavior patterns, and emergency situations in real-time.
+                {t('home.stadium.feature4Description') || 'AI-powered analytics that identify potential security threats, unauthorized access attempts, unusual behavior patterns, and emergency situations in real-time.'}
               </p>
             </motion.div>
           </motion.div>
@@ -157,9 +160,9 @@ const Stadium = () => {
       <section className="py-16 bg-gradient-to-r from-orange-50 to-yellow-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Benefits of Uniview Stadium Security</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.benefitsTitle') || 'Benefits of Uniview Stadium Security'}</h2>
             <p className="text-xl text-gray-700">
-              Our integrated approach to stadium security delivers multiple advantages for venue operators.
+              {t('home.stadium.benefitsSubtitle') || 'Our integrated approach to stadium security delivers multiple advantages for venue operators.'}
             </p>
           </div>
           
@@ -171,9 +174,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Enhanced Spectator Safety</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit1Title') || 'Enhanced Spectator Safety'}</h3>
                 <p className="text-gray-600">
-                  Create a secure environment where fans can enjoy events with peace of mind, knowing comprehensive security measures are in place.
+                  {t('home.stadium.benefit1Description') || 'Create a secure environment where fans can enjoy events with peace of mind, knowing comprehensive security measures are in place.'}
                 </p>
               </div>
             </div>
@@ -185,9 +188,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Rapid Incident Response</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit2Title') || 'Rapid Incident Response'}</h3>
                 <p className="text-gray-600">
-                  Minimize response times to security incidents with real-time alerts, centralized monitoring, and coordinated security team deployment.
+                  {t('home.stadium.benefit2Description') || 'Minimize response times to security incidents with real-time alerts, centralized monitoring, and coordinated security team deployment.'}
                 </p>
               </div>
             </div>
@@ -199,9 +202,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Operational Efficiency</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit3Title') || 'Operational Efficiency'}</h3>
                 <p className="text-gray-600">
-                  Optimize staff deployment, entrance flow, and crowd management based on real-time data and historical analytics.
+                  {t('home.stadium.benefit3Description') || 'Optimize staff deployment, entrance flow, and crowd management based on real-time data and historical analytics.'}
                 </p>
               </div>
             </div>
@@ -213,9 +216,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Risk Mitigation</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit4Title') || 'Risk Mitigation'}</h3>
                 <p className="text-gray-600">
-                  Reduce liability and insurance costs with documented security measures and comprehensive incident prevention strategies.
+                  {t('home.stadium.benefit4Description') || 'Reduce liability and insurance costs with documented security measures and comprehensive incident prevention strategies.'}
                 </p>
               </div>
             </div>
@@ -227,9 +230,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Brand Protection</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit5Title') || 'Brand Protection'}</h3>
                 <p className="text-gray-600">
-                  Maintain and enhance venue reputation by ensuring consistently safe, secure, and enjoyable experiences for all attendees.
+                  {t('home.stadium.benefit5Description') || 'Maintain and enhance venue reputation by ensuring consistently safe, secure, and enjoyable experiences for all attendees.'}
                 </p>
               </div>
             </div>
@@ -241,9 +244,9 @@ const Stadium = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Regulatory Compliance</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{t('home.stadium.benefit6Title') || 'Regulatory Compliance'}</h3>
                 <p className="text-gray-600">
-                  Meet or exceed safety standards and regulations for large public venues with comprehensive security infrastructure.
+                  {t('home.stadium.benefit6Description') || 'Meet or exceed safety standards and regulations for large public venues with comprehensive security infrastructure.'}
                 </p>
               </div>
             </div>
@@ -255,9 +258,9 @@ const Stadium = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Stadium Security Applications</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.applicationsTitle') || 'Stadium Security Applications'}</h2>
             <p className="text-xl text-gray-700">
-              Our solutions are tailored for various large venue environments.
+              {t('home.stadium.applicationsSubtitle') || 'Our solutions are tailored for various large venue environments.'}
             </p>
           </div>
           
@@ -266,15 +269,15 @@ const Stadium = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img2} 
-                  alt="Sports Stadiums"
+                  alt={t('home.stadium.application1ImageAlt') || "Sports Stadiums"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Sports Stadiums</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.stadium.application1Title') || 'Sports Stadiums'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Comprehensive security for football, baseball, soccer, and multi-purpose sports venues with large capacities and regular event schedules.
+                  {t('home.stadium.application1Description') || 'Comprehensive security for football, baseball, soccer, and multi-purpose sports venues with large capacities and regular event schedules.'}
                 </p>
               </div>
             </div>
@@ -283,15 +286,15 @@ const Stadium = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img3} 
-                  alt="Concert Venues"
+                  alt={t('home.stadium.application2ImageAlt') || "Concert Venues"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Concert Venues</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.stadium.application2Title') || 'Concert Venues'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Tailored security solutions for indoor and outdoor performance spaces with flexible configurations and varying attendance levels.
+                  {t('home.stadium.application2Description') || 'Tailored security solutions for indoor and outdoor performance spaces with flexible configurations and varying attendance levels.'}
                 </p>
               </div>
             </div>
@@ -300,15 +303,15 @@ const Stadium = () => {
               <div className="h-48 relative">
                 <Image 
                   src={img4} 
-                  alt="Multi-Purpose Arenas"
+                  alt={t('home.stadium.application3ImageAlt') || "Multi-Purpose Arenas"}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Multi-Purpose Arenas</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{t('home.stadium.application3Title') || 'Multi-Purpose Arenas'}</h3>
                 <p className="text-gray-600 mb-4">
-                  Adaptable security infrastructure for venues that host various event types from sporting competitions to conventions and exhibitions.
+                  {t('home.stadium.application3Description') || 'Adaptable security infrastructure for venues that host various event types from sporting competitions to conventions and exhibitions.'}
                 </p>
               </div>
             </div>
@@ -322,31 +325,31 @@ const Stadium = () => {
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Success Story: Azadi Stadium Implementation</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.successStoryTitle') || 'Success Story: Azadi Stadium Implementation'}</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-700 mb-6">
-                      One of Iran's largest sports venues faced challenges with monitoring large crowds during international matches and maintaining security standards required by AFC.
+                      {t('home.stadium.successStoryParagraph1') || "One of Iran's largest sports venues faced challenges with monitoring large crowds during international matches and maintaining security standards required by AFC."}
                     </p>
                     <p className="text-gray-700 mb-6">
-                      After implementing Uniview's comprehensive security camera solution, including high-resolution cameras and advanced monitoring systems, the stadium achieved:
+                      {t('home.stadium.successStoryParagraph2') || "After implementing Uniview's comprehensive security camera solution, including high-resolution cameras and advanced monitoring systems, the stadium achieved:"}
                     </p>
                     <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-2">
-                      <li><strong>Complete coverage</strong> of all stadium areas with HD surveillance</li>
-                      <li><strong>Real-time monitoring</strong> of crowd movements and behavior</li>
-                      <li><strong>Enhanced compliance</strong> with international football security standards</li>
-                      <li><strong>Improved coordination</strong> with security personnel during major events</li>
-                      <li>Successful integration with existing security infrastructure</li>
+                      <li><strong>{t('home.stadium.successStoryBenefit1') || 'Complete coverage'}</strong> {t('home.stadium.successStoryBenefit1Detail') || 'of all stadium areas with HD surveillance'}</li>
+                      <li><strong>{t('home.stadium.successStoryBenefit2') || 'Real-time monitoring'}</strong> {t('home.stadium.successStoryBenefit2Detail') || 'of crowd movements and behavior'}</li>
+                      <li><strong>{t('home.stadium.successStoryBenefit3') || 'Enhanced compliance'}</strong> {t('home.stadium.successStoryBenefit3Detail') || 'with international football security standards'}</li>
+                      <li><strong>{t('home.stadium.successStoryBenefit4') || 'Improved coordination'}</strong> {t('home.stadium.successStoryBenefit4Detail') || 'with security personnel during major events'}</li>
+                      <li>{t('home.stadium.successStoryBenefit5') || 'Successful integration with existing security infrastructure'}</li>
                     </ul>
                     <p className="text-gray-700">
-                      The implementation has become a benchmark for stadium security solutions in Iran, demonstrating Uniview's capability to meet international standards while addressing local requirements.
+                      {t('home.stadium.successStoryParagraph3') || "The implementation has become a benchmark for stadium security solutions in Iran, demonstrating Uniview's capability to meet international standards while addressing local requirements."}
                     </p>
                   </div>
                   <div className="relative h-80 md:h-96">
                     <Image 
                       src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                      alt="Stadium security command center" 
+                      alt={t('home.stadium.successStoryImageAlt') || "Stadium security command center"} 
                       fill
                       className="object-cover rounded-xl"
                     />
@@ -362,17 +365,17 @@ const Stadium = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Upgrade Your Stadium's Security with Uniview Iran</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('home.stadium.ctaTitle') || "Upgrade Your Stadium's Security with Uniview Iran"}</h2>
             <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
-              Contact our local experts to discuss how Uniview's security solutions can be customized for your Iranian venue.
+              {t('home.stadium.ctaDescription') || "Contact our local experts to discuss how Uniview's security solutions can be customized for your Iranian venue."}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-medium flex items-center justify-center transition-colors">
-                <span>Schedule a Consultation</span>
+                <span>{t('home.stadium.ctaButton1') || 'Schedule a Consultation'}</span>
                 <FiArrowRight className="ml-2" />
               </Link>
               <Link href="/solutions" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-medium flex items-center justify-center transition-colors">
-                <span>Explore More Solutions</span>
+                <span>{t('home.stadium.ctaButton2') || 'Explore More Solutions'}</span>
               </Link>
             </div>
           </div>
