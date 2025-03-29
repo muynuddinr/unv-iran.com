@@ -144,6 +144,8 @@ const Navbar = () => {
     }
   };
 
+  // Update industryLinks definition to use a simpler format
+  // (translations will be handled separately)
   const industryLinks = [
     { href: '/building', label: 'Building', icon: '🏢' },
     { href: '/retail', label: 'Retail', icon: '🛒' },
@@ -435,7 +437,7 @@ const Navbar = () => {
                               <FiTool className="w-5 h-5 text-blue-600" />
                             </div>
                             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                              Solutions by Industry
+                              {t('common.solutionsByIndustry')}
                             </h3>
                           </div>
                           
@@ -455,10 +457,10 @@ const Navbar = () => {
                                 </span>
                                 <span className="ml-3">
                                   <span className="block text-sm font-medium text-gray-900 group-hover:text-blue-600">
-                                    {link.label}
+                                    {t(`common.industries.${link.href.replace('/', '')}`)}
                                   </span>
                                   <span className="block text-xs text-gray-500 group-hover:text-blue-500">
-                                    View solutions →
+                                    {t('common.viewSolutions')} →
                                   </span>
                                 </span>
                               </Link>
@@ -473,7 +475,7 @@ const Navbar = () => {
                               <FiBox className="w-5 h-5 text-purple-600" />
                             </div>
                             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                              Solutions by Function
+                              {t('common.solutionsByFunction')}
                             </h3>
                           </div>
 
@@ -493,10 +495,10 @@ const Navbar = () => {
                                 </span>
                                 <span className="ml-3">
                                   <span className="block text-sm font-medium text-gray-900 group-hover:text-purple-600">
-                                    {link.label}
+                                    {t(`common.functions.${link.href.replace('/', '')}`)}
                                   </span>
                                   <span className="block text-xs text-gray-500 group-hover:text-purple-500">
-                                    Explore features →
+                                    {t('common.exploreFeatures')} →
                                   </span>
                                 </span>
                               </Link>
@@ -513,10 +515,10 @@ const Navbar = () => {
                             >
                               <div>
                                 <span className="block text-sm font-semibold text-gray-900">
-                                  View All Solutions
+                                  {t('common.viewAllSolutions')}
                                 </span>
                                 <span className="text-xs text-gray-500">
-                                  Explore our complete solutions catalog
+                                  {t('common.exploreSolutionsCatalog')}
                                 </span>
                               </div>
                               <FiChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 
@@ -665,7 +667,7 @@ const Navbar = () => {
                           onClick={() => setIsOpen(false)}
                         >
                           <span className="mr-2">{link.icon}</span>
-                          <span className="text-xs font-medium">{link.label}</span>
+                          <span className="text-xs font-medium">{t(`common.industries.${link.href.replace('/', '')}`)}</span>
                         </Link>
                       ))}
                     </div>
@@ -684,7 +686,7 @@ const Navbar = () => {
                           onClick={() => setIsOpen(false)}
                         >
                           <span className="mr-2">{link.icon}</span>
-                          <span className="text-xs font-medium">{link.label}</span>
+                          <span className="text-xs font-medium">{t(`common.functions.${link.href.replace('/', '')}`)}</span>
                         </Link>
                       ))}
                     </div>

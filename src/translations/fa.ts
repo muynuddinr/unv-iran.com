@@ -18,7 +18,25 @@ export default {
     viewAll: "مشاهده همه",
     searchPlaceholder: "جستجو در محصولات...",
     exploreFeatures: "کاوش ویژگی‌ها →",
-    exploreSolutionsCatalog: "کاتالوگ کامل راهکارهای ما را مشاهده کنید"
+    exploreSolutionsCatalog: "کاتالوگ کامل راهکارهای ما را مشاهده کنید",
+    solutionsByIndustry: "راهکارها بر اساس صنعت",
+    solutionsByFunction: "راهکارها بر اساس کاربرد",
+    viewSolutions: "مشاهده راهکارها",
+    byIndustry: "بر اساس صنعت",
+    industries: {
+      building: "ساختمان",
+      retail: "خرده‌فروشی",
+      bank: "بانک",
+      school: "مدرسه",
+      "shopping-mall": "مرکز خرید",
+      hospital: "بیمارستان",
+      warehouse: "انبار و لجستیک",
+      stadium: "استادیوم",
+      hotel: "هتل"
+    },
+    functions: {
+      "smart-Intrusion-Prevention": "پیشگیری هوشمند از نفوذ"
+    }
   },
   header: {
     email: "info@uniview.com",

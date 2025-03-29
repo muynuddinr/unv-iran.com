@@ -19,7 +19,24 @@ export default {
     searchPlaceholder: "Search products...",
     exploreFeatures: "Explore features →",
     exploreSolutionsCatalog: "Explore our complete solutions catalog",
-    byIndustry: "By Industry"
+    byIndustry: "By Industry",
+    solutionsByIndustry: "Solutions by Industry",
+    solutionsByFunction: "Solutions by Function",
+    viewSolutions: "View solutions",
+    industries: {
+      building: "Building",
+      retail: "Retail",
+      bank: "Bank",
+      school: "School",
+      "shopping-mall": "Shopping Mall",
+      hospital: "Hospital",
+      warehouse: "Warehouse and Logistics",
+      stadium: "Stadium",
+      hotel: "Hotel"
+    },
+    functions: {
+      "smart-Intrusion-Prevention": "Smart intrusion prevention"
+    }
   },
   header: {
     email: "info@uniview.com",
