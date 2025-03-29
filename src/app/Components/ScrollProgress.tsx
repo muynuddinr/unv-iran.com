@@ -23,7 +23,7 @@ export default function ScrollProgress() {
     <div className="scroll-progress-container">
       <div className="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
         <motion.div 
-          className="h-full bg-gradient-to-r from-[#32869f] to-[#38a1c0]"
+          className="h-full bg-gradient-to-r from-blue-500 to-blue-700"
           style={{ 
             originX: 0,
             scaleX: progress 
