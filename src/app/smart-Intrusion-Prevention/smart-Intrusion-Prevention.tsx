@@ -22,6 +22,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import img1 from '../../../public/smart/Advanced Security Camera Solutions.webp'
 import img2 from '../../../public/smart/Commercial Buildings.webp'
 import img3 from '../../../public/smart/Critical Infrastructure.webp'
+import img4 from '../../../public/smart/Residential Properties .webp'
 
 const SmartIntrusionPrevention = () => {
   const { t, dir } = useLanguage();
@@ -303,7 +304,7 @@ const SmartIntrusionPrevention = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/residential-property.jpg" 
+                  src={img4}
                   alt={t('home.intrusion.application3ImageAlt') || "Residential Properties"}
                   fill
                   className="object-cover"
