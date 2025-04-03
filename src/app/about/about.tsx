@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { FiAward, FiGlobe, FiTarget, FiCheck, FiArrowRight, FiSend } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import img1 from '../../../public/about/Our Story.webp'
+import img2 from '../../../public/about/one-world-peace-connection-relationship-interconnection-concept.webp'
 
 const About = () => {
   const { t, dir } = useLanguage();
@@ -48,7 +50,7 @@ const About = () => {
             <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
               <div className="rounded-lg overflow-hidden">
                 <Image 
-                  src="https://images.unsplash.com/photo-1517048676732-d65bc9a6a25f" 
+                  src={img1} 
                   alt={t('home.about.companyImageAlt') || "Uniview Iran Headquarters"} 
                   width={600} 
                   height={400} 
@@ -226,7 +228,7 @@ const About = () => {
                 <div className="relative z-10 bg-white p-2 rounded-xl shadow-2xl">
                   <div className="rounded-lg overflow-hidden">
                     <Image 
-                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
+                      src={img2} 
                       alt={t('home.about.globalImageAlt') || "Uniview Iran Regional Presence"} 
                       width={600} 
                       height={400} 

@@ -19,6 +19,9 @@ import {
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import img1 from '../../../public/smart/Advanced Security Camera Solutions.webp'
+import img2 from '../../../public/smart/Commercial Buildings.webp'
+import img3 from '../../../public/smart/Critical Infrastructure.webp'
 
 const SmartIntrusionPrevention = () => {
   const { t, dir } = useLanguage();
@@ -59,7 +62,7 @@ const SmartIntrusionPrevention = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-80 md:h-96">
                 <Image 
-                  src="https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  src={img1}
                   alt={t('home.intrusion.overviewImageAlt') || "Smart Intrusion Prevention"}
                   fill
                   className="object-cover rounded-xl shadow-xl"
@@ -266,7 +269,7 @@ const SmartIntrusionPrevention = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/commercial-building.jpg" 
+                  src={img2} 
                   alt={t('home.intrusion.application1ImageAlt') || "Commercial Buildings"}
                   fill
                   className="object-cover"
@@ -283,7 +286,7 @@ const SmartIntrusionPrevention = () => {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="h-48 relative">
                 <Image 
-                  src="/images/critical-infrastructure.jpg" 
+                  src={img3} 
                   alt={t('home.intrusion.application2ImageAlt') || "Critical Infrastructure"}
                   fill
                   className="object-cover"
