@@ -2,20 +2,27 @@ import React, { createContext, useContext, useState } from 'react';
 import en from '../translations/en';
 import fa from '../translations/fa';
 
-type Language = 'en' | 'fa';
-type Translations = typeof en;
+type Language = 'fa' | 'en';
+type Translations = {
+  common: {
+    [key: string]: string | { [subKey: string]: string };
+  };
+  header: Record<string, string>;
+  home: Record<string, any>;
+  [key: string]: any;
+};
 
-interface LanguageContextType {
+type LanguageContextType = {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  setLanguage: (language: Language) => void;
   t: (key: string) => string;
-  dir: string;
-}
+  dir: 'rtl' | 'ltr';
+};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('fa');
 
   const translations: Record<Language, Translations> = {
     en,
@@ -44,7 +51,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;

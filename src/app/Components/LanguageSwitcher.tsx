@@ -29,17 +29,21 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   
   // Get language display names
   const languages = [
+    { code: 'fa', name: 'فارسی', flag: '🇮🇷', direction: 'rtl' },
     { code: 'en', name: 'English', flag: '🇺🇸', direction: 'ltr' },
-    { code: 'fa', name: 'فارسی', flag: '🇮🇷', direction: 'rtl' }
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[1];
   
   // Load language from localStorage on component mount
   useEffect(() => {
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'fa')) {
       setLanguage(savedLanguage as Language);
+    } else {
+      // If no saved language, default to Farsi
+      setLanguage('fa');
+      localStorage.setItem('preferredLanguage', 'fa');
     }
   }, []);
 
