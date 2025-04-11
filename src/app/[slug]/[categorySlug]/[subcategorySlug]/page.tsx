@@ -77,11 +77,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SubcategoryDetailPage({ 
-  params 
-}: { 
-  params: Params 
-}) {
+export default async function SubcategoryDetailPage({ params }: { params: Params }) {
   const navbarCategory = await getNavbarCategoryBySlug(params.slug);
   
   if (!navbarCategory) {
@@ -106,28 +102,45 @@ export default async function SubcategoryDetailPage({
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero section */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white pt-40 pb-20 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-white opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-10 right-1/4 w-96 h-96 bg-indigo-200 opacity-15 rounded-full blur-3xl"></div>
+      {/* Enhanced Hero Section with updated colors */}
+      <div className="bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 text-white pt-44 pb-32 relative overflow-hidden">
+        {/* Animated decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl animate-pulse delay-700"></div>
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-indigo-400/15 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
         
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="flex flex-col items-center text-center">
-            <div className="text-sm font-medium text-indigo-100 mb-2">
-              <span>{navbarCategory.title}</span> / <span>{category.name}</span> / <span>{subcategory.title}</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight drop-shadow-md">
-              {subcategory.title}
-            </h1>
-            <div className="w-32 h-1.5 bg-white/80 mb-8 rounded-full shadow-lg"></div>
+            <nav className="flex items-center space-x-2 text-sm font-medium mb-8">
+              <Link href="/" className="text-blue-100 hover:text-white transition-colors">Home</Link>
+              <span className="text-blue-200/40">→</span>
+              <Link href={`/${navbarCategory.slug}`} className="text-blue-100 hover:text-white transition-colors">
+                {navbarCategory.title}
+              </Link>
+              <span className="text-blue-200/40">→</span>
+              <Link href={`/${navbarCategory.slug}/${category.slug}`} className="text-blue-100 hover:text-white transition-colors">
+                {category.name}
+              </Link>
+              <span className="text-blue-200/40">→</span>
+              <span className="text-white">{subcategory.title}</span>
+            </nav>
             
-            <div className="flex items-center space-x-6 text-sm">
-              <div className="flex items-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
+                {subcategory.title}
+              </span>
+            </h1>
+            
+            <div className="w-32 h-1 bg-gradient-to-r from-white/90 to-white/30 rounded-full mb-8"></div>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex items-center bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
                 <FiBox className="mr-2" />
                 <span>{subcategory.products} Products</span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
                 <FiTag className="mr-2" />
                 <span>{subcategory.status}</span>
               </div>
@@ -136,134 +149,68 @@ export default async function SubcategoryDetailPage({
         </div>
       </div>
       
-      {/* Main content with improved layout and components */}
-      <main className="flex-grow container mx-auto px-4 -mt-16 max-w-6xl pb-16">
-        <div className="bg-white rounded-3xl shadow-xl p-6 md:p-12 mb-8 border-t border-indigo-50">
-          {/* Breadcrumb navigation moved further down with additional top margin */}
-          <div className="pt-10 mt-10 mb-8 border-b border-gray-100 pb-6">
-            <div className="flex flex-wrap items-center text-sm text-gray-500">
-              <Link href="/" className="hover:text-indigo-600 transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-gray-300">›</span>
-              <Link href={`/${navbarCategory.slug}`} className="hover:text-indigo-600 transition-colors">
-                {navbarCategory.title}
-              </Link>
-              <span className="mx-2 text-gray-300">›</span>
-              <Link href={`/${navbarCategory.slug}/${category.slug}`} className="hover:text-indigo-600 transition-colors">
-                {category.name}
-              </Link>
-              <span className="mx-2 text-gray-300">›</span>
-              <span className="text-gray-900 font-medium">{subcategory.title}</span>
+      {/* Enhanced Main Content */}
+      <main className="flex-grow container mx-auto px-4 -mt-20 relative z-20 pb-16">
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          {/* Description Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="flex items-center justify-center mb-8">
+              <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+              <span className="px-4 text-gray-400 text-sm font-medium">ABOUT THIS SUBCATEGORY</span>
+              <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
             </div>
-          </div>
-
-          {/* Product gallery and description section */}
-          <div className="md:flex md:space-x-8 mb-16">
-            <div className="md:w-2/5 mb-8 md:mb-0">
-              {/* Main product image - fixed sizing and container */}
-              <div className="w-full rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 shadow-sm">
-                {subcategory.image ? (
-                  <img 
-                    src={subcategory.image} 
-                    alt={subcategory.title} 
-                    className="w-full h-auto object-contain aspect-[4/3]"
-                  />
-                ) : (
-                  <div className="text-6xl text-gray-300 py-24 w-full text-center">🖼️</div>
-                )}
-              </div>
-            </div>
-            
-            <div className="md:w-3/5">
-              <div className="prose max-w-none lg:prose-xl mb-10">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Overview</h2>
-                <p className="whitespace-pre-wrap text-gray-700 leading-relaxed">
-                  {subcategory.description}
-                </p>
-              </div>
-              
-              <div className="bg-indigo-50 rounded-xl p-6 mb-8">
-                <h3 className="text-xl font-semibold text-indigo-800 mb-4 flex items-center">
-                  <FiInfo className="mr-2" />
-                  Key Information
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <FiCheck className="text-green-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>
-                      <strong className="text-gray-900">Category:</strong> {category.name}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <FiCheck className="text-green-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>
-                      <strong className="text-gray-900">Section:</strong> {navbarCategory.title}
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <FiCheck className="text-green-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>
-                      <strong className="text-gray-900">Available Products:</strong> {subcategory.products}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="flex flex-wrap gap-3 mt-8">
-                <Link 
-                  href={`/${navbarCategory.slug}/${category.slug}`} 
-                  className="flex items-center px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  <FiArrowLeft className="mr-2" />
-                  Back to {category.name}
-                </Link>
-                
-                <Link 
-                  href="/contact" 
-                  className="px-5 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-                >
-                  Request Quote
-                </Link>
-              </div>
-            </div>
+            <p className="text-gray-600 leading-relaxed text-center text-lg">
+              {subcategory.description}
+            </p>
           </div>
           
-          
-          {/* Related products section - placeholder */}
+          {/* Products Grid */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Products</h2>
+            <div className="flex items-center justify-center mb-12">
+              <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+              <h2 className="px-6 text-3xl font-bold text-gray-800">Available Products</h2>
+              <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+            </div>
             
             {products.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products.map((product) => (
                   <Link 
                     key={product._id}
                     href={`/${navbarCategory.slug}/${category.slug}/${subcategory.slug}/${product.slug}`}
-                    className="group bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300"
+                    className="group bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100"
                   >
-                    <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                       {product.mainImage ? (
                         <img 
                           src={product.mainImage} 
                           alt={product.title} 
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="text-6xl text-gray-300">🖼️</div>
+                        <div className="w-full h-full flex items-center justify-center text-3xl text-gray-300">
+                          🖼️
+                        </div>
                       )}
                     </div>
                     
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors line-clamp-1">
                         {product.title}
                       </h3>
-                      <p className="text-gray-600 line-clamp-2 mb-4">
-                        {product.description.substring(0, 100)}...
+                      <p className="text-gray-600 line-clamp-2 mb-4 text-xs">
+                        {product.description}
                       </p>
-                      <div className="flex justify-end items-center">
-                        <span className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full group-hover:bg-blue-700 transition-colors">
-                          View Details
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                          <span className="text-xs text-gray-600">Available</span>
+                        </div>
+                        <span className="flex items-center text-blue-600 font-medium text-xs group-hover:translate-x-1 transition-transform">
+                          View
+                          <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
                         </span>
                       </div>
                     </div>
@@ -271,8 +218,19 @@ export default async function SubcategoryDetailPage({
                 ))}
               </div>
             ) : (
-              <div className="p-12 border border-dashed border-gray-300 rounded-xl text-center">
-                <p className="text-gray-500">No products available in this subcategory yet.</p>
+              <div className="bg-gray-50 rounded-2xl p-12 text-center">
+                <div className="text-6xl mb-4">🔍</div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">No Products Found</h3>
+                <p className="text-gray-600 mb-6">We haven't added any products to this subcategory yet.</p>
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors"
+                >
+                  Contact Us
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             )}
           </div>
@@ -282,4 +240,4 @@ export default async function SubcategoryDetailPage({
       <Footer />
     </div>
   );
-} 
+}
