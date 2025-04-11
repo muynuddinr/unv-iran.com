@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   FiHome, 
   FiMenu, 
@@ -14,7 +14,6 @@ import {
   FiLogOut,
   FiChevronRight
 } from 'react-icons/fi';
-import Image from 'next/image';
 
 const AdminSidebar = () => {
   const pathname = usePathname();
@@ -58,10 +57,24 @@ const AdminSidebar = () => {
     },
   ];
 
-  const handleLogout = () => {
-    // Implement logout functionality here
-    console.log('Logging out...');
-    // Example: router.push('/login');
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/admin/logout', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        // Clear client-side state and redirect
+        router.push('/admin-login');
+        router.refresh(); // Ensure cache is cleared
+      } else {
+        console.error('Logout failed:', await response.json());
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
@@ -125,4 +138,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar; 
+export default AdminSidebar;

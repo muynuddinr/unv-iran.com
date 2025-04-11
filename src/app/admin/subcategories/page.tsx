@@ -129,11 +129,12 @@ export default function SubCategories() {
 
     // If navbarCategory changes, filter the categories
     if (name === 'navbarCategory') {
-      const filtered = categories.filter(category => 
-        typeof category.navbarCategory === 'string' 
+      const filtered = categories.filter(category => {
+        if (!category.navbarCategory) return false;
+        return typeof category.navbarCategory === 'string' 
           ? category.navbarCategory === value
           : category.navbarCategory._id === value
-      );
+      });
       setFilteredCategories(filtered);
       // Reset category selection
       setFormData(prev => ({ ...prev, category: '' }));
@@ -161,27 +162,34 @@ export default function SubCategories() {
     setEditingSubcategory(subcategory);
     
     // If editing, we need to populate the filtered categories based on the navbar category
-    const navCatId = typeof subcategory.navbarCategory === 'string' 
-      ? subcategory.navbarCategory 
-      : subcategory.navbarCategory._id;
+    const navCatId = subcategory.navbarCategory 
+      ? (typeof subcategory.navbarCategory === 'string' 
+          ? subcategory.navbarCategory 
+          : subcategory.navbarCategory._id)
+      : '';
       
-    const filtered = categories.filter(category => 
-      typeof category.navbarCategory === 'string' 
+    const filtered = categories.filter(category => {
+      if (!category.navbarCategory) return false;
+      return typeof category.navbarCategory === 'string' 
         ? category.navbarCategory === navCatId
         : category.navbarCategory._id === navCatId
-    );
+    });
     
     setFilteredCategories(filtered);
     
     setFormData({
       title: subcategory.title,
       description: subcategory.description,
-      navbarCategory: typeof subcategory.navbarCategory === 'string' 
-        ? subcategory.navbarCategory 
-        : subcategory.navbarCategory._id,
-      category: typeof subcategory.category === 'string' 
-        ? subcategory.category 
-        : subcategory.category._id,
+      navbarCategory: subcategory.navbarCategory
+        ? (typeof subcategory.navbarCategory === 'string' 
+            ? subcategory.navbarCategory 
+            : subcategory.navbarCategory._id)
+        : '',
+      category: subcategory.category
+        ? (typeof subcategory.category === 'string' 
+            ? subcategory.category 
+            : subcategory.category._id)
+        : '',
       status: subcategory.status,
       image: subcategory.image,
       products: subcategory.products
@@ -541,4 +549,4 @@ export default function SubCategories() {
       )}
     </div>
   );
-} 
+}

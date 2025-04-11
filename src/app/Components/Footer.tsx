@@ -24,7 +24,7 @@ const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { t, dir } = useLanguage();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -35,12 +35,29 @@ const Footer = () => {
       return;
     }
     
-    // Simulate API call
-    setTimeout(() => {
-      toast.success(t('home.footer.subscribeSuccess') || 'Thanks for subscribing to our newsletter!');
-      setEmail('');
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        toast.success(data.message || t('home.footer.subscribeSuccess') || 'Thanks for subscribing to our newsletter!');
+        setEmail('');
+      } else {
+        toast.error(data.error || t('home.footer.subscribeFailed') || 'Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      toast.error(t('home.footer.subscribeFailed') || 'Failed to subscribe. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const companyLinks = [
@@ -115,6 +132,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Rest of the footer remains unchanged */}
         {/* Main Footer Content - Updated with darker text for readability */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}

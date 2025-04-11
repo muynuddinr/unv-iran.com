@@ -7,9 +7,8 @@ import Product from '@/models/Product';
 import Navbar from '../../../../Components/Navbar';
 import Footer from '../../../../Components/Footer';
 import Link from 'next/link';
-import { FiArrowLeft, FiBox, FiTag, FiInfo, FiCheck } from 'react-icons/fi';
+import { FiArrowLeft, FiCheck } from 'react-icons/fi';
 import { Metadata } from 'next';
-import { ResolvingMetadata } from 'next';
 
 async function getNavbarCategoryBySlug(slug: string) {
   await connectDB();

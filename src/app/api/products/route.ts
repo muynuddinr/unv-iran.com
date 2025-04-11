@@ -7,12 +7,15 @@ import SubCategory from '@/models/SubCategory';
 export async function GET(request: NextRequest) {
   try {
     await connectDB();
+    console.log('Database connected successfully'); // Log database connection
     
     const products = await Product.find()
       .populate('navbarCategory', 'title slug')
       .populate('category', 'name slug')
       .populate('subcategory', 'title slug')
       .sort({ createdAt: -1 });
+    
+    console.log('Fetched products:', products); // Log fetched products
     
     return NextResponse.json(products);
   } catch (error) {
